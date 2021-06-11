@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove Elements -->
+        <referenceContainer name="sidebar.additional" remove="true"/> <!-- Remove Wishlist, Compare -->
+        <referenceBlock name="customer-account-navigation-wish-list-link" remove="true"/><!-- Account Wish list link -->
+        <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true"/>   <!-- Account Sidebar Downloadable product link -->
+
+        <!-- Move Elements -->
+
+        <!-- Add/Change position of blocks -->
+    </body>
+</page>

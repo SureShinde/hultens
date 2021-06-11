@@ -1,0 +1,158 @@
+<section class="admin__page-section order-view-unifaun">
+    <div class="admin__page-section-title">
+        <span class="title"><?php /* @escapeNotVerified */ echo __('Unifaun') ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item order-view-unifaun">
+            <div class="admin__page-section-item order-information">
+                <div class="admin__page-section-item-title">
+                    <span class="title"><?php echo __('Settings'); ?></span>
+                </div>
+                <div class="general">
+                    <form>
+                        <fieldset>
+                            <legend><?php echo __('Automatic Booking'); ?></legend>
+                            <div class="admin__field">
+                                <label for="msunifaun_automatic_booking" class="admin__field-label"><?php echo __('Automatic Booking'); ?></label>
+                                <div class="admin__field-control"><select class="admin__control-select" name="msunifaun_automatic_booking" id="msunifaun_automatic_booking"><option><?php echo __('Yes'); ?></option><option><?php echo __('No'); ?></option></select></div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend><?php echo __('Reference'); ?></legend>
+                            <div class="admin__field">
+                                <label for="msunifaun_order_number" class="admin__field-label"><?php echo __('Order Number'); ?></label>
+                                <div class="admin__field-control"><input class="admin__control-text" name="msunifaun_order_number" id="msunifaun_order_number" value="" /></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_consignee_reference" class="admin__field-label"><?php echo __('Consignee reference'); ?></label>
+                                <div class="admin__field-control"><input class="admin__control-text" name="msunifaun_consignee_reference" id="msunifaun_consignee_reference" value="" /></div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend><?php echo __('Notification'); ?></legend>
+                            <div class="admin__field">
+                                <label for="msunifaun_contact_person" class="admin__field-label"><?php echo __('Contact Person'); ?></label>
+                                <div class="admin__field-control"><input class="admin__control-text" name="msunifaun_contact_person" id="msunifaun_contact_person" value="" /></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_mobile_phone" class="admin__field-label"><?php echo __('Mobile Phone'); ?></label>
+                                <div class="admin__field-control"><input class="admin__control-text" name="msunifaun_mobile_phone" id="msunifaun_mobile_phone" value="" /></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_email" class="admin__field-label"><?php echo __('Email'); ?></label>
+                                <div class="admin__field-control"><input class="admin__control-text" name="msunifaun_email" id="msunifaun_email" value="" /></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_fax" class="admin__field-label"><?php echo __('Fax'); ?></label>
+                                <div class="admin__field-control"><input class="admin__control-text" name="msunifaun_fax" id="msunifaun_fax" value="" /></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_phone" class="admin__field-label"><?php echo __('Phone'); ?></label>
+                                <div class="admin__field-control"><input class="admin__control-text" name="msunifaun_phone" id="msunifaun_phone" value="" /></div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend><?php echo __('Pay On Delivery'); ?></legend>
+                            <div class="admin__field">
+                                <label for="msunifaun_pay_on_delivery" class="admin__field-label"><?php echo __('Use Pay OnDelivery'); ?></label>
+                                <div class="admin__field-control"><select class="admin__control-select" name="msunifaun_pay_on_delivery" id="msunifaun_pay_on_delivery"><option><?php echo __('Yes'); ?></option><option><?php echo __('No'); ?></option></select></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_pay_on_delivery_amount" class="admin__field-label"><?php echo __('Amount'); ?></label>
+                                <div class="admin__field-control"><input type="text" class="admin__control-text" name="msunifaun_pay_on_delivery_amount" id="msunifaun_pay_on_delivery_amount" value="" /></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_pay_on_delivery_currency" class="admin__field-label"><?php echo __('Currency'); ?></label>
+                                <div class="admin__field-control"><select class="admin__control-select" name="msunifaun_pay_on_delivery_currency" id="msunifaun_pay_on_delivery_currency"><option>SEK</option></select></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_pay_on_delivery_reference" class="admin__field-label"><?php echo __('Reference'); ?></label>
+                                <div class="admin__field-control"><input type="text" class="admin__control-text" name="msunifaun_pay_on_delivery_reference" id="msunifaun_pay_on_delivery_reference" value="" /></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_pay_on_delivery_method" class="admin__field-label"><?php echo __('Method'); ?></label>
+                                <div class="admin__field-control"><select class="admin__control-text" name="msunifaun_pay_on_delivery_method" id="msunifaun_pay_on_delivery_method"><option>Kontanter</select></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_pay_on_delivery_account" class="admin__field-label"><?php echo __('Account Number'); ?></label>
+                                <div class="admin__field-control"><input type="text" class="admin__control-select" name="msunifaun_pay_on_delivery_account" id="msunifaun_pay_on_delivery_account" value="" /></div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend><?php echo __('Pick Up Location'); ?></legend>
+                            <div class="admin__field">
+                                <label for="msunifaun_pick_up_location" class="admin__field-label"><?php echo __('Use Pick Up Location'); ?></label>
+                                <div class="admin__field-control"><select class="admin__control-select" name="msunifaun_pick_up_location" id="msunifaun_pick_up_location"><option><?php echo __('Yes'); ?></option><option><?php echo __('No'); ?></option></select></div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend><?php echo __('Pick Up Time'); ?></legend>
+                            <div class="admin__field">
+                                <label for="msunifaun_pick_up_time" class="admin__field-label"><?php echo __('Use Pick Up Time'); ?></label>
+                                <div class="admin__field-control"><select class="admin__control-select" name="msunifaun_pick_up_time" id="msunifaun_pick_up_time"><option><?php echo __('Yes'); ?></option><option><?php echo __('No'); ?></option></select></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_pick_up_date" class="admin__field-label"><?php echo __('Date'); ?></label>
+                                <div class="admin__field-control"><input type="text" class="admin__control-text" name="msunifaun_pick_up_date" id="msunifaun_pick_up_date" value="" /></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_pick_up_time_earliest" class="admin__field-label"><?php echo __('Earliest Time'); ?></label>
+                                <div class="admin__field-control"><input type="text" class="admin__control-text" name="msunifaun_pick_up_time_earliest" id="msunifaun_pick_up_time_earliest" value="" /></div>
+                            </div>
+                            <div class="admin__field">
+                                <label for="msunifaun_pick_up_time_latest" class="admin__field-label"><?php echo __('Latest Time'); ?></label>
+                                <div class="admin__field-control"><input type="text" class="admin__control-text" name="msunifaun_pick_up_time_latest" id="msunifaun_pick_up_time_latest" value="" /></div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="admin__page-section-item order-information">
+                <div class="list">
+                    <div class="admin__page-section-item-title">
+                        <span class="title"><?php echo __('Packages'); ?></span>
+                    </div>
+                    <p class="empty"><?php echo __('No package yet.'); ?></p>
+                </div>
+                <div class="add">
+                    <div class="admin__page-section-item-title">
+                        <span class="title"><?php echo __('Add package'); ?></span>
+                    </div>
+                    <form>
+                        <div class="admin__field">
+                            <label for="package_weight" class="admin__field-label"><?php echo __('Weight'); ?></label>
+                            <div class="admin__field-control"><input class="admin__control-text" type="text" name="package[weight]" value="" id="package_weight" /></div>
+                        </div>
+                        <div class="admin__field">
+                            <label for="package_width" class="admin__field-label"><?php echo __('Width'); ?></label>
+                            <div class="admin__field-control"><input class="admin__control-text" type="text" name="package[width]" value="" id="package_width" /></div>
+                        </div>
+                        <div class="admin__field">
+                            <label for="package_height" class="admin__field-label"><?php echo __('Height'); ?></label>
+                            <div class="admin__field-control"><input class="admin__control-text" type="text" name="package[height]" value="" id="package_height" /></div>
+                        </div>
+                        <div class="admin__field">
+                            <label for="package_depth" class="admin__field-label"><?php echo __('Depth'); ?></label>
+                            <div class="admin__field-control"><input class="admin__control-text" type="text" name="package[depth]" value="" id="package_depth" /></div>
+                        </div>
+                        <div class="admin__field">
+                            <label for="package_volume" class="admin__field-label"><?php echo __('Volume'); ?></label>
+                            <div class="admin__field-control"><input class="admin__control-text" type="text" name="package[volume]" value="" id="package_volume" /></div>
+                        </div>
+                        <div class="admin__field">
+                            <label for="package_type" class="admin__field-label"><?php echo __('Type'); ?></label>
+                            <div class="admin__field-control"><select class="admin__control-select" name="package[type]" id="package_type"><option><?php echo __('Package'); ?></option><option><?php echo __('Goods'); ?></option></select></div>
+                        </div>
+                        <div class="admin__field">
+                            <label for="package_notification" class="admin__field-label"><?php echo __('Notification'); ?></label>
+                            <div class="admin__field-control"><select class="admin__control-select" name="package[notification]" id="package_notification"><option></option><option><?php echo __('Mobile Phone'); ?></option><option><?php echo __('E-mail'); ?></option><option><?php echo __('Fax'); ?></option><option><?php echo __('Phone'); ?></option></select></div>
+                        </div>
+                        <div class="actions">
+                            <button class="action secondary"><?php echo __('Add Package'); ?></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

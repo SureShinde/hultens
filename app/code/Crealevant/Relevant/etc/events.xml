@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="admin_system_config_changed_section_settings">
+        <observer name="custom_admin_system_config_changed_section_settings" instance="Crealevant\Relevant\Observer\ConfigObserver"/>
+    </event>
+    <event name="controller_action_catalog_product_save_entity_after">
+        <observer name="add_product_to_category" instance="Crealevant\Relevant\Observer\AddProductToCategory" />
+        <observer name="add_special_product_to_category" instance="Crealevant\Relevant\Observer\AddSpecialProductToCategory" />
+    </event>
+</config>

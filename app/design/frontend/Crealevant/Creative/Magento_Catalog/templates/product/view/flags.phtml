@@ -1,0 +1,11 @@
+<?php
+
+$themeSettings = $this->getLayout()->createBlock('Crealevant\Relevant\Block\ThemeSettings');
+$product = $themeSettings->getCurrentProduct();
+$_themehelper = $this->helper('Crealevant\Relevant\Helper\Data');
+$qty = $_themehelper->getStockQty($product);
+echo '<div class="img-overlay"></div>';
+echo '<div class="flag-container-prod">';
+echo $_themehelper->getFlags($product,'no', 'product');
+echo '</div>';
+?>

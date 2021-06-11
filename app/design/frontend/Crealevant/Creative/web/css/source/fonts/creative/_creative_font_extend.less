@@ -1,0 +1,57 @@
+//
+//  Icon Classes
+// _____________________________________________
+& when (@media-common = true) {
+  i[class*=" icon-"], i[class^="icon-"] {
+    &:before {
+      font-family: @cr-font-name;
+      font-style: normal;
+      font-weight: normal;
+      speak: none;
+      display: inline-block;
+      text-decoration: inherit;
+      text-align: center;
+      /* For safety - reset parent styles, that can break glyph codes*/
+      font-variant: normal;
+      text-transform: none;
+      line-height: normal;
+      font-size: 17px;
+      color: @color-black;
+      /* Font smoothing. That was taken from TWBS */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+  .icon {
+    &.icon-translate{
+      &:before{
+        content:@cr-icon-translate;
+      }
+    }
+    &.icon-user-check {
+      &:before {
+        content: @cr-icon-user-check;
+      }
+    }
+    &.icon-user-plus {
+      &:before {
+        content: @cr-icon-add-user;
+      }
+    }
+    &.icon-mail {
+      &:before {
+        content: @cr-icon-mail;
+      }
+    }
+    &.icon-heart {
+      &:before {
+        content: @cr-icon-heart;
+      }
+    }
+    &.icon-bar-chart {
+      &:before {
+        content: @cr-icon-chart-bar;
+      }
+    }
+  }
+}

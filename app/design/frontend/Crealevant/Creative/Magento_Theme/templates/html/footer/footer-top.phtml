@@ -1,0 +1,29 @@
+<?php
+$footerBlockHtmlFirst = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block_footer_blocks_1')->toHtml();
+$footerBlockHtmlSecond = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block_footer_blocks_2')->toHtml();
+$footerBlockHtmlThird = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block_footer_blocks_3')->toHtml();
+$show = true; ?>
+
+<?php if(!$footerBlockHtmlFirst && !$footerBlockHtmlSecond && !$footerBlockHtmlThird): ?>
+    <?php $show = false; ?>
+<?php endif; ?>
+
+<?php if($show !== false): ?>
+    <div class="footer-top">
+        <?php if($footerBlockHtmlFirst):?>
+            <div class="footer-box first">
+                <?= $footerBlockHtmlFirst ?>
+            </div>
+        <?php endif; ?>
+        <?php if($footerBlockHtmlSecond):?>
+            <div class="footer-box second">
+                <?= $footerBlockHtmlSecond ?>
+            </div>
+        <?php endif; ?>
+        <?php if($footerBlockHtmlThird):?>
+            <div class="footer-box third">
+                <?= $footerBlockHtmlThird ?>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove Elements -->
+        <referenceBlock name="catalog.product.related" remove="true"/>
+        <referenceBlock name="product.info.upsell" remove="true"/>
+        <!-- Move Elements -->
+
+        <!-- Add/Change position of blocks -->
+        <referenceContainer name="content">
+            <referenceContainer name="product.info.main">
+                <container name="product.section.right" htmlTag="div" htmlClass="product-section-right" before="-">
+                    <block class="Crealevant\Lookbook\Block\Product" name="lookbook.product.view.brand.logo" template="Crealevant_Lookbook::product/view/brand-logo.phtml"/>
+                    <block class="Magento\Catalog\Block\Product\View" name="prod.type.hu" template="Magento_Catalog::product/view/product-type.phtml" before="-"/>
+                    <block class="Magento\Catalog\Block\Product\View" name="shipping.delivery" template="Magento_Catalog::product/view/shipping_delivery.phtml"/>
+                </container><!-- product-section-right -->
+                <block class="Magento\Catalog\Block\Product\View" name="outof.stock.message" template="Magento_Catalog::product/view/out-of-stock-message.phtml" after="cms.info"/>
+                <block class="Magento\Catalog\Block\Product\View" name="cms.info" template="Magento_Catalog::product/view/cms-info.phtml" after="product.section.right"/>
+                <container name="shipping.delivery.mobile.wrapper" htmlTag="div" htmlClass="shipping-delivery-mobile" after="cms.info">
+                    <block class="Magento\Catalog\Block\Product\View" name="shipping.delivery.mobile" template="Magento_Catalog::product/view/shipping_delivery.phtml"/>
+                </container><!--shipping-delivery-mobile -->
+                <block class="Magento\Catalog\Block\Product\View\Details" name="product.info.details" template="Magento_Catalog::product/view/details.phtml" after="product.info.media">
+                    <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.description" as="description" template="Magento_Catalog::product/view/attribute.phtml" group="detailed_info">
+                        <arguments>
+                            <argument name="at_call" xsi:type="string">getDescription</argument>
+                            <argument name="at_code" xsi:type="string">description</argument>
+                            <argument name="css_class" xsi:type="string">description</argument>
+                            <argument name="at_label" xsi:type="string">none</argument>
+                            <argument name="title" translate="true" xsi:type="string">Details</argument>
+                            <argument name="sort_order" xsi:type="string">10</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.attributes" as="additional" template="Magento_Catalog::product/view/attributes.phtml" group="detailed_info">
+                        <arguments>
+                            <argument translate="true" name="title" xsi:type="string">More Information</argument>
+                            <argument name="sort_order" xsi:type="string">20</argument>
+                        </arguments>
+                    </block>
+                </block><!-- product.info.details -->
+            </referenceContainer><!-- Product Info Main -->
+
+            <referenceContainer name="product.info.media">
+                <container name="product.media.bottom.wave" htmlTag="div" htmlClass="product-media-wave" after="product.info.flags">
+                    <block class="Magento\Framework\View\Element\Template" name="product.bottom.wave.bkg" template="Magento_Theme::html/header/header-bkg.phtml"/><!-- Header Background Image -->
+                </container>
+                <block class="Magento\Catalog\Block\Product\View" name="product.info.flags" template="Magento_Catalog::product/view/flags.phtml" before="product.info.media.image"/>
+            </referenceContainer>
+            <block class="Magento\Catalog\Block\Product\View" name="more.info" template="Magento_Catalog::product/view/more-info.phtml" after="-"/>
+        </referenceContainer><!-- Content -->
+    </body>
+</page>

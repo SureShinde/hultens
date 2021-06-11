@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Copyright © 2013-2017 Magento, Inc. All rights reserved.
+* See COPYING.txt for license details.
+*/
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="general">
+        <field name="cms_background_image" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">category</item>
+                    <item name="label" xsi:type="string" translate="true">Cms Background Image</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">imageUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">Crealevant_Relevant/image-preview</item>
+                    <item name="required" xsi:type="boolean">false</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="relevant/backgroundimage/upload"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="cms_background_description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">400</item>
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="label" xsi:type="string" translate="true">CMS Background Description</item>
+                </item>
+            </argument>
+        </field>
+        <field name="cms_background_link">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">500</item>
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="label" xsi:type="string" translate="true">CMS Background Description Link</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

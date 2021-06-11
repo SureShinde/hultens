@@ -1,0 +1,22 @@
+{
+    "name": "crealevant/module-serializerbycrealevant",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "support@crealevant.se",
+            "name": "Crealevant"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Crealevant\\SerializerByCrealevant\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

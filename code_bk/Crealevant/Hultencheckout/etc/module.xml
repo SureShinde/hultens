@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <module name="Crealevant_Hultencheckout" setup_version="1.0.0">
+        <sequence>
+            <module name="Magento_Checkout"/>
+            <module name="Magento_Tax"/>
+            <module name="Klarna_Kco"/>
+        </sequence>
+    </module>
+</config>

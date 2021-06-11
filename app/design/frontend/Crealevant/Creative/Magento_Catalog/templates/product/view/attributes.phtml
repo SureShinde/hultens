@@ -1,0 +1,54 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product additional attributes template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Attributes
+ */
+?>
+<?php
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_product = $block->getProduct();
+
+$TheDate = date('Y-m-d');
+$RedExtraStatusStart = $_product->getData('red_xtra_status_start'); // Gets The correct date value.
+$RedExtraStatusEnd = $_product->getData('red_xtra_status_end'); // Gets The correct date value.
+$RedExtraTxt = $_product->getResource()->getAttribute('red_xtra_status_text')->getFrontend()->getValue($_product); // Attribute: Meddelande om lång leveranstid
+$RedExtraStoreLabel = $_product->getResource()->getAttribute('red_xtra_status_text')->getStoreLabel();
+?>
+<?php if ($_additional = $block->getAdditionalData()): ?>
+    <div class="additional-attributes-wrapper table-wrapper">
+        <table class="data table additional-attributes" id="product-attribute-specs-table">
+            <caption class="table-caption"><?= /* @escapeNotVerified */ __('More Information') ?></caption>
+            <tbody>
+            <?php foreach ($_additional as $_data): ?>
+                <tr>
+                    <?php if($_data['label'] == $RedExtraStoreLabel ): ?>
+                        <?php // If todays date is more than than the start date and end date is less than the todays date ?>
+                        <?php if(( $TheDate > $RedExtraStatusStart && $TheDate < $RedExtraStatusEnd )): ?>
+                            <th class="col label" scope="row"><?= $block->escapeHtml(__($_data['label'])) ?></th>
+                            <td class="col data" data-th="<?= $block->escapeHtml(__($_data['label'])) ?>"><?= /* @escapeNotVerified */ $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+
+                         <?php // If the end date is empty and the date is more than the start date ?>
+                        <?php elseif (empty($RedExtraStatusEnd) && $TheDate > $RedExtraStatusStart): ?>
+                            <th class="col label" scope="row"><?= $block->escapeHtml(__($_data['label'])) ?></th>
+                            <td class="col data" data-th="<?= $block->escapeHtml(__($_data['label'])) ?>"><?= /* @escapeNotVerified */ $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+                        <?php endif; ?>
+
+                    <?php // Continue like normal loop the attributes ?>
+                    <?php else: ?>
+                        <th class="col label" scope="row"><?= $block->escapeHtml(__($_data['label'])) ?></th>
+                        <td class="col data" data-th="<?= $block->escapeHtml(__($_data['label'])) ?>"><?= /* @escapeNotVerified */ $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif;?>

@@ -1,0 +1,154 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/** @var \Magento\Catalog\Pricing\Render\FinalPriceBox $block */
+$schema = ($block->getZone() == 'item_view') ? true : false;
+$idSuffix = $block->getIdSuffix() ? $block->getIdSuffix() : '';
+/** @var \Magento\Catalog\Pricing\Price\ConfiguredPrice $configuredPrice */
+$configuredPrice = $block->getPrice();
+$configuredPriceSpecial = $block->getSpecialPrice();
+/** @var \Magento\Catalog\Pricing\Price\ConfiguredRegularPrice $configuredRegularPrice */
+$configuredRegularPrice = $block->getPriceType(
+    \Magento\Catalog\Pricing\Price\ConfiguredPriceInterface::CONFIGURED_REGULAR_PRICE_CODE
+);
+$configuredPriceCode = $block->getPriceType( \Magento\Catalog\Pricing\Price\RegularPrice::PRICE_CODE);
+?>
+<?php
+$prodBlock = $this->getLayout()->createBlock('Magento\Catalog\Block\Product\ListProduct');
+$_product = $prodBlock->getProduct();
+$originalPrice = 0;
+$_oldPrice = 0;
+$_specialSelectionPrice = "";
+$_specialPrice = 0;
+$isSpecial = false;
+$isAppyRules = false;
+$_oldPriceRule = 0;
+$_specialPriceRule = 0;
+$price = '';
+$_originalPrice = '';
+$selectionID = '';
+$productPriceRule = false;
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
+$typeInstance = $objectManager->get('Magento\Bundle\Model\Product\Type');
+$selections = $typeInstance->getSelectionsCollection($typeInstance->getOptionsIds($_product), $_product);
+$_hultenHelper = $this->helper('Crealevant\Hultens\Helper\Data');
+$calculatedPrice = $block->getConfigurableProductBasePrice($_product);
+?>
+<?php foreach ($selections as $selection): ?>
+    <?php if ($selection->getIsDefault() == '1'): ?>
+        <?php $newRegularPrice = $selection->getPriceInfo()->getPrice('regular_price')->getValue();
+        $newSpecialPrice = $selection->getPriceInfo()->getPrice('final_price')->getValue();
+        $_specialSelectionPrice = $selection->getSpecialPrice();
+        $selectionProduct = $_hultenHelper->getProduct($selection->getProductId());
+        $productPriceRule = $_hultenHelper->getPrice($selectionProduct, $newRegularPrice);
+        $qty = $selection->getSelectionQty();
+        //Setup current Date and Get From/To Date ( Bundle/SpecialPrice )
+        $todaysDate =  date("Y-m-d");
+        $FromDate = $selection->getSpecialFromDate();
+        $ToDate = $selection->getSpecialToDate();
+        $originalPrice += $newRegularPrice * $qty;?>
+
+        <?php if($productPriceRule): ?>
+            <?php $_oldPriceRule += $newRegularPrice * $qty; ?>
+            <?php $_specialPriceRule += $productPriceRule * $qty; ?>
+            <?php $isAppyRules = true; ?>
+        <?php endif; ?>
+
+        <?php if ($newSpecialPrice): ?>
+            <?php $_oldPrice += $newRegularPrice * $qty; ?>
+            <?php $_specialPrice += $newSpecialPrice * $qty; ?>
+        <?php endif; ?>
+
+        <?php if($_specialSelectionPrice): ?>
+            <?php if(($todaysDate > $FromDate) && ($todaysDate < $ToDate)): ?>
+                <?php $selectionID = $selection->getId(); ?>
+                <?php $isSpecial = true; ?>
+            <?php elseif($todaysDate > $FromDate && empty($ToDate)): ?>
+                <?php $selectionID = $selection->getId(); ?>
+                <?php $isSpecial = true; ?>
+            <?php endif; ?>
+        <?php endif; ?>
+
+    <?php endif; ?>
+<?php endforeach; ?>
+<?php if($isAppyRules): ?>
+    <p class="price-as-configured">
+        <span class="special-price">
+            <?= /* @noEscape */ $block->renderAmount(
+                $calculatedPrice,
+                [
+                    'display_label'     => $block->escapeHtml(__('Special Price')),
+                    'price_id'          => $block->escapeHtml($block->getPriceId('product-price-' . $idSuffix)),
+                    'price_type'        => 'finalPrice',
+                    'include_container' => true,
+                    'schema' => $schema,
+                ]
+            ); ?>
+        </span>
+    </p>
+    <span id="bundleOld" class="old-price">
+        <span class="price"><?= $priceHelper->currency($_oldPriceRule, true, false) ?> </span>
+        <?php $configuredPriceSpec = $block->renderAmount(
+            $calculatedPrice,
+            [
+                'display_label'     => $block->escapeHtml(__('Special Price')),
+                'price_id'          => $block->escapeHtml($block->getPriceId('product-price-' . $idSuffix)),
+                'price_type'        => 'finalPrice',
+                'include_container' => true,
+                'schema' => $schema,
+            ]
+        ); ?>
+    </span>
+<?php elseif($isSpecial): ?>
+    <p class="price-as-configured">
+        <span class="special-price">
+            <?= /* @noEscape */ $block->renderAmount(
+                $calculatedPrice,
+                [
+                    'display_label'     => $block->escapeHtml(__('Special Price')),
+                    'price_id'          => $block->escapeHtml($block->getPriceId('product-price-' . $idSuffix)),
+                    'price_type'        => 'finalPrice',
+                    'include_container' => true,
+                    'schema' => $schema,
+                ]
+            ); ?>
+        </span>
+    </p>
+    <span id="bundleOld" class="old-price">
+        <span class="price"><?= $priceHelper->currency($_oldPrice, true, false) ?> </span>
+        <?php $configuredPriceSpec = $block->renderAmount(
+            $calculatedPrice,
+            [
+                'display_label'     => $block->escapeHtml(__('Special Price')),
+                'price_id'          => $block->escapeHtml($block->getPriceId('product-price-' . $idSuffix)),
+                'price_type'        => 'finalPrice',
+                'include_container' => true,
+                'schema' => $schema,
+            ]
+        ); ?>
+    </span>
+<?php else: ?>
+
+    <?php
+    $priceLabel = ($block->getPriceLabel() !== null)
+        ? $block->getPriceLabel()
+        : '';
+    ?>
+    <p class="price-as-configured regular">
+        <?= /* @noEscape */ $block->renderAmount(
+            $calculatedPrice,
+            [
+                'display_label'     => $block->escapeHtml($priceLabel),
+                'price_id'          => $block->escapeHtml($block->getPriceId('product-price-' . $idSuffix)),
+                'price_type'        => 'finalPrice',
+                'include_container' => true,
+                'schema' => $schema,
+            ]
+        ); ?>
+    </p>
+<?php endif; ?>

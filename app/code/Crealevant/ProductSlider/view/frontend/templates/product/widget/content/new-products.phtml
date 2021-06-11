@@ -1,0 +1,46 @@
+<?php
+/**
+ * Copyright © 2017 x-mage2(Crealevant). All rights reserved.
+ * See README.md for details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Template for displaying new products widget
+ *
+ * @var $block \Crealevant\ProductSlider\Block\Product\Widget\NewWidget
+ */
+$currentClass = "block-new-products";
+if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())): ?>
+    <?php include($this->getTemplateFile('Crealevant_ProductSlider::product/widget/parts/general-config.phtml')); ?>
+    <?php $itemsNumber = $block->getProductCollection()->getSize(); ?>
+    <div class="block widget relevant-custom-widget <?php echo $modalThemeClass ?> block-new-products">
+        <?php if ($title):?>
+            <div class="relevant-product-slider-heading">
+                <h2><span><?php echo  $title; ?></span></h2>
+            </div>
+        <?php endif ?>
+        <div class="block-content">
+            <?php /* @escapeNotVerified */ echo '<!-- ' . $image . '-->' ?>
+            <div class="relevant-product-slider">
+                <div class="owl-carousel cms-home-slider product-items new-products-<?php echo $randomId; ?> <?php /* @escapeNotVerified */ echo $type; ?>">
+                    <?php include($this->getTemplateFile('Crealevant_ProductSlider::product/widget/parts/slider-item.phtml')); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php if (!$block->isRedirectToCartEnabled()) : ?>
+        <script type="text/x-magento-init">
+        {
+            "[data-role=tocart-form], .form.map.checkout": {
+                "catalogAddToCart": {}
+            }
+        }
+        </script>
+    <?php endif; ?>
+    <?php include($this->getTemplateFile('Crealevant_ProductSlider::product/widget/parts/secondary-actions-js.phtml')); ?>
+<?php endif;?>

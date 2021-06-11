@@ -1,0 +1,114 @@
+{
+    "name": "magento/project-community-edition",
+    "description": "eCommerce Platform for Growth (Community Edition)",
+    "type": "project",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "require": {
+        "clerk/magento2": "^3.3",
+        "commerceextensions/module-urlrewrites-import-export": "dev-master",
+        "ethanyehuda/magento2-cronjobmanager": "^1.9",
+        "hultens/sv_se": "dev-master",
+        "klarna/m2-checkout": "^8.0",
+        "magento/product-community-edition": "2.3.1",
+        "mailchimp/mc-magento2": "^102.3",
+        "mediastrategi/unifaun": "^2.3",
+        "tig/persistent-shopping-cart-magento2": "^1.0",
+        "wyomind/core": "dev-master",
+        "wyomind/simplegoogleshopping": "dev-master"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "~2.13.0",
+        "lusitanian/oauth": "~0.8.10",
+        "magento/magento2-functional-testing-framework": "~2.3.13",
+        "pdepend/pdepend": "2.5.2",
+        "phpmd/phpmd": "@stable",
+        "phpunit/phpunit": "~6.5.0",
+        "sebastian/phpcpd": "~3.0.0",
+        "squizlabs/php_codesniffer": "3.3.1",
+        "allure-framework/allure-phpunit": "~1.2.0"
+    },
+    "conflict": {
+        "gene/bluefoot": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Magento\\Framework\\": "lib/internal/Magento/Framework/",
+            "Magento\\Setup\\": "setup/src/Magento/Setup/",
+            "Magento\\": "app/code/Magento/",
+            "Zend\\Mvc\\Controller\\": "setup/src/Zend/Mvc/Controller/"
+        },
+        "psr-0": {
+            "": [
+                "app/code/",
+                "generated/code/"
+            ]
+        },
+        "files": [
+            "app/etc/NonComposerComponentRegistration.php"
+        ],
+        "exclude-from-classmap": [
+            "**/dev/**",
+            "**/update/**",
+            "**/Test/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Magento\\Sniffs\\": "dev/tests/static/framework/Magento/Sniffs/",
+            "Magento\\Tools\\": "dev/tools/Magento/Tools/",
+            "Magento\\Tools\\Sanity\\": "dev/build/publication/sanity/Magento/Tools/Sanity/",
+            "Magento\\TestFramework\\Inspection\\": "dev/tests/static/framework/Magento/TestFramework/Inspection/",
+            "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/"
+        }
+    },
+    "version": "2.3.1",
+    "minimum-stability": "stable",
+    "repositories": {
+        "0": {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        },
+        "1": {
+            "type": "git",
+            "url": "git@bitbucket.org:crealevant/litextension_magento-to-magento-migration.git"
+        },
+        "2": {
+            "type": "git",
+            "url": "git@bitbucket.org:crealevant/litextension_magento-to-magento-core.git"
+        },
+        "mediastrategi/unifaun":{
+            "type": "composer",
+            "url": "https://hultens:0025hultcom@composer.mediastrategi.se/"
+        },
+        "aheadworks/module-automatic-related-products": {
+            "type": "git",
+            "url": "git@bitbucket.org:/crealevant/crealevant_autorelated.git"
+        },
+        "hultens/sv_se":{
+            "type": "git",
+            "url": "git@bitbucket.org:/crealevant/hultens_sv_se.git"
+        },
+        "wyomind/core": {
+            "type": "git",
+            "url": "ssh://git@bitbucket.org:22/crealevant/wyomind_core.git"
+        },
+        "wyomind/simplegoogleshopping": {
+            "type": "git",
+            "url": "git@bitbucket.org:/crealevant/wyomind_simplegoogleshopping.git"
+        },
+        "commerceextensions":{
+            "type": "git",
+            "url": "git@bitbucket.org:/crealevant/crealevant_urlrewritesimportexport.git"
+        }
+    },
+    "extra": {
+        "magento-force": "override"
+    }
+}

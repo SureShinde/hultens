@@ -1,0 +1,37 @@
+<?php
+$_lookbooks = $this->getLookbooks();
+$slider = $this->getSlider();
+// Get Current Store ID
+$store = $this->getLayout()->createBlock('Magento\Store\Block\Switcher');
+$currentStoreId = $store->getCurrentStoreId();?>
+
+<?php if($_lookbooks): ?>
+    <?php if($slider && (count($this->getLookbooks())>0)): ?>
+        <?php foreach($_lookbooks as $_lookbook): ?>
+            <div class="lookbook-box-wrapper">
+                <div class="lookbook-box">
+                    <div class="content">
+                        <?php // If Page Is Catalog Product View ?>
+                        <?php if($this->getRequest()->getFullActionName() == 'catalog_product_view'):?>
+                            <?php $prodBlock = $this->getLayout()->createBlock('Magento\Catalog\Block\Product\View');
+                            $_product = $prodBlock->getProduct();
+                            // Get Attribute From Current Store ID
+                            $attr = $_product->getResource()->getAttribute('manufacturer')->setStoreId($currentStoreId)->getFrontend()->getValue($_product); ?>
+                            <div class="lookbook-image" style="<?php if($_lookbook->getData('name') !== $attr): ?> <?= 'display: none;' ?>  <?php endif; ?>">
+                                <a class="lookbook-link" href="<?= $_lookbook->getData('link') ?>">
+                                    <img src="<?= $this->getImageUrl($_lookbook) ?>" alt="<?= $_lookbook->getData('name') ?>" class="lookbook-image"/>
+                                </a>
+                            </div><!-- Lookbook Image -->
+                        <?php else: ?>
+                            <div class="lookbook-image">
+                                <a class="lookbook-link" href="<?= $_lookbook->getData('link') ?>">
+                                    <img src="<?= $this->getImageUrl($_lookbook) ?>" alt="<?= $_lookbook->getData('name') ?>" class="lookbook-image"/>
+                                </a>
+                            </div><!-- Lookbook Image -->
+                        <?php endif; ?>
+                    </div><!-- Content -->
+                </div>
+            </div><!-- Lookbook Box Wrapper -->
+        <?php endforeach; ?>
+    <?php endif; ?>
+<?php endif; ?>

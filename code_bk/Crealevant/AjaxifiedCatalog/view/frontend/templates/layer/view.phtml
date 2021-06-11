@@ -1,0 +1,239 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation
+ */
+
+$stateBlock = $this->getLayout()->createBlock('Magento\LayeredNavigation\Block\Navigation\State');
+$_activeFilters = $stateBlock->getActiveFilters();
+$toolbar = $this->getLayout()->createBlock('Magento\Catalog\Block\Product\ProductList\Toolbar');
+$filterRenderBlock = $this->getLayout()->createBlock('Magento\LayeredNavigation\Block\Navigation\FilterRenderer');
+$label = "";
+$totalActiveFilters = 0;
+$filterCounter = 0;
+$filterCounterItems = 0;
+$activeFiltersArray = array();
+
+$helper = $this->helper('Crealevant\AjaxifiedCatalog\Helper\Data');
+$catalogHelperData = $this->helper('Magento\Catalog\Helper\Data');
+$attributeColumnGroups = $helper->getColumnAttributeGroup();
+$categoryColumnGroups = $helper->getColumnCategoryGroup();
+$menuPositionColumn = $helper->getColumnMenuPosition();
+$popularFilterPosition = $helper->popularFilterPosition();
+$isRow = $helper->getPopularFilterRow();
+$currentPos = $helper->isFilterPosition();
+$totalFilterItems = 0;
+$filterMenuBlock = $this->getLayout()->createBlock('Crealevant\AjaxifiedCatalog\Block\Settings\FilterMenu');
+$active_filters = $this->getLayer()->getState()->getFilters();
+
+// Popular Item Position Filter Classes
+$_filterClass = "";
+$_filterMenuPosition = "";
+$_filterCategoryPosition = 0;
+// Filter Menu Classes Not depending on order position
+$_currentFilterClass = "";
+$_standardMenuPosition = 299;
+$_filterLabelCategory = __("Category"); ?>
+
+<?php if ($catalogHelperData->getCategory()): ?>
+    <?php // Add Data For Current Category Name ?>
+    <?php $categoryName = $catalogHelperData->getCategory()->getName(); ?>
+<?php endif; ?>
+
+<?php if ($block->canShowBlock()): ?>
+    <div class="block filter layered-wrapper">
+        <div class="block-content filter-content">
+            <?= $block->getChildHtml('state') ?>
+
+            <?php if ($block->getLayer()->getState()->getFilters()): ?>
+                <div class="block-actions filter-actions">
+                    <a href="<?= /* @escapeNotVerified */$block->getClearUrl() ?>" class="action clear filter-clear">
+                        <span><?= __('Clear All') ?></span>
+                    </a>
+                </div>
+            <?php endif; ?>
+            <?php $wrapOptions = false; ?>
+
+            <?php // Loop thru all active filters ?>
+            <?php foreach ($_activeFilters as $currentFilters): ?>
+                <?php $label = $currentFilters->getLabel(); ?>
+                <?php $activeFilterName = $currentFilters->getName(); ?>
+                <?php $activeFiltersArray[] = $activeFilterName ?>
+                <?php $totalActiveFilters += count($activeFilterName); ?>
+                <?php $totalActiveFilter = $totalActiveFilters; ?>
+            <?php endforeach; ?>
+
+            <?php // Get all active filters to string outside of loop ?>
+            <?php $activeFilterToString = implode(',', $activeFiltersArray); ?>
+
+            <?php foreach ($block->getFilters() as $k => $filter): ?>
+            <?php if (!$wrapOptions): ?>
+            <span class="label-popular"><?= __("Popular filter") ?></span>
+            <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle"><?= __('Shopping Options') ?></strong>
+            <div class="filter-options" id="narrow-by-list">
+                <?php $filterValue = (str_replace(' ', '-', strtolower($filter->getName()))); ?>
+                <?php $filterCounter += count($filter->getName()); ?>
+                <?php $filterCounterItems += count($filter->getItemsCount()); ?>
+                <?php $wrapOptions = true; endif; ?>
+
+                <?php if ($filter->getItemsCount() > 0): ?>
+                    <?php // Loop thru all popular filter rows in admin ?>
+                    <?php foreach ($isRow as $value => $name): ?>
+                        <?php // Check if popular items has columns inside attribute group and match with the filter name ?>
+                        <?php if ($name['attribute_group'] == $filter->getName()): ?>
+                            <?php $menuPositionValue = $name['menu_position'];
+                            $_filterMenuPosition = $menuPositionValue; ?>
+                            <?php // Set filter classes depending on how many filter there is and if there is value ?>
+                            <?php if ($menuPositionValue <= 4): ?>
+                                <?php $_filterClass = "filter-dropdown"; ?>
+                            <?php elseif($menuPositionValue > 4): ?>
+                                <?php $_filterClass = "hide filter-menu-content" ?>
+                            <?php endif; ?>
+                        <?php endif; // ENDIF $name['attribute_group'] == $filter->getName() ?>
+                    <?php endforeach; ?>
+
+                    <?php // Set filter classes depending on how many filter there is ?>
+                    <?php $totalFilterItems += count($filter->getItemsCount()); ?>
+                    <?php if ($totalFilterItems > 4): ?>
+                        <?php $_currentFilterClass = "hide filter-menu-content"; ?>
+                    <?php else: ?>
+                        <?php $_currentFilterClass = "filter-dropdown"; ?>
+                    <?php endif; ?>
+
+                    <div class="filter-options-content
+                <?php // Check if there is a match with filter name and popular items groups ?>
+                <?php if (in_array($filter->getName(), $attributeColumnGroups) && in_array($categoryName, $categoryColumnGroups)): ?>
+                    <?= $_filterClass ?>" style="order:<?= $_filterMenuPosition ?>;">
+                        <?php elseif($_filterLabelCategory == $filter->getName()): ?>
+                            <?= $_currentFilterClass ?>" style="order:<?= $_filterCategoryPosition?>;">
+                        <?php else: ?>
+                            <?= $_currentFilterClass ?>" style="order:<?= $_standardMenuPosition?>;">
+                        <?php endif;?>
+                        <?php // Check if filter item is category ?>
+                        <?php if ($_filterLabelCategory == $filter->getName()): ?>
+                            <h4 role="heading" aria-level="3" class="filter-options-title"> <?= __('Subcategories') ?> </h4>
+                            <?= $block->getChildBlock('renderer')->render($filter) ?>
+                        <?php else: ?>
+                            <h4 role="heading" aria-level="3" class="filter-options-title"> <?= $block->escapeHtml(__($filter->getName())) ?> </h4>
+                            <?= $block->getChildBlock('renderer')->render($filter) ?>
+                        <?php endif; ?>
+                    </div>
+                <?php endif;// ENDIF $filter->getItemsCount() > 0 ?>
+                <?php endforeach; // ENDFOREACH $block->getFilters() as $k => $filter?>
+
+                <?php if ($totalFilterItems > 4): ?>
+                    <div class="desktop-menu-wrapper">
+                        <div class="filter-btn desktop">
+                            <div data-role="trigger">
+                                <div class="block-title filter-title">
+                                    <button class="action primary">
+                                        <span class="sorting-text"><?= __('Show more filters') ?></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div><!-- Filter Btn -->
+                    </div><!-- Desktop Menu Wrapper -->
+                <?php endif; ?>
+                <div class="mobile-menu-wrapper">
+                    <div class="filter-btn mobile">
+                        <div data-role="trigger">
+                            <div class="block-title filter-title">
+                                <button class="action primary">
+                                    <svg viewBox="0 0 26 14" id="ShowFilterBlocksIcon" class="filter-icon" width="24px" height="13px">
+                                        <path d="M.5 11H17 .5zm25-8H9h16.5zm-21 0h-4 4zM7 1a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm14.5 10h4-4zM19 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" stroke="#02A9C4" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="square"></path>
+                                    </svg>
+                                    <span class="sorting-text"><?= __('Filtering & Sorting') ?>
+                                        <?php if ($activeFilterToString): ?>
+                                            <?= "(" . $totalActiveFilters . ")" ?>
+                                        <?php endif; ?>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div><!-- Filter Btn -->
+                    <div class="filter-options-menu sidebar">
+                        <div class="filter-header">
+                         <span class="block-actions filter-actions">
+                             <a href="<?= $block->getClearUrl() ?>" class="action clear filter-clear"> <span><?= __('Clear All') ?></span> </a>
+                         </span>
+                            <h3 class="filter-title" data-count="<?= count($_activeFilters) ?>"> <?= __('Filter') ?>
+                                <?php // If filter is active add counter in filter menu ?>
+                                <?php if ($activeFilterToString): ?>
+                                    <?= "(" . $totalActiveFilters . ")" ?>
+                                <?php endif; ?>
+                            </h3>
+                            <svg viewBox="0 0 36 36" id="CloseFilterPopupButtonIcon" class="close-filter-menu" width="15px" height="15px">
+                                <path class="st0" d="M34 3.8L32.1 2 18 16.1 3.8 2 2 3.8 16.1 18 2 32.1 3.8 34 18 19.9 32.1 34l1.9-1.9L19.9 18z"></path>
+                            </svg>
+                        </div>
+                    </div><!-- Filter Options Menu Sidebar -->
+                </div> <!-- Mobile Menu Wrapper -->
+                <div class="toolbar-sorter sorter">
+                    <label class="sorter-label" for="sorter"><?= __('Sort By') ?></label>
+                    <select id="sorter" data-role="sorter" class="sorter-options">
+                        <?php foreach ($toolbar->getAvailableOrders() as $_key => $_order): ?>
+                            <option value="<?= $_key ?>"
+                                <?php if ($toolbar->isOrderCurrent($_key)): ?>
+                                    selected="selected"
+                                <?php endif; ?> >
+                                <?= $toolbar->escapeHtml(__($_order)) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?php if ($toolbar->getCurrentDirection() == 'desc'): ?>
+                        <a title="<?= __('Set Ascending Direction') ?>" href="#" class="action sorter-action sort-desc" data-role="direction-switcher" data-value="asc">
+                            <span><?= __('Set Ascending Direction') ?></span>
+                        </a>
+                    <?php else: ?>
+                        <a title="<?= __('Set Descending Direction') ?>" href="#" class="action sorter-action sort-asc" data-role="direction-switcher" data-value="desc">
+                            <span><?= __('Set Descending Direction') ?></span>
+                        </a>
+                    <?php endif; ?>
+                </div><!-- Toolbar Sorter -->
+                <script type="text/x-magento-init">
+                {
+                   "*": {
+                     "Crealevant_AjaxifiedCatalog/js/filter-settings":{}
+                   }
+                }
+                </script>
+                <script>
+                    //<![CDATA[
+                    requirejs([
+                        'jquery',
+                    ], function($){
+
+                        function scrollOnChangePage() {
+                            var layeredWrapperTarget = $('.block.filter.layered-wrapper').offset();
+                            var filterPosition = layeredWrapperTarget.top;
+                            $('.pages-items a').on('click', function () {
+                                $('html, body').animate(
+                                    {
+                                        scrollTop: filterPosition - 71
+                                    },
+                                    300,
+                                    'swing',
+                                );
+
+                            });
+                        }
+                        scrollOnChangePage();
+                    });
+                    //]]>
+                </script>
+                <?php if ($wrapOptions): ?>
+            </div>
+        <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>

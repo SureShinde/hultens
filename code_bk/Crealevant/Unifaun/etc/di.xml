@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mediastrategi\Unifaun\Block\Adminhtml\Shippingmethod\Form" type="Crealevant\Unifaun\Block\Adminhtml\Shippingmethod\Form" />
+    <type name="\Magento\Quote\Model\Cart\ShippingMethodConverter">
+        <plugin name="crealevant_msunifaun_shipping_method_converter" type="Crealevant\Unifaun\Plugin\ShippingMethodConverterPlugin"/>
+    </type>
+    <type name="\Magento\Quote\Model\Quote\Address\Rate">
+        <plugin name="crealevant_msunifaun_shipping_rate" type="Crealevant\Unifaun\Plugin\ShippingRatePlugin" />
+    </type>
+    <preference for="Mediastrategi\Unifaun\Model\Carrier\Shippingmethod" type="Crealevant\Unifaun\Model\Carrier\Shippingmethod" />
+</config>

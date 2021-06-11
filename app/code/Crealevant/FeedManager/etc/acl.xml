@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Crealevant_Base::crealevant_base" title="Crealevant Base" translate="title" sortOrder="20">
+					<resource id="Crealevant_FeedManager::crealevant_feeds" sortOrder="10" title="Feeds">
+						<resource id="Crealevant_FeedManager::Feeds_save" sortOrder="10" title="Save Feeds"/>
+						<resource id="Crealevant_FeedManager::Feeds_delete" sortOrder="20" title="Delete Feeds"/>
+						<resource id="Crealevant_FeedManager::Feeds_update" sortOrder="30" title="Update Feeds"/>
+						<resource id="Crealevant_FeedManager::Feeds_view" sortOrder="40" title="View Feeds"/>
+					</resource>
+				</resource>
+				<resource id="Magento_Backend::stores">
+					<resource id="Magento_Backend::stores_settings">
+						<resource id="Magento_Config::config">
+							<resource id="Crealevant_FeedManager::config_crealevant_feedmanager" title="feed_manage"/>
+						</resource>
+					</resource>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

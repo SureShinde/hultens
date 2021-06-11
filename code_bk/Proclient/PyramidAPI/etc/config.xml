@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+  <default>
+    <pyramidapi>
+      <general>
+        <debug_log>1</debug_log>
+      </general>
+      <orders>
+        <included_order_statuses>pending,complete,closed</included_order_statuses>
+        <use_unifaun>0</use_unifaun>
+      </orders>
+    </pyramidapi>
+  </default>
+</config>

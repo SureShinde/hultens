@@ -1,0 +1,96 @@
+<?php $slider = $this->getSlider();
+?>
+<?php if($slider && (count($this->getLookbooks())>0)): ?>
+	<div class="lookbook-slider owl-carousel owl-theme <?php echo $slider->getCustomClass() ?>" id="lookbook_slider_<?php echo $slider->getId() ?>">
+		<?php $lookbooks = $this->getLookbooks() ?>
+		<?php foreach($lookbooks as $lookbook): ?>
+			<div class="lookbook-container">
+				<div class="Crealevant-lookbook-container">
+					<div class="pin__image">
+                        <?php if($slider->getCustomClass() == 'lookbook-hultens-bkg-img'): ?>
+                            <div class="lookbook-banner-img" style="background-image:url(<?php echo $this->getImageUrl($lookbook) ?>);"></div>
+                        <?php endif; ?>
+						<img src="<?php if(($slider->getCustomClass() == 'lookbook-hultens-bkg-img')){ echo '';} else{ echo $this->getImageUrl($lookbook);} ?>" alt="<?php echo $lookbook->getName() ?>" class="lookbook-image"/>
+                        <?php if ($slider->getCustomClass() == 'cms-home-lookbook'): ?>
+                            <div class="bkg-opacity-lookbook">
+                                <h4 class="lookbook-title"><?php echo $lookbook->getName() ?></h4>
+                                <a class="view-lookbook-btn" href="<?= $lookbook->getData('link') ?>"> <?= $lookbook->getButtonText() ?> <i class="icon hu-right-icon"></i> </a>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($slider->getCustomClass() == 'cms-home-lookbook-mobile'): ?>
+                            <div class="bkg-opacity-lookbook">
+                                <a class="lookbook-title" href="<?= $lookbook->getData('link') ?>"><?php echo $lookbook->getName() ?></a>
+                            </div>
+                        <?php endif; ?>
+
+                    </div>
+					<?php echo $this->getPinHtml($lookbook) ?>
+				</div>
+			</div>
+
+		<?php endforeach ?>
+
+	</div>
+	<script type="text/javascript">
+		require([
+			'jquery',
+            'domReady!',
+			'lookbook/owlcarousel'
+		], function(jQuery){
+			(function($) {
+                $(document).ready( function () {
+                    var itemsToShow = "";
+                    var marginPx = "";
+                    var width = $(window).width();
+                    if (width < 600) {
+                        var itemsToShow = 2;
+                        if ($('#lookbook_slider_<?php echo $slider->getId() ?>').hasClass('lookbook-hultens-bkg-img')) {
+                            var itemsToShow = 1;
+                        }
+                        if ($('#lookbook_slider_<?php echo $slider->getId() ?>').hasClass('cms-home-lookbook')) {
+                            var itemsToShow = 2;
+                        }
+                        if ($('#lookbook_slider_<?php echo $slider->getId() ?>').hasClass('cms-home-lookbook-mobile')) {
+                            var itemsToShow = 2;
+                        }
+                    }
+                    if (width > 600) {
+                        var itemsToShow = 2;
+                        if ($('#lookbook_slider_<?php echo $slider->getId() ?>').hasClass('lookbook-hultens-bkg-img')) {
+                            var itemsToShow = 1;
+                        }
+                    }
+
+                    if (width > 992) {
+                        var itemsToShow = 3;
+                        if ($('#lookbook_slider_<?php echo $slider->getId() ?>').hasClass('lookbook-hultens-bkg-img')) {
+                            var itemsToShow = 1;
+                        }
+                    }
+
+                    if (width > 992) {
+                        if ($('#lookbook_slider_<?php echo $slider->getId() ?>').hasClass('lookbook-hultens-footer-brands')) {
+                            var itemsToShow = 5;
+                            var marginPx = 90
+                        }
+                    }
+
+                    $('#lookbook_slider_<?php echo $slider->getId() ?>').owlCarousel({
+                        items: itemsToShow,
+                        loop: true,
+                        nav: <?php echo $this->getNavigation(); ?>,
+                        dots: <?php echo $this->getPagination(); ?>,
+                        slideBy: 1,
+                        autoplay: <?php echo $this->getAutoPlay(); ?>,
+                        autoplayHoverPause: <?php echo $this->getStopAuto(); ?>,
+                        autoplayTimeout: <?php echo $this->getAutoplayTimeout(); ?>,
+                        navText: false,
+                        navClass: ['owl-prev icon hu-left-icon', 'owl-next icon hu-right-icon'],
+                        margin: marginPx
+                });
+
+        });
+			})(jQuery);
+		});
+	</script>
+<?php endif ?>

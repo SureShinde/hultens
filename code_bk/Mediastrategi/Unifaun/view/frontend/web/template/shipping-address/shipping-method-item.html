@@ -1,0 +1,46 @@
+<tr data-bind="attr: { class: method.extension_attributes && method.extension_attributes.msunifaun_carrier ? 'row msunifaun-carrier-' + method.extension_attributes.msunifaun_carrier + ' ' + method.carrier_code + ' ' + method.method_code : 'row msunifaun-no-carrier' + ' ' + method.carrier_code + ' ' + method.method_code }, css: { selected: $parent.selectedMethod() == method.carrier_code + '_' + method.method_code }">
+
+    <td class="col col-method">
+      <input type="radio"
+             name="msunifaun_method"
+             class="radio"
+             data-bind="attr: { 'id': 's_method_' + method.carrier_code + '_' + method.method_code }, 'checked': $parent.selectedMethod, 'value': method.carrier_code + '_' + method.method_code" />
+    </td>
+
+    <td class="col col-method-title" data-bind="attr: {'id': 'label_method_' + method.method_code + '_' + method.carrier_code }">
+      <label data-bind="attr: { 'for': 's_method_' + method.carrier_code + '_' + method.method_code }, text: method.carrier_title"></label>
+    </td>
+
+    <td class="col col-carrier" data-bind="attr: {'id': 'label_carrier_' + method.method_code + '_' + method.carrier_code }">
+      <label data-bind="attr: { 'for': 's_method_' + method.carrier_code + '_' + method.method_code }, text: method.method_title"></label>
+    </td>
+
+    <td class="col col-price">
+      <label data-bind="attr: { 'for': 's_method_' + method.carrier_code + '_' + method.method_code }">
+        <each args="element.getRegion('price')" render="" />
+      </label>
+    </td>
+
+    <!-- ko if: method.msunifaun_agents -->
+    <td class="col col-extra" data-bind="attr: { class: ($parent.selectedMethod() == method.carrier_code + '_' + method.method_code ? 'col col-extra is-selected' : 'col col-extra is-not-selected') }">
+      <div class="extra-wrapper">
+        <label class="msunifaun_agents" data-bind="if: method.msunifaun_agents">
+          <select data-bind="enable: true, options: method.msunifaun_agents, optionsText: 'name', value: method.msunifaun_agent, optionsCaption: $t('Choose..')"></select>
+        </label>
+      </div>
+    </td>
+    <!-- /ko -->
+
+</tr>
+<tr class="row row-error"
+    if="method.error_message">
+    <td class="col col-error" colspan="5">
+        <div role="alert" class="message error">
+            <div text="method.error_message"></div>
+        </div>
+        <span class="no-display">
+            <input type="radio"
+                   attr="'value' : method.method_code, 'id': 's_method_' + method.method_code" />
+        </span>
+    </td>
+</tr>

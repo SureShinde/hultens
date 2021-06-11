@@ -1,0 +1,124 @@
+<?php
+$_product = $block->getProduct();
+
+//Values
+$green = $_product->getData('inventory_green_status_min'); //returns null
+$red = $_product->getData('inventory_red_status_max'); // Returns string(2) "10"
+
+//Labels
+$greenLabel = $_product->getAttributeText('inventory_green_status_text'); // Returns bool(false)
+$redLabel = $_product->getAttributeText('inventory_red_status_text'); // Returns bool(false)
+$yellowLabel = $_product->getAttributeText('inventory_yellow_status_text'); // Returns bool(false)
+
+//Stock
+$greenStat = intval($_product->getData('inventory_green_status_min')); // Returns int(0)
+$redStat = intval($_product->getData('inventory_red_status_max')); // Returns int(10)
+$yellowTxt = $_product->getResource()->getAttribute('inventory_yellow_status_text')->getFrontend()->getValue($_product); // Returns: string(46) "Fåtal kvar i lager. Leverans 2-7 arbetsdagar."
+$redTxt = $_product->getResource()->getAttribute('inventory_red_status_text')->getFrontend()->getValue($_product); // Returns: string(25) "Leverans 3-10 arbetsdagar"
+$greenTxt = $_product->getResource()->getAttribute('inventory_green_status_text')->getFrontend()->getValue($_product); // Returns: string(25) "Leverans 3-10 arbetsdagar"
+
+?>
+
+<?php
+// Stock qty
+$qtyStock = $_product->getExtensionAttributes()->getStockItem()->getQty();
+
+// Date intervall
+$TheDate = date('Y-m-d');
+
+$RedExtraStatusStart = $_product->getData('red_xtra_status_start'); // Gets The correct date value.
+$RedExtraStatusEnd = $_product->getData('red_xtra_status_end'); // Gets The correct date value.
+
+$RedExtraTxt = $_product->getResource()->getAttribute('red_xtra_status_text')->getFrontend()->getValue($_product); // Attribute: Meddelande om lång leveranstid
+// All the above variables returns the correct data, dates and label.
+
+$helper = $this->helper('Crealevant\ProductDeliveryDate\Helper\Data');
+?>
+
+<?php if ($block->displayProductStockStatus()): ?>
+    <?php if ($_product->getData('notforsale')): ?>
+        <?php if ($_product->isAvailable()):
+            if ($_product->getTypeId() == 'bundle') :
+                $bundleDeliveryDate = $helper->getBundleDeliveryDate($_product); ?>
+                <div class="shipping-info">
+                    <label>Leveransinformation</label>
+                    <p class="availability"><span class="final-delivery-date"><?= $bundleDeliveryDate['text'] ?></span><span>
+                </div>
+            <?php else : ?>
+                <?php if ($qtyStock >= $greenStat): ?>
+                    <div class="shipping-info">
+                        <label>Leveransinformation</label>
+                        <p class="availability out-of-stock green-stock"><span>
+                       <?php
+                       // Remove Delivery Text Depending on Setting for Red Extra Status Start And Red Extra Status End
+                       if ($RedExtraStatusStart == null && $RedExtraStatusEnd == null) {
+                           echo '<p>I lager</p>' . $greenTxt;
+                       } elseif ($TheDate > $RedExtraStatusStart == false && $TheDate < $RedExtraStatusEnd == false) {
+                           echo '<p>I lager</p>' . $greenTxt;
+                       } elseif ($TheDate > $RedExtraStatusStart == true && $TheDate < $RedExtraStatusEnd == true) {
+                           echo '';
+                       } elseif (empty($RedExtraStatusEnd) && $TheDate > $RedExtraStatusStart) {
+                           echo '';
+                       } else {
+                           echo '<span>I lager</span> ' . $greenTxt;
+                       } ?></span></p> <!-- green stock -->
+                    </div>
+                <?php elseif ($qtyStock <= $redStat): ?>
+                    <?php
+                    if ($RedExtraStatusStart == null && $RedExtraStatusEnd == null) {
+                        echo '<div class="shipping-info">';
+                        echo '<label>Leveransinformation</label>';
+                        echo '<p class="availability out-of-stock red-stock"><span>' .  $redTxt . '</span></p>';
+                        echo '</div>';
+                    } elseif ($TheDate > $RedExtraStatusStart == false && $TheDate < $RedExtraStatusEnd == false) {
+                        echo '<div class="shipping-info">';
+                        echo '<label>Leveransinformation</label>';
+                        echo '<p class="availability out-of-stock red-stock"><span>' .  $redTxt . '</span></p>';
+                        echo '</div>';
+                    } elseif ($TheDate > $RedExtraStatusStart == true && $TheDate < $RedExtraStatusEnd == true) {
+                        echo '';
+                    } elseif (empty($RedExtraStatusEnd) && $TheDate > $RedExtraStatusStart) {
+                        echo '';
+                    } else {
+                        echo '<div class="shipping-info">';
+                        echo '<label>Leveransinformation</label>';
+                        echo '<p class="availability out-of-stock red-stock"><span>' .  $redTxt . '</span></p>';
+                        echo '</div>';
+                    } ?> <!-- red stock -->
+                <?php else: ?>
+                    <?php
+                    if ($RedExtraStatusStart == null && $RedExtraStatusEnd == null) {
+                        echo '<div class="shipping-info">';
+                        echo '<label>Leveransinformation</label>';
+                        echo '<p class="availability out-of-stock yellow-stock"><span>' .  $yellowTxt . '</span></p>';
+                        echo '</div>';
+                    } elseif ($TheDate > $RedExtraStatusStart == false && $TheDate < $RedExtraStatusEnd == false) {
+                        echo '<div class="shipping-info">';
+                        echo '<label>Leveransinformation</label>';
+                        echo '<p class="availability out-of-stock yellow-stock"><span>' . $yellowTxt . '</span></p>';
+                        echo '</div>';
+                    } elseif ($TheDate > $RedExtraStatusStart == true && $TheDate < $RedExtraStatusEnd == true) {
+                        echo '';
+                    } elseif (empty($RedExtraStatusEnd) && $TheDate > $RedExtraStatusStart) {
+                        echo '';
+                    } else {
+                        echo '<div class="shipping-info">';
+                        echo '<label>Leveransinformation</label>';
+                        echo '<p class="availability out-of-stock yellow-stock"><span>' . $yellowTxt . '</span></p>';
+                        echo '</div>';
+                    } ?>
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php else: ?>
+
+            <div class="stock unavailable" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+                <span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span>
+            </div>
+
+        <?php endif; ?>
+    <?php else: ?>
+        <div class="stock unavailable" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+            <span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

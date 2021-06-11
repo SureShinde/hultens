@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Crealevant\FeedManager\Api\FeedsRepositoryInterface" type="Crealevant\FeedManager\Model\FeedsRepository"/>
+	<preference for="Crealevant\FeedManager\Api\Data\FeedsInterface" type="Crealevant\FeedManager\Model\Feeds"/>
+	<preference for="Crealevant\FeedManager\Api\Data\FeedsSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Crealevant\FeedManager\Model\ResourceModel\Feeds\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">crealevant_feeds</argument>
+			<argument name="resourceModel" xsi:type="string">Crealevant\FeedManager\Model\ResourceModel\Feeds\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="crealevant_feedmanager_feeds_grid_data_source" xsi:type="string">Crealevant\FeedManager\Model\ResourceModel\Feeds\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="export_product_feed" xsi:type="object">Crealevant\FeedManager\Console\Command\ExportProductFeed</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

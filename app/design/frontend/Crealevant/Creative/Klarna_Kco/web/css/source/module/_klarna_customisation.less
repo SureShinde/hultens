@@ -1,0 +1,1296 @@
+// TODO Nest In Everything !!
+
+.checkout-klarna-index .enter-zipcode,
+.checkout-klarna-index .zip-code {
+  display: none!important;
+}
+.checkout-klarna-index .checkout-shipping-method > .step-content{
+  border: 0px #cbcbcb solid!important;
+  border-radius: 0px!important;
+  background: #F5F5F7!important;
+}
+.checkout-shipping-method #checkout-shipping-method-load .table-checkout-shipping-method{
+  background: #fff!important;
+}
+.checkout-shipping-method #checkout-shipping-method-load .table-checkout-shipping-method tbody td{
+  padding: 0px!important;
+  text-align: left;
+}
+.checkout-klarna-index .msunifaun-table-checkout-shipping-method tbody tr td.col-price{
+  width: 15%;
+  text-align: right!important;
+  float: right;
+}
+// Klarna Checkout
+.checkout-klarna-index{
+  .page-wrapper{
+    .page-main{
+      .page-title-wrapper{
+        display:none;
+      }
+      #checkout{
+        .opc-estimated-wrapper{
+          display:none;
+        }
+        .authentication-wrapper{
+          margin: 0;
+          width: 100%;
+          text-align: left;
+          .action-auth-toggle{
+            display:none;
+          }
+        }
+        .msunifaun-table-checkout-shipping-method{
+          tbody{
+            tr{
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+            }
+          }
+        }
+        // Klarna Checkout Opc Summary Wrapper
+        .opc-summary-wrapper{
+          .modal-header{
+            .action-close{
+              display:none;
+            }
+          }
+          .modal-inner-wrap{
+            margin: 0;
+            .modal-content{
+              // Klarna Checkout Opc Summary Wrapper Shipping Methods
+              .checkout-shipping-method{
+                display: block!important;
+                #checkout-step-shipping_method{
+                  td {
+                    font-weight: 400;
+                    &.col-method {
+
+                    }
+                    &.col-carrier {
+                      width: 25%;
+                    }
+                    &.col-description {
+                      width: 42%;
+                      flex:1;
+                      font-weight: 300;
+                    }
+                    &.col-image {
+                      width: 15%;
+                    }
+                    &.col-price {
+                      width: 10%;
+                    }
+                  }
+                }
+              }
+              // Klarna Checkout Opc Summary Wrapper Summary Block Minicart Items Table Head
+              .opc-block-summary{
+                background: @color-white;
+                padding: 0;
+                .totals-right{
+                  .table-totals{
+                    tr{
+                      th{
+                        font-size: 17px;
+                        text-transform: uppercase;
+                        border: 0;
+                        font-weight: 400;
+                        color: #161616;
+                        padding: 0;
+                      }
+                      td{
+                        font-size: 17px;
+                        text-transform: uppercase;
+                        border: 0;
+                        font-weight: 400;
+                        color: #161616;
+                        padding: 0;
+                      }
+                    }
+                  }
+                }
+                // Klarna Checkout Opc Summary Wrapper Summary Discount Form
+                .discount-form{
+                  display: flex;
+                  flex-wrap: wrap;
+                  align-items: center;
+                  .payment-option {
+                    width: 100%;
+                    // Klarna Checkout Opc Summary Wrapper Summary Discount Form Payment Option Title
+                    .payment-option-title{
+                      font-size: 17px;
+                      text-transform: uppercase;
+                      font-weight: 400;
+                      color: #161616;
+                    }
+                    // Klarna Checkout Opc Summary Wrapper Summary Discount Form Payment Option Content
+                    .payment-option-content {
+                      display: flex;
+                      flex-wrap: wrap;
+                      .form-discount {
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        .payment-option-inner {
+                          width: calc(~"(100% - 140px)");
+                          display: inline-block;
+                          flex:1;
+                          .field {
+                            // Klarna Checkout Opc Summary Wrapper Summary Discount Form Discout Code Label
+                            .label {
+                              text-align: left;
+                              margin: 10px 0px 10px 0px;
+                              display: block;
+                            }
+                            // Klarna Checkout Opc Summary Wrapper Summary Discount Form Discout Code Label Input
+                            .control {
+                              .input-text {
+                                border-right: 0px;
+                                padding: 18px 10px;
+                              }
+                            }
+                          }
+                        }
+                        .actions-toolbar {
+                          align-self: flex-end;
+                          display: inline-flex;
+                          .primary{
+                            .action-apply{
+                              border:0;
+                              border-radius:0;
+                              padding:11px;
+                              width: 100%;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                // Klarna Checkout Opc Summary Wrapper Summary Block Minicart Items
+                .minicart-items{
+                  margin: 0;
+                  padding: 0;
+                  .minicart-items-wrapper{
+                    .table{
+                      .qtyp{
+                        .details-qty{
+                          .input-group{
+                            display: inline-flex;
+                            // Klarna Checkout Opc Summary Wrapper Summary Block Minicart Items Table Qty Details Qty Input
+                            .input-cart{
+                              text-align: center;
+                            }
+                            // Klarna Checkout Opc Summary Wrapper Summary Block Minicart Items Table Qty Details Button ( Plus/Minus )
+                            .wrapperbtn{
+                              button{
+                                padding: 0px 5px;
+                              }
+                              #minus-button{
+                                float:left;
+                              }
+                              #plus-button{
+                                float: right;
+                              }
+                            }
+                          }
+                        }
+                      }
+                      // Klarna Checkout Opc Summary Wrapper Summary Block Minicart Items Table Head
+                      thead{
+                        tr{
+                          th{
+                            font-weight: 400;
+                          }
+                        }
+                      }
+                      tbody{
+                        tr{
+                          td{
+                            .delete-cart-position{
+                              content:'';
+                              background: @hultens-color-light-red;
+                              padding: 10px;
+                              margin: 0px 0px 0px 20px;
+                              &:before{
+                                color:@color-white;
+                                font-size: 24px;
+                                line-height: 24px;
+                                content:'\e604';
+                                font-family: 'luma-icons';
+                              }
+                              .ion-trash-a{
+                                display: none;
+                              }
+                            }
+                            .product-row-info{
+                              .detail-wrapper{
+                                .shipping-info{
+                                  display: block;
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px){
+  /* Shipping Methods  Col Image */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar #opc-shipping_method .checkout-shipping-method .step-content .methods-shipping .table-checkout-shipping-method tbody tr .col-image{
+    margin: 0px 21px!important;
+    max-width:70px!important;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Details Wrapper Product Name */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info .detail-wrapper .product-name{
+    padding:0px;
+    text-transform:uppercase;
+    font-size: 15px!important;
+  }
+}
+@media screen and (max-width: @screen__l){
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .loading-mask{
+    z-index: 0;
+  }
+  /*
+   * Klarna Checkout Mobile
+   */
+
+  /* Klarna Checkout Shipping Methods  */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar #opc-shipping_method .checkout-shipping-method .step-content .methods-shipping .table-checkout-shipping-method tbody tr {
+    display:flex;
+    flex-wrap:wrap;
+  }
+  /* Klarna Checkout Shipping Methods Col Image */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar #opc-shipping_method .checkout-shipping-method .step-content .methods-shipping .table-checkout-shipping-method tbody tr .col-image{
+    order:0;
+    margin: 0px 21px!important;
+    max-width:100px;
+  }
+  /* Klarna Checkout Shipping Methods Col Carrier */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar #opc-shipping_method .checkout-shipping-method .step-content .methods-shipping .table-checkout-shipping-method tbody tr .col-carrier{
+    font-weight:600!important;
+    font-size: 14px;
+    width: calc(~"(100% - 80px)");
+    flex:1;
+  }
+  /* Klarna Checkout Shipping Methods Col Method Title */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar #opc-shipping_method .checkout-shipping-method .step-content .methods-shipping .table-checkout-shipping-method tbody tr .col-method-title{
+    font-size: 14px;
+    display: inline-flex;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar #opc-shipping_method .checkout-shipping-method .step-content .methods-shipping .table-checkout-shipping-method tbody tr .col-method-title label{
+    font-weight: 400;
+  }
+  /* Klarna Checkout Shipping Methods Col Radio Button */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar #opc-shipping_method .checkout-shipping-method .step-content .methods-shipping .table-checkout-shipping-method tbody tr .col-method
+  .radio{
+    margin:5.5px 10px 0px 0px;
+  }
+  /* Klarna Checkout Shipping Methods Col Description */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar #opc-shipping_method .checkout-shipping-method .step-content .methods-shipping .table-checkout-shipping-method tbody tr .col-description{
+    flex-basis:100%;
+    margin:10px 0px 0px 20px;
+    order:2;
+    font-weight:300!important;
+  }
+  /* Shipping Methods  Col Price */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar #opc-shipping_method .checkout-shipping-method .step-content .methods-shipping .table-checkout-shipping-method tbody tr .col-price{
+    width:inherit;
+
+  }
+  .checkout-klarna-index .page-wrapper .page-main .page-header .header.content .top .logo-position{
+    margin-top:-4px;
+  }
+  /* Klarna Checkout Cotainer */
+  .checkout-klarna-index .page-wrapper #maincontent{
+    padding-bottom:0px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main .page-header .header.content .top .hamburger .hamburger-box{
+    top:-5px;
+    left:-4px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main .page-header .header.content .top .xs-cart.showcart{
+    padding-top:0px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main .page-header .header.content .top .mySearch{
+    padding-top:0px;
+  }
+  /* Klarna Checkout Cotainer */
+  .checkout-klarna-index .page-wrapper .page-main  .checkout-container{
+    display: flex;
+    flex-direction: column;
+  }
+  /* Klarna Checkout Cotainer Opc Wrapper ( Wrapper for klarna ) */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-wrapper{
+    order:3;
+    padding-bottom: 0;
+    width: 100%;
+  }
+  /* Klarna Checkout Cotainer Opc Wrapper Zipcode */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-wrapper .zip-code{
+    background: #EEEEEE;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+  }
+  /* Klarna Checkout Cotainer Opc Wrapper Zipcode Button */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-wrapper .zip-code .zip-code-btn{
+    background: #A1C132;
+    border-radius: 0;
+    width: 100%;
+    border:0;
+    font-weight: lighter;
+    font-size: 20px;
+    font-family: Oswald, sans-serif;
+    color: #fff;
+    padding: 10px;
+  }
+  /* Klarna Checkout Cotainer Opc Wrapper Zipcode Text Field */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-wrapper .zip-code .text-field{
+    padding:10px;
+    margin-bottom:20px;
+  }
+  /* Klarna Checkout Cotainer Opc Wrapper Zipcode Text Field Placeholder */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-wrapper .zip-code ::placeholder{
+    text-align:center;
+    color:black;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-wrapper .zip-code :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    text-align:center;
+    color:black;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-wrapper .zip-code ::-ms-input-placeholder { /* Microsoft Edge */
+    text-align:center;
+    color:black;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper{
+    order:1;
+    padding: 0;
+  }
+  /* Klarna Checkout Cotainer Summary Block */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar{
+    display: flex;
+    flex-direction: column;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar .cart-title{
+    background: #333;
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+    width: 45%;
+    text-transform: uppercase;
+    margin: 15px auto;
+    font-size: 19px;
+    font-weight: lighter;
+    padding: 5px;
+    display: block;
+    min-width: 200px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar  .step-title{
+    background: #333;
+    color: #fff;
+    text-align: center;
+    font-weight: lighter;
+    box-sizing: border-box;
+    padding: 10.5px;
+    width: 45%;
+    font-size: 19px;
+    font-weight: lighter;
+    text-transform: uppercase;
+    margin: 15px auto;
+    min-width: 200px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block ( Products Total Price, Coupon ) */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary{
+    order:1;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total Price Block */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right{
+    padding: 30px 15px 0px 0px;
+    width: 35%;
+    min-width: 300px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals{
+    border:0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total Discount Form */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .discount-form{
+    order:3;
+    float: right;
+    width: 50%;
+    padding: 30px 0px 30px 15px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total Price Block */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr th{
+    padding:0px;
+    padding-bottom: 10px;
+    flex: 1;
+    padding-right: 20px;
+    border:0;
+    font-size: 17px;
+    border: 0;
+    font-weight: 400;
+    color: #161616;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr td{
+    border:0;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tbody{
+    display:flex;
+    flex-direction:column;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.grand{
+    order:2;
+    display: flex;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total  Grand Totals Block */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.grand th.mark {
+    padding:0px;
+    font-size: 18px;
+    text-transform:uppercase;
+    padding-bottom: 10px;
+
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total  Grand Totals Block */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.grand th.mark strong {
+    font-weight: 400;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total  Grand Totals Block */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.grand th.mark {
+    padding:0px;
+    text-transform:uppercase;
+    padding-bottom: 10px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total  Shipping Block */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.shipping {
+    padding:0px;
+    order:1;
+    display: flex;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Shipping Title */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.shipping .label {
+    padding:0px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .details-qty .input-group .value.form-control.input-lg.input-cart[disabled]{
+    background:#ffffff;
+    color:#000000;
+    border:0px;
+    font-size:20px;
+    opacity:1;
+    margin-top:0px;
+    width: 40px;
+    display: inline;
+    height: 25px;
+    padding:0px; /* Safari Fix */
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .msunifaun-table-checkout-shipping-method tbody tr.selected{
+    border:1px solid #000000;
+    background: #ffffff;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total Price Block */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr td{
+    padding:0px;
+    font-size: 17px;
+    border: 0;
+    font-weight: 400;
+    color: #161616;
+    padding-left: 0;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr td strong{
+    font-weight: 400;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total Discount Form  Toggle Arrow Down */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .discount-form .payment-option .payment-option-title::after{
+    content: "\f107";
+    font-family: "FontAwesome";
+    padding-left: 10px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total Discount Form Open Toggle Arrow Up */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .discount-form .payment-option._active .payment-option-title::after{
+    content: "\f106";
+    font-family: "FontAwesome";
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .discount-form .payment-option .payment-option-content .form-discount .payment-option-inner{
+    width: calc(~"(100% - 140px)");
+    display: inline-block;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .discount-form .payment-option .payment-option-content .form-discount .actions-toolbar{
+    display: inline-flex;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .discount-form .payment-option-inner .field #discount-code{
+    border-radius:0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper{
+    padding:0px;
+  }
+
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table  */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table{
+    display:flex;
+    flex-direction:column;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Tbody  */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody{
+    display:flex;
+    flex-direction:column;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head  */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table thead{
+    display:flex;
+    flex-direction:column;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head  */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table thead th.product-name{
+    flex-basis: 50%;
+    padding: 0px 0px 0px 140px; /* Calculate the size of img + padding */
+    text-align: left;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table thead tr{
+    display:flex;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Tbody  */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody{
+    display:flex;
+    flex-direction:column;
+    padding: 0px 0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th{
+    text-transform: uppercase;
+    font-size: 16px;
+    border-bottom: 0px;
+    padding: 0px 15px 0px 0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th.text-right{
+    display:block!important;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th:nth-child(2){
+    flex:1;
+    padding: 0px 0px 0px 40px;
+    display: block!important;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th:nth-child(3){
+    flex:1;
+    margin-right: 0px;
+    padding: 0px 0px 0px 15px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th:nth-child(4){
+    padding-right:33px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr{
+    border-bottom:1px solid #ccc;
+    display: flex;
+    padding: 20px 0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Qty Details */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .minicart-items .table .qtyp .details-qty {
+    padding:0px;
+    min-width:117px;
+    line-height: normal;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Qty Details Button ( Plus/Minus ) */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .minicart-items .table .qtyp
+  .details-qty .input-group .wrapperbtn button{
+    background: transparent;
+    border:0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td{
+    border:0px;
+    padding: 0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td:nth-child(1){
+    flex-basis:50%;
+    flex-direction: column;
+    display: inline-flex;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Product Details */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .detail-wrapper{
+    padding: 0px 0px 0px 25px;
+    width: 100%;
+    min-width:150px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td.price{
+    border:0px;
+    flex: 1;
+    padding: 0;
+    font-size: 18px;
+    text-align: right;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Delete Item Button */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .delete-cart-position{
+    margin-top:0px;
+    border-style: none;
+    width: inherit;
+    padding: 6px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Delete Item Button */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .delete-cart-position:before{
+    font-size: 17px;
+    line-height: 17px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr .price span{
+    order: 1;
+    line-height: normal;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info{
+    border:0px;
+    padding: 0px 0px 0px 15px;
+    display: flex;
+    margin-right: 25px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info .product-image-wrapper{
+    max-width: 100px;
+    min-width: 100px;
+    padding-top: 0px;
+  }
+
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Details Wrapper Product Name */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info .detail-wrapper .product-name{
+    padding:0px;
+    text-transform:uppercase;
+    font-size: 19px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Details Wrapper Product Name */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info .detail-wrapper .shipping-info{
+    padding:0px;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Product Item Info ( Children Of the Product Row Info) */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-item-info{
+    border:0px;
+    display: inline-flex;
+    padding: 10px 0px 10px 34px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Product Item Info ( Children Of the Product Row Info) */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-item-info .product-image-wrapper{
+    padding-left:0;
+    min-width:80px;
+  }
+
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Product Item Info ( Children Of the Product Row Info) */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-item-info .detail-wrapper .product-name{
+    text-transform:uppercase;
+    padding: 0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Product Row Info Product Item Info ( Children Of the Product Row Info) */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-item-info .detail-wrapper .shipping-info{
+    padding: 0px;
+    display:none;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Product Row Info Product Item Info ( Children Of the Product Row Info)  Shipping Info */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-item-info .detail-wrapper .shipping-info span{
+    display:none!important;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Details Wrapper Product Name */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info .detail-wrapper .shipping-info span{
+    display:none!important;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Shipping Method*/
+  .checkout-klarna-index .page-wrapper .page-main  .checkout-container .opc-summary-wrapper .modal-inner-wrap .modal-content .checkout-shipping-method{
+    order:2;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Shipping Method Shipping Title*/
+  .checkout-klarna-index .page-wrapper .page-main  .checkout-container .opc-summary-wrapper .modal-inner-wrap .modal-content .checkout-shipping-method .step-title{
+    font-size:20px;
+    font-weight:normal;
+    margin: 25px 0px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  .checkout-container .opc-summary-wrapper .modal-inner-wrap .modal-content .checkout-shipping-method .step-content .methods-shipping #checkout-shipping-method-load .table-checkout-shipping-method{
+    margin-bottom:0px;
+  }
+}
+@media screen and (max-width: 700px){
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th.text-right{
+    display:none!important;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th.text-center{
+    display:none!important;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info .product-image-wrapper{
+    max-width: 80px;
+    min-width: 80px;
+    padding-top: 0px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr{
+    flex-flow: row wrap;
+    position:relative;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .table tbody tr td.price{
+    order: 3;
+    padding-left: 120px;
+    flex-basis: 100%;
+    text-align: right;
+    display: flex;
+    margin-right:20px;
+    flex-direction: column;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .table tbody tr .price:nth-child(1){
+    order: 3;
+    flex-basis: 50%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  /*  Last child is allways delete button */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .table tbody tr td:last-child{
+    order:2;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .table tbody tr td:nth-child(1){flex-basis: 82%;}
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head  */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table thead th.product-name{
+    flex-basis: 50%;
+    padding: 0px 0px 0px 120px; /* Calculate the size of img + padding */
+    text-align: left;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total Discount Form */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .discount-form{
+    order:3;
+    float: left;
+    width: 100%;
+    padding: 30px 15px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total Price Block */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right{
+    padding: 0px 15px 0px 15px;
+    width: 100%;
+    min-width: 300px;
+    float: none;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary{
+    padding:0px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .table
+  tbody tr td .delete-cart-position{
+    position: absolute;
+    top:50px;
+    right:0px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .minicart-items .table .qtyp{
+    order: 3;
+    float: right;
+    flex-basis: 100%;
+    padding-left: 112px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .details-qty .input-group .value.form-control.input-lg.input-cart{
+    width: 40px;
+    display: inline;
+    height: 25px;
+    font-size: 20px;
+    margin-top: 0px;
+  }
+}
+@media screen and (min-width: @screen__l) {
+  // TODO Nest In Everything
+  .checkout-klarna-index{
+    .page-wrapper{
+      .page-main{
+        #checkout{
+          z-index: 0;
+          .opc-wrapper{
+            margin: 0 auto;
+            width: 55%;
+          }
+        }
+      }
+    }
+  }
+
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-wrapper #klarna_kco{
+    float:none;
+    margin: 0 auto;
+
+  }
+  /* Klarna Checkout Container */
+  .checkout-klarna-index .page-wrapper .page-main  .checkout-container{
+    display:flex;
+    flex-direction:column;
+    margin-top:20px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-wrapper{
+    order:3;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper{
+    order:1;
+    margin: 0 auto;
+    width: 55%;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .table tbody tr .price span{
+    line-height:normal;
+  }
+  /* Klarna Checkout Opc Sidebar */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar{
+    display:flex;
+    flex-direction:column;
+  }
+  /* Klarna Checkout Grand Totals Right */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right{
+    padding:30px 0px 30px 0px;
+    width: 35%;
+    min-width: 300px;
+    float:left;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals{
+    border:0px;
+  }
+  /* Klarna Checkout Grand Totals Grand TH Mark */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.grand th.mark{
+    padding: 0px;
+    flex: 1;
+  }
+  /* Klarna Checkout Grand Totals Grand TH Mark */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.grand th.mark strong{
+    font-weight: 400;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr th.mark{
+    flex:1;
+  }
+  /* Klarna Checkout Grand Totals Grand TD Amount */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.grand td.amount{
+    padding: 0px;
+    text-align: right;
+  }
+  /* Klarna Checkout Grand Totals Grand */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.totals.shipping td.amount {
+    text-align:right;
+  }
+  /* Klarna Checkout Grand Totals Grand TD Amount */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.grand td.amount{
+    padding: 0px;
+    padding-left: 0;
+  }
+  /* Klarna Checkout Grand Totals Grand */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.totals.shipping td.amount {
+    padding-left: 0;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tbody{
+    display:flex;
+    flex-direction:column;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.grand{
+    order:2;
+    display: flex;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr.totals.shipping{
+    order:1;
+    display: flex;
+    padding-bottom: 15px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr td strong{
+    font-weight: 400;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .totals-right .table-totals tr td strong{
+    font-weight: 400;
+  }
+  /* Klarna Checkout Block Summary Discount Form */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .discount-form{
+    padding: 30px 0px 30px 30px;
+    width: 50%;
+    display: inline-block;
+    float: right;
+  }
+  /* Klarna Checkout Opc Sidebar */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar{
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* Klarna Checkout Cotainer Opc Wrapper Zipcode */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-wrapper .zip-code{
+    display: none;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar .cart-title{
+    background: #333;
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+    width: 45%;
+    text-transform: uppercase;
+    margin: 15px auto;
+    font-size: 19px;
+    font-weight: lighter;
+    padding: 6.5px;
+    display: block;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content #opc-sidebar  .step-title{
+    background: #333;
+    color: #fff;
+    padding: 13px;
+    text-align: center;
+    font-weight: 100;
+    box-sizing: border-box;
+    padding: 12px;
+    width: 45%;
+    font-size: 19px;
+    font-weight: lighter;
+    text-transform: uppercase;
+    margin: 15px auto;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .msunifaun-table-checkout-shipping-method tbody tr.selected{
+    border:1px solid #000000;
+    background: #ffffff;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .details-qty .input-group .value.form-control.input-lg.input-cart[disabled]{
+    background:#ffffff;
+    color:#000000;
+    border:0px;
+    font-size:20px;
+    opacity:1;
+    margin-top:0px;
+    width: 40px;
+    display: inline;
+    height: 25px;
+    padding:0px; /* Safari Fix */
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .discount-form .payment-option .payment-option-title::after{
+    content: "\f107";
+    font-family: "FontAwesome";
+    padding-left: 10px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Total Discount Form Open Toggle Arrow Up */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .discount-form .payment-option._active .payment-option-title::after{
+    content: "\f106";
+    font-family: "FontAwesome";
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .details-qty .input-group .value.form-control.input-lg.input-cart{
+    width: 40px;
+    display: inline;
+    height: 25px;
+    margin-top: 0px;
+    font-size: 20px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .qtyp{
+    max-width: 117px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th:nth-child(2){
+    display:none; /* Hiden */
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td {
+    padding: 10px 0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr{
+    border-bottom:1px solid #ccc;
+    display: flex;
+    padding: 20px 0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Qty Details */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .minicart-items .table .qtyp .details-qty {
+    padding:0px;
+    min-width:120px;
+    line-height: normal;
+    max-width: 120px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Qty Details Button ( Plus/Minus ) */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .minicart-items .table .qtyp
+  .details-qty .input-group .wrapperbtn button{
+    background: transparent;
+    border:0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td{
+    border:0px;
+    /* flex: 1; */
+    padding: 0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td:nth-child(1){
+    flex-basis:50%;
+    flex-direction: column;
+    display: inline-flex;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Product Row Info Product Item Info ( Children Of the Product Row Info) */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-item-info .detail-wrapper .shipping-info{
+    display:none;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Product Details */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .detail-wrapper{
+    padding: 0px 0px 0px 25px;
+    width: 100%;
+    min-width:200px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td.price{
+    border:0px;
+    flex: 1;
+    padding: 0;
+    font-size: 18px;
+    text-align: right;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Delete Item Button */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .delete-cart-position{
+    margin-top:0px;
+    border-style: none;
+    width: inherit;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr .price span{
+    order: 1;
+    line-height: normal;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info{
+    border:0px;
+    padding: 0px 0px 0px 15px;
+    display: flex;
+    margin-right: 25px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info{
+    border:0px;
+    padding: 0;
+    display: flex;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary{
+    padding:0;
+    order:1;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  .checkout-container .opc-summary-wrapper .modal-inner-wrap .modal-content .checkout-shipping-method{
+    order:2;
+    display: block!important;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info .product-image-wrapper{
+    max-width: 100px;
+    min-width: 100px;
+    padding-top: 0px;
+    padding-right: 0px;
+    margin-right: 10px;
+  }
+
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Details Wrapper Product Name */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info .detail-wrapper .product-name{
+    padding:0px;
+    text-transform:uppercase;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Details Wrapper Product Name */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info .detail-wrapper .product-name{
+    padding:0px;
+    text-transform:uppercase;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Details Wrapper Product Name */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info .detail-wrapper .shipping-info{
+    padding:0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Details Wrapper Product Name */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-row-info .detail-wrapper .shipping-info span{
+    display: none!important;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Product Item Info ( Children Of the Product Row Info) */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-item-info{
+    border:0px;
+    display: inline-flex;
+    padding: 10px 0px 10px 22px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Body Tr Td Product Row Info Product Item Info ( Children Of the Product Row Info) */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table tbody tr td .product-item-info .product-image-wrapper{
+    padding-left:0;
+    min-width: 80px;
+  }
+
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head  */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table thead{
+    display:flex;
+    flex-direction:column;
+    border-bottom: 1px solid #ccc;
+    padding: 0px 0px 15px 0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head  */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table thead th.product-name{
+    flex-basis: 50%;
+    padding: 0px;
+    text-align: left;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th{
+    font-size: 18px;
+    border-bottom: 0px;
+    padding: 0px 15px 0px 0px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th.text-right{
+    display:block!important;
+    padding: 0;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th:nth-child(2){
+    flex:1;
+    padding: 0px 0px 0px 40px;
+    display: block!important;
+    flex-basis: 8%;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th:nth-child(3){
+    flex:1;
+    padding: 0px 0px 0px 25px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head Product Tr Th */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items
+  .minicart-items-wrapper .table thead tr th:nth-child(4){
+    padding-right: 32px;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table Head */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table thead tr{
+    display:flex;
+  }
+  /* Klarna Checkout Cotainer Opc Summary Wrapper Summary Block Minicart Items Table  */
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper
+  .table{
+    display:flex;
+    flex-direction:column;
+  }
+}
+@media screen and (max-width: 1310px){
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content{
+    display: inline;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper{
+    width:100%;
+  }
+}
+.checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .minicart-items .table .qtyp .details-qty.bundle-selection .input-group {
+  display: none;
+}
+@media only screen and (min-width: @screen__m) {
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .minicart-items .table .qtyp .details-qty {
+    min-height: 102px;
+  }
+  .checkout-klarna-index .page-wrapper .page-main  #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .minicart-items .minicart-items-wrapper .minicart-items .table .qtyp .details-qty.bundle-selection .input-group {
+    padding: 20px 0;
+    display: flex;
+  }
+  .checkout-klarna-index .page-wrapper .page-main #checkout .opc-summary-wrapper .modal-inner-wrap .modal-content .opc-block-summary .discount-form{
+    text-align: right;
+  }
+}
+@media only screen and (max-width: @screen__m){
+  .checkout-klarna-index{
+    .page-wrapper{
+      .page-main{
+        #checkout{
+          // Klarna Checkout Cotainer Opc Summary Wrapper Modal Popup
+          .modal-custom{
+            &.opc-sidebar{
+              &.opc-summary-wrapper{
+                &.custom-slide{
+                  position: relative;
+                  opacity: 1;
+                  visibility: visible;
+                  left: 0;
+                  right: 0;
+                  top: 0;
+                  .modal-inner-wrap{
+                    overflow-y:initial;
+                    -webkit-transform:initial;
+                    transform:initial;
+                    width: 100%;
+                    box-shadow: 0 0 0;
+                    background: @color-white;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.checkout-klarna-index .breadcrumbs-wrapper{
+  display: none;
+}

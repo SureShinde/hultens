@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Backend/etc/menu.xsd">
+    <menu>
+        <add id="Crealevant_Base::crealevant_base" title="Crealevant"
+             module="Crealevant_Base" sortOrder="15"
+             resource="Crealevant_Base::crealevant_base"/>
+    </menu>
+</config>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+  <extension_attributes for="Magento\Quote\Api\Data\ShippingMethodInterface">
+    <attribute code="msunifaun_addons" type="string" /> <!-- JSON -->
+    <attribute code="msunifaun_agent" type="string" /> <!-- JSON -->
+    <attribute code="msunifaun_agents" type="string" /> <!-- JSON -->
+    <attribute code="msunifaun_carrier" type="string" />
+  </extension_attributes>
+  <extension_attributes for="Magento\Quote\Api\Data\AddressInterface">
+    <attribute code="pick_up_location_id" type="string" />
+    <attribute code="pick_up_location_name" type="string" />
+    <attribute code="pick_up_location_address1" type="string" />
+    <attribute code="pick_up_location_zip_code" type="string" />
+    <attribute code="pick_up_location_city" type="string" />
+    <attribute code="pick_up_location_country" type="string" />
+  </extension_attributes>
+  <extension_attributes for="Magento\Sales\Api\Data\OrderInterface">
+    <attribute code="unifaun_assignments" type="Mediastrategi\Unifaun\Api\Data\UnifaunAssignmentInterface" />
+  </extension_attributes>
+</config>

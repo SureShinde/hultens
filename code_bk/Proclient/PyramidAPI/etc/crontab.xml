@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+  <group id="default">
+    <job name="pyramidapi_sendorder" instance="Proclient\PyramidAPI\Cron\SendOrder" method="execute">
+      <schedule>*/15 * * * *</schedule><!-- Var 15:e minut -->
+    </job>
+    <job name="pyramidapi_getstock" instance="Proclient\PyramidAPI\Cron\GetStock" method="execute">
+      <schedule>*/2 * * * *</schedule><!-- Var 5:e minut -->
+    </job>
+    <job name="pyramidapi_getarticles" instance="Proclient\PyramidAPI\Cron\GetArticles" method="execute">
+      <schedule>*/2 * * * *</schedule><!-- Var 30:e minut -->
+    </job>
+    <job name="pyramidapi_syncorderstatus" instance="Proclient\PyramidAPI\Cron\SyncOrderStatus" method="execute">
+      <schedule>57 * * * *</schedule><!-- Varje timma -->
+    </job>
+  </group>
+</config>

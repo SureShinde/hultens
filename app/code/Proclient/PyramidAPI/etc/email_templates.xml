@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+  <template id="pyramidapi_error_email" label="Error email" file="PyramidAPI/error.html" type="html" module="Proclient_PyramidAPI" area="frontend"/>
+</config>

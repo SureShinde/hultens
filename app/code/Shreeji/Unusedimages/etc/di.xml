@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">        
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="unusedimages_image_listing_data_source" xsi:type="string">Shreeji\Unusedimages\Model\ResourceModel\Unusedimages\Grid\Collection</item>                
+            </argument>
+        </arguments>
+    </type>
+    <type name="Shreeji\Unusedimages\Model\ResourceModel\Unusedimages\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">shreeji_unusedimages</argument>
+            <argument name="eventPrefix" xsi:type="string">unusedimages_image_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">unusedimages_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Shreeji\Unusedimages\Model\ResourceModel\Unusedimages</argument>
+        </arguments>
+    </type>    
+    <virtualType name="UnusedimagesGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>                
+</config>

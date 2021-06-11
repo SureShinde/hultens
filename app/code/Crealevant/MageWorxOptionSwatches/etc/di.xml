@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Plugins -->
+    <type name="Magento\Catalog\Block\Product\View\Options\Type\Select">
+        <plugin name="aroundGetValuesHtml" type="MageWorx\OptionSwatches\Plugin\Product\View\Options\Type\Select" sortOrder="10" disabled="true"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\View\Options\Type\Select">
+        <plugin name="crealevant_mageworxoptionswatches" type="Crealevant\MageWorxOptionSwatches\Plugin\Product\View\Options\Type\Select" sortOrder="10" disabled="false"/>
+    </type>
+</config>

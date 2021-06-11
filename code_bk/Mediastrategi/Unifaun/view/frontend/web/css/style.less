@@ -1,0 +1,572 @@
+.msunifaun-table-checkout-shipping-method {
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    thead {
+        display: none;
+    }
+    &.table-checkout-shipping-method {
+        width: 100%;
+    }
+    &.msunifaun-no-carrier td.col-extra.is-selected {
+        display: none;
+    }
+    tbody {
+        display: block;
+        tr {
+            display: block;
+            padding: 13px 10px;
+            text-align: left;
+            &.selected {
+                background-color: #F5F5F7;
+            }
+            td {
+                border: 0;
+                display: inline-block;
+                padding: 0;
+            }
+            + tr {
+                border-top: 1px solid #e8e8e8;
+            }
+        }
+    }
+    td.col-method,
+    td.col-carrier,
+    td.col-price {
+        cursor: pointer;
+    }
+    td.col-extra {
+        display: none;
+        margin: 20px 0 0 0;
+        padding-right: 0;
+        width: 100%;
+        &.is-selected {
+            display: block;
+        }
+        .msunifaun_agents {
+            span {
+            }
+            select {
+                margin-top: 5px;
+            }
+        }
+        .msunifaun_addons {
+            &.with-agents {
+                margin-top: 15px;
+            }
+            ul {
+                padding: 0;
+                list-style: none;
+                li {
+                    label {
+                        .description {
+                        }
+                        .price {
+                            font-weight: 600;
+                        }
+                    }
+                }
+                fieldset {
+                    background-color: #f5f5f5;
+                    border: 0;
+                    margin-top: 5px;
+                    padding: 15px;
+                    .description {
+                        font-weight: 300;
+                    }
+                    .required {
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/** Bigger than medium devices **/
+@media screen and (min-width: 768px) {
+    .msunifaun-table-checkout-shipping-method {
+        tbody {
+            tr {
+                td.col-price {
+                    float: right;
+                }
+            }
+        }
+    }
+}
+
+.custom-region-selector {
+    overflow: hidden;
+    margin-bottom: 15px;
+    padding-bottom: 40px;
+    position: relative;
+    .action {
+        background: #862B87;
+        border: 0;
+        bottom: 0;
+        color: #fff;
+        font-size: 14px;
+        line-height: 40px;
+        padding: 0;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .wrapper {
+        overflow: hidden;
+    }
+    .country-selector,
+    .wrapper input {
+        border: 1px #CBCBCD solid;
+        height: 50px;
+        padding: 0 15px;
+        &:hover {
+            border-color: #000;
+        }
+    }
+}
+
+.checkout-klarna-index {
+    .checkout-shipping-method > .step-content {
+        border: 1px #cbcbcb solid;
+        border-radius: 5px;
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+    .checkout-shipping-method > .step-title {
+        color: #434343;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 21px;
+        margin-bottom: 2px;
+    }
+    .msunifaun-table-checkout-shipping-method {
+        background: transparent url('../images/unifaun.svg') center bottom no-repeat scroll;
+        background-size: 75px;
+        display: block;
+        margin: 0;
+        padding: 0 0 30px 0;
+        margin: 0 0 15px 0;
+        min-width: 0;
+        tbody {
+            tr {
+                td {
+                    font-weight: 600;
+                    &.col-method,
+                    &.col-carrier,
+                    &.col-price {
+                        color: #3c3c3e;
+                        font-size: 14px;
+                    }
+                    &.col-extra {
+                        color: #8e8e90;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+    .no-quotes-block {
+        background: transparent url('../images/unifaun.svg') center bottom no-repeat scroll;
+        background-size: 75px;
+        padding-bottom: 30px;
+        text-align: center;
+    }
+}
+
+/** Bigger than large devices **/
+@media screen and (min-width: 960px) {
+    .msunifaun-table-checkout-shipping-method {
+        tbody {
+            tr {
+                background-position: right 90px top 16px;
+                background-repeat: no-repeat;
+                &.msunifaun-carrier-DTPG,
+                &.msunifaun-carrier-HIT,
+                &.msunifaun-carrier-PBREV,
+                &.msunifaun-carrier-PDK,
+                &.msunifaun-carrier-PLAB,
+                &.msunifaun-carrier-PLSCM
+                {
+                    background-image: url('../images/postnord.jpg');
+                    background-size: 75px;
+                }
+                &.msunifaun-carrier-DABBE,
+                &.msunifaun-carrier-DABBX,
+                &.msunifaun-carrier-DHLAIR,
+                &.msunifaun-carrier-DHLAIRRETURN,
+                &.msunifaun-carrier-DHLROAD,
+                &.msunifaun-carrier-DHLFREIGHTTEST,
+                &.msunifaun-carrier-DHLEC,
+                &.msunifaun-carrier-DHLECP,
+                &.msunifaun-carrier-DHLFREIGHTFI,
+                &.msunifaun-carrier-DHLSPCOD,
+                &.msunifaun-carrier-DHLDE,
+                &.msunifaun-carrier-DGF
+                {
+                    background-image: url('../images/DHL.jpg');
+                    background-size: 75px;
+                }
+                &.msunifaun-carrier-SBTLAO,
+                &.msunifaun-carrier-SBTLFIRREX,
+                &.msunifaun-carrier-SBTLFIEXP,
+                &.msunifaun-carrier-KL,
+                &.msunifaun-carrier-SBTLFI,
+                &.msunifaun-carrier-SBTL,
+                &.msunifaun-carrier-SBTLDK,
+                &.msunifaun-carrier-SBTLNO,
+                &.msunifaun-carrier-SBTLNOINT
+                {
+                    background-image: url('../images/db-schenker.svg');
+                    background-size: 75px;
+                }
+                &.msunifaun-carrier-BCDK,
+                &.msunifaun-carrier-BCSE,
+                &.msunifaun-carrier-BCNOINT,
+                &.msunifaun-carrier-BCSED,
+                &.msunifaun-carrier-BCMSE,
+                &.msunifaun-carrier-BOX,
+                &.msunifaun-carrier-BM,
+                &.msunifaun-carrier-PNL,
+                &.msunifaun-carrier-BP,
+                &.msunifaun-carrier-PNLNO
+                {
+                    background-image: url('../images/bring.svg');
+                    background-size: 75px;
+                }
+                &.msunifaun-carrier-BEST {
+                    background-image: url('../images/best-transport.svg');
+                    background-size: 75px;
+                }
+            }
+        }
+    }
+    .checkout-klarna-index {
+        .msunifaun-table-checkout-shipping-method {
+            tbody {
+                tr {
+                    background-position: right 90px top 16px;
+                    &.msunifaun-carrier-DTPG,
+                    &.msunifaun-carrier-HIT,
+                    &.msunifaun-carrier-PBREV,
+                    &.msunifaun-carrier-PDK,
+                    &.msunifaun-carrier-PLAB,
+                    &.msunifaun-carrier-PLSCM
+                    {
+                    }
+                    &.msunifaun-carrier-DABBE,
+                    &.msunifaun-carrier-DABBX,
+                    &.msunifaun-carrier-DHLAIR,
+                    &.msunifaun-carrier-DHLAIRRETURN,
+                    &.msunifaun-carrier-DHLROAD,
+                    &.msunifaun-carrier-DHLFREIGHTTEST,
+                    &.msunifaun-carrier-DHLEC,
+                    &.msunifaun-carrier-DHLECP,
+                    &.msunifaun-carrier-DHLFREIGHTFI,
+                    &.msunifaun-carrier-DHLSPCOD,
+                    &.msunifaun-carrier-DHLDE,
+                    &.msunifaun-carrier-DGF
+                    {
+                    }
+                    &.msunifaun-carrier-SBTLAO,
+                    &.msunifaun-carrier-SBTLFIRREX,
+                    &.msunifaun-carrier-SBTLFIEXP,
+                    &.msunifaun-carrier-KL,
+                    &.msunifaun-carrier-SBTLFI,
+                    &.msunifaun-carrier-SBTL,
+                    &.msunifaun-carrier-SBTLDK,
+                    &.msunifaun-carrier-SBTLNO,
+                    &.msunifaun-carrier-SBTLNOINT
+                    {
+                    }
+                    &.msunifaun-carrier-BCDK,
+                    &.msunifaun-carrier-BCSE,
+                    &.msunifaun-carrier-BCNOINT,
+                    &.msunifaun-carrier-BCSED,
+                    &.msunifaun-carrier-BCMSE,
+                    &.msunifaun-carrier-BOX,
+                    &.msunifaun-carrier-BM,
+                    &.msunifaun-carrier-PNL,
+                    &.msunifaun-carrier-BP,
+                    &.msunifaun-carrier-PNLNO
+                    {
+                    }
+                    &.msunifaun-carrier-BEST {
+                    }
+                }
+            }
+        }
+    }
+    body .custom-region-selector {
+        padding-bottom: 0;
+        .action {
+            border-radius: 5px;
+            float: right;
+            line-height: 50px;
+            margin-left: 10px;
+            padding: 0 20px;
+            position: static;
+            width: auto;
+        }
+        .country-selector,
+        .wrapper input {
+            border-radius: 5px;
+        }
+        &.country-selector.zip-code-selector {
+            .country-selector {
+                margin-bottom: 5px;
+            }
+            .action {
+                margin-top: 55px;
+            }
+        }
+    }
+}
+
+.checkout-index-index .msunifaun-table-checkout-shipping-method {
+    margin-bottom: 30px;
+}
+
+.sveacheckout-index-index .svea-cart-container > .svea-checkout-cart-summary {
+    display: block;
+    float: none;
+    width: auto;
+}
+
+/** Bigger than medium devices **/
+@media screen and (min-width: 768px) {
+    .checkout-klarna-index {
+        .opc-sidebar {
+            float: left;
+            margin-top: 19px;
+            > .modal-inner-wrap {
+                margin-right: 24px;
+            }
+        }
+        .opc-wrapper {
+            float: right;
+            padding-right: 0;
+        }
+        .opc-wrapper,
+        .opc-sidebar {
+            width: 50%;
+        }
+    }
+}
+
+/** Bigger than medium devices **/
+@media screen and (min-width: 1110px) {
+    body.sveacheckout-index-index {
+        .svea-cart-container {
+            > .svea-checkout-cart-summary {
+                float: left;
+                width: 50%;
+            }
+        }
+    }
+}
+
+/** Smaller than medium devices **/
+@media screen and (max-width: 767px) {
+    body.checkout-klarna-index {
+        #opc-sidebar > .checkout-shipping-method {
+            margin: 22px 30px;
+        }
+        .checkout-payment-method .payment-option {
+            margin: 0;
+        }
+    }
+}
+
+form.msunifaun-table-cart-shipping-rates {
+    background: #fff url('../images/unifaun.svg') center bottom 15px no-repeat scroll;
+    border: 1px #cbcbcb solid;
+    border-radius: 10px;
+    background-size: 75px;
+    margin: 0 0 30px 0;
+    overflow: hidden;
+    padding: 0 0 45px 0;
+    &#co-shipping-method-form > p.field {
+        display: block;
+        padding-bottom: 20px;
+        padding-top: 30px;
+        text-align: center;
+    }
+    &#co-shipping-method-form > fieldset.fieldset {
+        margin: 0;
+        padding: 0;
+    }
+    > fieldset.fieldset {
+        margin: 0;
+        padding: 0;
+        ul.items {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li.item-options {
+                display: block;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                .field {
+                    background-attachment: scroll;
+                    background-position: top 16px right 20%;
+                    background-repeat: no-repeat;
+                    background-size: 75px;
+                    color: #3c3c3e;
+                    display: block;
+                    margin: 0;
+                    min-height: 30px;
+                    padding: 0;
+                    .shipping-method-wrapper {
+                        padding: 13px 10px;
+                        > input {
+
+                        }
+                        > label {
+                            color: #3c3c3e;
+                            font-size: 14px;
+                            font-weight: 600;
+                            margin: 0;
+                            overflow: hidden;
+                            .price {
+                                font-weight: 600;
+                                float: right;
+                            }
+                        }
+                    }
+                    .extra-wrapper {
+                        color: #8e8e90;
+                        display: none;
+                        font-size: 13px;
+                        margin: 6px 0 0 0;
+                        .msunifaun_agents {
+
+                        }
+                        .msunifaun_addons {
+                            &.with-agents {
+                                margin-top: 15px;
+                            }
+                            ul {
+                                padding: 0;
+                                list-style: none;
+                                li {
+                                    label {
+                                        color: #8E8E90;
+                                        display: block;
+                                        font-size: 13px;
+                                        font-weight: 600;
+                                        white-space: nowrap;
+                                        .description {
+                                        }
+                                        .price {
+                                            font-weight: 600;
+                                        }
+                                    }
+                                }
+                                input[type="text"],
+                                select {
+                                    display: block;
+                                }
+                                fieldset {
+                                    background-color: #f5f5f5;
+                                    border: 0;
+                                    margin-top: 5px;
+                                    padding: 15px;
+                                    .description {
+                                        font-weight: 300;
+                                    }
+                                    .required {
+                                        color: red;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.selected {
+                        background-color: #F5F5F7;
+                        .extra-wrapper {
+                            display: block;
+                        }
+                    }
+                }
+                + li {
+                    border-top: 1px solid #e8e8e8;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 570px) {
+    form.msunifaun-table-cart-shipping-rates > fieldset.fieldset ul.items li.item-options .field {
+        &.msunifaun-carrier-DTPG,
+        &.msunifaun-carrier-HIT,
+        &.msunifaun-carrier-PBREV,
+        &.msunifaun-carrier-PDK,
+        &.msunifaun-carrier-PLAB,
+        &.msunifaun-carrier-PLSCM
+        {
+            background-image: url('../images/postnord.jpg');
+        }
+        &.msunifaun-carrier-DABBE,
+        &.msunifaun-carrier-DABBX,
+        &.msunifaun-carrier-DHLAIR,
+        &.msunifaun-carrier-DHLAIRRETURN,
+        &.msunifaun-carrier-DHLROAD,
+        &.msunifaun-carrier-DHLFREIGHTTEST,
+        &.msunifaun-carrier-DHLEC,
+        &.msunifaun-carrier-DHLECP,
+        &.msunifaun-carrier-DHLFREIGHTFI,
+        &.msunifaun-carrier-DHLSPCOD,
+        &.msunifaun-carrier-DHLDE,
+        &.msunifaun-carrier-DGF
+        {
+            background-image: url('../images/DHL.jpg');
+        }
+        &.msunifaun-carrier-SBTLAO,
+        &.msunifaun-carrier-SBTLFIRREX,
+        &.msunifaun-carrier-SBTLFIEXP,
+        &.msunifaun-carrier-KL,
+        &.msunifaun-carrier-SBTLFI,
+        &.msunifaun-carrier-SBTL,
+        &.msunifaun-carrier-SBTLDK,
+        &.msunifaun-carrier-SBTLNO,
+        &.msunifaun-carrier-SBTLNOINT
+        {
+            background-image: url('../images/db-schenker.svg');
+        }
+        &.msunifaun-carrier-BCDK,
+        &.msunifaun-carrier-BCSE,
+        &.msunifaun-carrier-BCNOINT,
+        &.msunifaun-carrier-BCSED,
+        &.msunifaun-carrier-BCMSE,
+        &.msunifaun-carrier-BOX,
+        &.msunifaun-carrier-BM,
+        &.msunifaun-carrier-PNL,
+        &.msunifaun-carrier-BP,
+        &.msunifaun-carrier-PNLNO
+        {
+            background-image: url('../images/bring.svg');
+        }
+        &.msunifaun-carrier-BEST {
+            background-image: url('../images/best-transport.svg');
+        }
+    }
+}
+
+body.checkout-cart-index form.msunifaun-table-cart-shipping-rates > fieldset.fieldset ul.items li.item-options .field {
+    background-image: none;
+    &.selected .extra-wrapper {
+        display: none;
+    }
+}
+
+body.checkout-cart-index .custom-region-selector {
+    display: none;
+}

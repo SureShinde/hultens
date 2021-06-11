@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove Elements -->
+        <referenceBlock name="wish-list-link" remove="true"/> <!-- WishList Link-->
+        <referenceBlock name="catalog.compare.link" remove="true" /> <!-- Catalog Compare Link Header Links -->
+        <referenceBlock name="register-link" remove="true" /> <!-- Register Link Header Links -->
+        <referenceBlock name="store.links" remove="true" /> <!-- Store Menu Links Sections -->
+        <referenceBlock name="store.settings" remove="true" /> <!-- Store Menu Settings Sections -->
+        <referenceBlock name="footer_links" remove="true"/>
+        <!-- Move Elements -->
+        <move element="page.top" destination="header.container" after="-" />
+        <!-- Add/Change position of blocks -->
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Template" name="top.extras.link" template="Magento_Theme::html/header/top-header/top-links.phtml" before="-"/>
+            <block class="Magento\Framework\View\Element\Template" name="top.garanti" template="Magento_Theme::html/header/top-header/top-garanti.phtml" after="top.extras.link"/>
+            <block class="Magento\Framework\View\Element\Template" name="other.websites" template="Magento_Theme::html/header/top-header/choosecountry.phtml" after="top.garanti"/>
+        </referenceBlock><!-- Header Links -->
+        <referenceContainer name="header.container">
+            <block class="Magento\Framework\View\Element\Template" name="header.campaign.banner" template="Magento_Theme::html/header/header-campaign-banner.phtml" before="header-wrapper"/>
+            <block class="Magento\Framework\View\Element\Template" name="header.bottom.wave.bkg" template="Magento_Theme::html/header/header-bkg.phtml" after="page.top"/><!-- Header Background Image -->
+            <block class="Magento\Framework\View\Element\Template" name="header.trustpilot.widget" template="Magento_Theme::html/header/header-trustpilot.phtml" after="header.bottom.wave.bkg"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs" as="breadcrumbs" before="-"/>
+        </referenceContainer>
+        <referenceContainer name="footer-container">
+            <container name="footer.wave.bottom" htmlTag="div" htmlClass="footer-wave">
+                <block class="Magento\Framework\View\Element\Template" name="footer.bottom.wave.bkg" template="Magento_Theme::html/header/header-bkg.phtml" after="-"/>
+                <block class="Magento\Framework\View\Element\Template" name="footer.trustpilot.widget" template="Magento_Theme::html/footer/footer-trustpilot.phtml" after="footer.bottom.wave.bkg"/>
+            </container>
+            <block class="Magento\Framework\View\Element\Template" name="footer.top" template="Magento_Theme::html/footer/footer-top.phtml" before="footer"/><!-- Footer Top -->
+            <referenceBlock name="footer">
+                <block class="Magento\Framework\View\Element\Template" name="footer.links.content" template="Magento_Theme::html/footer/footer-content.phtml" before="-"/>
+            </referenceBlock><!-- Footer Content -->
+        </referenceContainer> <!-- Page-Footer -->
+    </body>
+</page>

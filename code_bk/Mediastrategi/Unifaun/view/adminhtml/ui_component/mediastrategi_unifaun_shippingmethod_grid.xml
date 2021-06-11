@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+  <!-- Set basic options for grid -->
+  <argument name="data" xsi:type="array">
+    <item name="js_config" xsi:type="array">
+      <item name="provider" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid_data_source</item>
+      <item name="deps" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid_data_source</item>
+    </item>
+    <item name="spinner" xsi:type="string">shippingmethod_columns</item>
+    <item name="buttons" xsi:type="array">
+      <item name="add" xsi:type="array">
+        <item name="name" xsi:type="string">add</item>
+        <item name="label" xsi:type="string" translate="true">Add New Shipping Method</item>
+        <item name="class" xsi:type="string">primary</item>
+        <item name="url" xsi:type="string">*/*/add</item>
+      </item>
+    </item>
+  </argument>
+
+  <!-- Settings for data-source -->
+  <dataSource name="mediastrategi_unifaun_shippingmethod_grid_data_source">
+    <argument name="dataProvider" xsi:type="configurableObject">
+      <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+      <argument name="name" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid_data_source</argument>
+      <argument name="primaryFieldName" xsi:type="string">id</argument>
+      <argument name="requestFieldName" xsi:type="string">id</argument>
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+          <item name="update_url" xsi:type="url" path="mui/index/render"/>
+          <item name="storageConfig" xsi:type="array">
+            <item name="indexField" xsi:type="string">id</item>
+          </item>
+        </item>
+      </argument>
+    </argument>
+  </dataSource>
+
+  <!-- Container for toolbar -->
+  <container name="listing_top">
+
+    <!-- This sets basic options for toolbar -->
+    <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+        <item name="template" xsi:type="string">ui/grid/toolbar</item>
+        <item name="stickyTmpl" xsi:type="string">ui/grid/sticky/toolbar</item>
+      </item>
+    </argument>
+
+    <!-- User can save sets of preferred columns as bookmarks -->
+    <bookmark name="bookmarks">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="storageConfig" xsi:type="array">
+            <item name="namespace" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid</item>
+          </item>
+        </item>
+      </argument>
+    </bookmark>
+
+    <!-- Make it possible to select what columns to display -->
+    <component name="columns_controls">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="columnsData" xsi:type="array">
+            <item name="provider" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid.shippingmethod_columns</item>
+          </item>
+          <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
+          <item name="displayArea" xsi:type="string">dataGridActions</item>
+        </item>
+      </argument>
+    </component>
+
+    <!-- Toolbar search  -->
+    <filterSearch name="fulltext">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="provider" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid_data_source</item>
+          <item name="chipsProvider" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid.listing_top.listing_filters_chips</item>
+          <item name="storageConfig" xsi:type="array">
+            <item name="provider" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid.listing_top.bookmarks</item>
+            <item name="namespace" xsi:type="string">current.search</item>
+          </item>
+        </item>
+      </argument>
+    </filterSearch>
+
+    <!-- Available toolbar filters -->
+    <filters name="listing_filters">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="columnsProvider" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid.shippingmethod_columns</item>
+          <item name="storageConfig" xsi:type="array">
+            <item name="provider" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid.listing_top.bookmarks</item>
+            <item name="namespace" xsi:type="string">current.filters</item>
+          </item>
+          <item name="templates" xsi:type="array">
+            <item name="filters" xsi:type="array">
+              <item name="select" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+              </item>
+            </item>
+          </item>
+          <item name="childDefaults" xsi:type="array">
+            <item name="provider" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid.listing_top.listing_filters</item>
+            <item name="imports" xsi:type="array">
+              <item name="visible" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid.listing_columns.${ $.index }:visible</item>
+            </item>
+          </item>
+        </item>
+        <item name="observers" xsi:type="array">
+          <item name="column" xsi:type="string">column</item>
+        </item>
+      </argument>
+
+      <filterSelect name="store">
+        <argument name="optionsProvider" xsi:type="configurableObject">
+          <argument name="class" xsi:type="string">Mediastrategi\Unifaun\Ui\Component\Listing\Column\Store\Options</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+          <item name="config" xsi:type="array">
+            <item name="provider" xsi:type="string">${ $.parentName }</item>
+            <item name="imports" xsi:type="array">
+              <item name="visible" xsi:type="string">componentType = column, index = ${ $.index }:visible</item>
+            </item>
+            <item name="dataScope" xsi:type="string">store</item>
+            <item name="label" xsi:type="string" translate="true">Store View</item>
+            <item name="captionValue" xsi:type="string">0</item>
+          </item>
+        </argument>
+      </filterSelect>
+
+    </filters>
+
+    <!-- Mass-actions -->
+    <massaction name="listing_massaction">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="selectProvider" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid.shippingmethod_columns.ids</item>
+          <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+          <item name="indexField" xsi:type="string">id</item>
+        </item>
+      </argument>
+      <action name="disable">
+        <argument name="data" xsi:type="array">
+          <item name="config" xsi:type="array">
+            <item name="type" xsi:type="string">disable</item>
+            <item name="label" xsi:type="string" translate="true">Disable</item>
+            <item name="url" xsi:type="url" path="*/*/massDisable"/>
+          </item>
+        </argument>
+      </action>
+      <action name="enable">
+        <argument name="data" xsi:type="array">
+          <item name="config" xsi:type="array">
+            <item name="type" xsi:type="string">enable</item>
+            <item name="label" xsi:type="string" translate="true">Enable</item>
+            <item name="url" xsi:type="url" path="*/*/massEnable"/>
+          </item>
+        </argument>
+      </action>
+    </massaction>
+
+    <!-- Pagination -->
+    <paging name="listing_paging">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="storageConfig" xsi:type="array">
+            <item name="provider" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid.listing_top.bookmarks</item>
+            <item name="namespace" xsi:type="string">current.paging</item>
+          </item>
+          <item name="selectProvider" xsi:type="string">mediastrategi_unifaun_shippingmethod_grid.mediastrategi_unifaun_shippingmethod_grid.shippingmethod_columns.ids</item>            
+        </item>
+      </argument>
+    </paging>
+
+  </container>
+
+  <!-- Columns -->
+  <columns name="shippingmethod_columns">
+    <selectionsColumn name="ids">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="indexField" xsi:type="string">id</item>
+        </item>
+      </argument>
+    </selectionsColumn>
+    <column name="id">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="filter" xsi:type="string">text</item>
+          <item name="sorting" xsi:type="string">asc</item>
+          <item name="label" xsi:type="string" translate="true">ID</item>
+        </item>
+      </argument>
+    </column>
+    <column name="store" class="Mediastrategi\Unifaun\Ui\Component\Listing\Column\ShippingmethodStore">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="filter" xsi:type="string">text</item>
+          <item name="sorting" xsi:type="string">asc</item>
+          <item name="label" xsi:type="string" translate="true">Store View</item>
+        </item>
+      </argument>
+    </column>
+    <column name="title">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="filter" xsi:type="string">text</item>
+          <item name="sorting" xsi:type="string">asc</item>
+          <item name="label" xsi:type="string" translate="true">Title</item>
+        </item>
+      </argument>
+    </column>
+    <column name="active" class="Mediastrategi\Unifaun\Ui\Component\Listing\Column\ShippingmethodActive">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="filter" xsi:type="string">boolean</item>
+          <item name="sorting" xsi:type="string">asc</item>
+          <item name="label" xsi:type="string" translate="true">Active</item>
+        </item>
+      </argument>
+    </column>
+    <column name="creation_time" class="Magento\Ui\Component\Listing\Columns\Date">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="filter" xsi:type="string">dateRange</item>
+          <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+          <item name="dataType" xsi:type="string">date</item>
+          <item name="label" xsi:type="string" translate="true">Created Date</item>
+        </item>
+      </argument>
+    </column>
+
+    <!-- Action-columns, column that can trigger actions -->
+    <actionsColumn name="actions" class="Mediastrategi\Unifaun\Ui\Component\Listing\Column\ShippingmethodAction">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="indexField" xsi:type="string">id</item>
+          <item name="urlEntityParamName" xsi:type="string">id</item>
+        </item>
+      </argument>
+    </actionsColumn>
+
+  </columns>
+
+</listing>
+

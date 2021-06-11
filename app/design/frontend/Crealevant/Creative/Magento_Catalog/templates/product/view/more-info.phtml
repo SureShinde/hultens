@@ -1,0 +1,70 @@
+<div class="more-info-below">
+    <?php
+
+    $_product = $block->getProduct();
+
+    $Design = $_product->getAttributeText('designer');
+    $Varumarke = $_product->getAttributeText('varumarke');
+    $Material = $_product->getAttributeText('materialinfo');
+    $Video = $_product->getResource()->getAttribute('youtube');
+
+    //Get Value from video
+    $DisplayVideo = $Video->getFrontend()->getValue($_product);
+    ?>
+    <?php if ($Material || $Design): ?>
+        <section class="flex-container mb30">
+            <div class="section-column material">
+                <div class="designer">
+                    <?php if (is_string($Material)):?>
+                        <h4 class="tab-title"><?php echo __('Material') ?></h4>
+                        <ul class="tab-content material">
+                            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($Material)->toHtml();?>
+                        </ul>
+                    <?php endif; ?>
+
+                    <?php if(is_array($Material) > 0): ?>
+                        <h4 class="tab-title"><?php echo __('Material') ?></h4>
+                        <ul class="tab-content material">
+                            <?php foreach ($Material as $Materials):
+                                echo '<li>' . $Materials . '</li>';
+                            endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+
+                </div>
+            </div>
+            <div class="section-column design">
+                <?php if ($Design): ?>
+                    <div class="designer">
+                        <h4 class="tab-title"><?php echo __('Design') ?></h4>
+                        <div class="tab-content">
+                            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($Design)->toHtml(); ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </section>
+    <?php endif; ?>
+    <?php if ($Varumarke || $DisplayVideo): ?>
+        <section class="flex-container mb30">
+            <div class="section-column brand-info">
+                <?php if ($Varumarke): ?>
+                    <div class="designer">
+                        <h4 class="tab-title"><?php echo __('About') ?> <?php echo $Varumarke ?></h4>
+                        <div class="tab-content">
+                            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($Varumarke)->toHtml(); ?>
+                        </div>
+                    </div>
+
+                <?php endif; ?>
+            </div>
+            <div class="section-column video">
+                <?php if ($DisplayVideo): ?>
+                    <div class="video-container">
+                        <?php echo $DisplayVideo; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </section>
+    <?php endif; ?>
+</div>

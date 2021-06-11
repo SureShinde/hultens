@@ -1,0 +1,6 @@
+<<?php echo $block->getData('prefix'); ?> class="<?php if ($block->getData('use_container') == true) {
+    echo 'container';
+} ?>" style="background: <?php echo $block->getData('use_background'); ?> url(<?php echo $block->getData('photo'); ?>); background-size: 100%; height: <?php echo $block->getData('height'); ?>">
+
+<?php echo $block->getFilteredContent($block->getData('content')); ?>
+</<?php echo $block->getData('prefix'); ?>>

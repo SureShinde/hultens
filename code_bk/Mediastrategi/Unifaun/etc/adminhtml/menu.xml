@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+  <menu>
+    <add id="Mediastrategi_Unifaun" title="Unifaun Online" module="Mediastrategi_Unifaun" sortOrder="15" dependsOnModule="Mediastrategi_Unifaun" resource="Mediastrategi_Unifaun::root" parent="Magento_Sales::sales" />
+    <add id="Mediastrategi_Unifaun::shippingmethod" title="Shipping Methods" module="Mediastrategi_Unifaun" sortOrder="10" parent="Mediastrategi_Unifaun" resource="Mediastrategi_Unifaun::shippingmethod" action="msunifaun/shippingmethod/index" />
+    <add id="Mediastrategi_Unifaun::automation" title="Run Automation" module="Mediastrategi_Unifaun" sortOrder="10" parent="Mediastrategi_Unifaun" resource="Mediastrategi_Unifaun::automation" action="msunifaun/shippingmethod/automation" />
+    <add id="Mediastrategi_Unifaun::configuration" title="Configuration" module="Mediastrategi_Unifaun" sortOrder="10" parent="Mediastrategi_Unifaun" resource="Mediastrategi_Unifaun::unifaun_config" action="adminhtml/system_config/edit/section/carriers/mediastrategi_unifaun" />
+  </menu>
+</config>

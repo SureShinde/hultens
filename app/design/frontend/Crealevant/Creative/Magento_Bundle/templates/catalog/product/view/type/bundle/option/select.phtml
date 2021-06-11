@@ -1,0 +1,160 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php /* @var $block \Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Select */ ?>
+<?php $_option      = $block->getOption(); ?>
+<?php $_selections  = $_option->getSelections(); ?>
+<?php $_default     = $_option->getDefaultSelection(); ?>
+<?php $_product     = $this->getProduct();?>
+<?php
+//Stock
+$greenStat = intval($_product->getData('inventory_green_status_min')); // Returns int(0)
+$redStat = intval($_product->getData('inventory_red_status_max')); // Returns int(10)
+$yellowTxt = $_product->getData('inventory_yellow_status_text');
+$redTxt = $_product->getData('inventory_red_status_text');
+$greenTxt = $_product->getData('inventory_green_status_text');
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+// Stock qty
+$qtyStock = $_product->getExtensionAttributes()->getStockItem()->getQty();
+?>
+<?php list($_defaultQty, $_canChangeQty) = $block->getDefaultValues(); ?>
+<div class="field option <?php echo ($_option->getRequired()) ? ' required': ''; ?>">
+    <h5><?php echo $block->escapeHtml($_option->getTitle()) ?></h5>
+     <div class="delivery_time delivery-<?php echo $_option->getId() ?>">
+       <?php if ($qtyStock >= $greenStat): ?>
+           <p class="select-options-green-stock"><span><?php echo $greenTxt ?></span></p>
+       <?php elseif ($qtyStock <= $redStat): ?>
+           <p class="select-options-red-stock"><span><?php echo $redTxt ?></span></p>
+       <?php else: ?>
+           <p class="select-options-yellow-stock"><span><?php echo $yellowTxt ?></span></p>
+       <?php endif; ?>
+    </div>
+    <div class="control">
+        <?php if ($block->showSingle()): ?>
+            <?php /* @escapeNotVerified */ echo $block->getSelectionTitlePrice($_selections[0]) ?>
+            <input type="hidden"
+                   class="bundle-option-<?php /* @escapeNotVerified */ echo $_option->getId() ?>  product bundle option"
+                   name="bundle_option[<?php /* @escapeNotVerified */ echo $_option->getId() ?>]"
+                   value="<?php /* @escapeNotVerified */ echo $_selections[0]->getSelectionId() ?>"/>
+        <?php else:?>
+
+
+            <select id="bundle-option-<?php /* @escapeNotVerified */ echo $_option->getId() ?>"
+                    name="bundle_option[<?php /* @escapeNotVerified */ echo $_option->getId() ?>]"
+                    data-selector="bundle_option[<?php /* @escapeNotVerified */ echo $_option->getId() ?>]"
+                    class="bundle-option-<?php /* @escapeNotVerified */ echo $_option->getId() ?> product bundle option bundle-option-select change-container-classname"
+                <?php if ($_option->getRequired()) echo 'data-validate = {required:true}' ?>>
+                <option value=""><?php /* @escapeNotVerified */ echo __('Choose a selection...') ?></option>
+                <?php foreach ($_selections as $_selection): ?>
+                    <?php
+
+                    $product = $objectManager->get('Magento\Catalog\Model\Product')->load($_selection->getProductId());
+                    $store = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore();
+                    $productImageUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'catalog/product/' . $product->getImage();
+
+                    ?>
+                    <option data-sku="<?php /* @escapeNotVerified */ echo $_selection->getData('sku') ?>" data-image="<?php echo $productImageUrl ?>" value="<?php /* @escapeNotVerified */ echo $_selection->getSelectionId() ?>"
+                        <?php if ($block->isSelected($_selection)) echo ' selected="selected"' ?>
+                        <?php if (!$_selection->isSaleable()) echo ' disabled="disabled"' ?>>
+                        <?php /* @escapeNotVerified */ echo $block->getSelectionTitlePrice($_selection, false) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+
+        <?php endif; ?>
+        <div class="nested">
+            <div class="field qty qty-holder">
+                <label class="label" for="bundle-option-<?= /* @escapeNotVerified */ $_option->getId() ?>-qty-input">
+                    <span><?= /* @escapeNotVerified */ __('Quantity') ?></span>
+                </label>
+                <div class="control">
+                    <span class="edit-qty minus btn-number" disabled="disabled" data-type="minus" data-field="bundle-option-<?= /* @escapeNotVerified */ $_option->getId() ?>-qty-input"><i class="icon hu-minus-icon"></i></span>
+                    <input <?php if (!$_canChangeQty) echo ' disabled="disabled"' ?>
+                            id="bundle-option-<?= /* @escapeNotVerified */ $_option->getId() ?>-qty-input"
+                            class="input-text qty<?php if (!$_canChangeQty) echo ' qty-disabled' ?>"
+                            type="text"
+                            name="bundle_option_qty[<?= /* @escapeNotVerified */ $_option->getId() ?>]"
+                            data-selector="bundle_option_qty[<?= /* @escapeNotVerified */ $_option->getId() ?>]"
+                            min="<?=  $_defaultQty ?>" max="100000" value="<?=  $_defaultQty ?>"/>
+                    <span class="edit-qty plus btn-number" data-type="plus" data-field="bundle-option-<?= /* @escapeNotVerified */ $_option->getId() ?>-qty-input"><i class="icon hu-plus-icon"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'domReady!'
+    ], function ($) {
+        $(document).ready(function () {
+            $('#<?php echo $_option->getId() ?>').change(function() {
+                var qty = "";
+                $( "#<?php echo $_option->getId() ?> option:selected" ).each(function () {
+                    qty += $( this ).text() + " "; //Getting the number that is selected from the qty dropdown and identify value-field by ID.
+                });
+                $('#value-field<?php  echo $_option->getId()?>').val(qty).trigger('change'); //Change the value depending on the selection (qty)
+            });
+
+
+            $('#bundle-option-<?php echo $_option->getId() ?>').change(function() {
+                var skuArray = [];
+                var imgArray = [];
+                $('select.bundle.option.bundle-option-select').each(function (index, value) {
+                    var sku = $(this).find(':selected').data('sku');
+                    var img = $(this).find(':selected').data('image');
+                    if (sku !== undefined){
+                        skuArray.push(sku);
+                        console.log(sku);
+                    }
+                    if (img !== undefined){
+                        var html = '<img src="'+img+'"/>';
+                        console.log(html);
+                        imgArray.push(img);
+                        console.log(img);
+                    }
+                });
+                if ($.isEmptyObject(imgArray)) {
+                    console.log(html);
+                }
+                if ($.isEmptyObject(skuArray)) {
+                    $('.shipping-info p.availability span.final-delivery-date').text('');
+                } else {
+                    $.ajax({
+                        url: "/delivery_date/index/index",
+                        cache: false,
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            sku: skuArray
+                        },
+                        success: function(response){
+                            $('.shipping-info p.availability span.final-delivery-date').text(response);
+                        }
+                    });
+                }
+
+                 var sku = $(this).find(":selected").data('sku');
+                 $.ajax({
+                     url: "/product/index/deliverytime",
+                     cache: false,
+                     type: "POST",
+                     dataType: "json",
+                     data: {sku: sku},
+                     success: function(html){
+                         $(".delivery-<?php echo $_option->getId() ?>").html(html.success);
+                     }
+                 });
+            });
+
+        });
+    });
+</script>

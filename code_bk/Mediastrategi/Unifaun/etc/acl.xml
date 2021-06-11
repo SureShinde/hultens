@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+
+            <!-- General backend -->
+            <resource id="Magento_Backend::admin">
+                <resource id="Mediastrategi_Unifaun::root" title="Unifaun" sortOrder="20">
+                    <resource id="Mediastrategi_Unifaun::shippingmethod" title="Shipping Methods" sortOrder="20">
+                        <resource id="Mediastrategi_Unifaun::shippingmethod_index" title="Shipping Methods Index"
+                                  sortOrder="20"/>
+                        <resource id="Mediastrategi_Unifaun::shippingmethod_add" title="Shipping Methods Add"
+                                  sortOrder="20"/>
+                        <resource id="Mediastrategi_Unifaun::shippingmethod_automation" title="Shipping Methods Automation"
+                                  sortOrder="20"/>
+                        <resource id="Mediastrategi_Unifaun::shippingmethod_edit" title="Shipping Methods Edit"
+                                  sortOrder="20">
+                            <resource id="Mediastrategi_Unifaun::shippingmethod_massEnable"
+                                      title="Shipping Methods Mass Enable" sortOrder="20"/>
+                            <resource id="Mediastrategi_Unifaun::shippingmethod_massDisable"
+                                      title="Shipping Methods Mass Disable" sortOrder="20"/>
+                            <resource id="Mediastrategi_Unifaun::shippingmethod_delete"
+                                      title="Shipping Methods Delete" sortOrder="20"/>
+                        </resource>
+                    </resource>
+                </resource>
+
+                <!-- Below part of our system configuration settings -->
+
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Mediastrategi_Unifaun::unifaun_config" title="Unifaun Online Section"/>
+                        </resource>
+                    </resource>
+                </resource>
+
+            </resource>
+        </resources>
+    </acl>
+</config>

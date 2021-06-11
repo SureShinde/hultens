@@ -1,0 +1,6 @@
+<li class="country-dropdown" data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": false, "multipleCollapsible": false, "animate":{"duration":"400"}}}'>
+    <span class="menu" data-role="collapsible"><span data-role="trigger"><span class="arrow-down"></span><?= __('Choose Country') ?></span>
+    <span class="dropdown-wrapper" data-role="content">
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('other-websites')->toHtml(); ?>
+    </span>
+</li>

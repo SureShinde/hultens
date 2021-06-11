@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <msunifaun>
+                <model>Mediastrategi\Unifaun\Model\Carrier\Shippingmethod</model>
+                <handling_type>F</handling_type>
+                <handling_action>O</handling_action>
+                <type>Unifaun</type>
+                <title>Unifaun</title>
+
+                <active>0</active>
+                <pacsoft>0</pacsoft>
+                <debug>0</debug>
+                <country_picker>0</country_picker>
+                <zipcode_picker>0</zipcode_picker>
+                <automatic_shipment_notifications>0</automatic_shipment_notifications>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <sort_order />
+
+                <credentials>
+                  <username />
+                  <password />
+                  <user_id />
+                  <quick_id />
+                </credentials>
+
+                <customs>
+                  <statno></statno>
+                  <origin_country></origin_country>
+                </customs>
+
+                <pdfconfig>
+                  <target1Media>laser-ste</target1Media>
+                  <target1XOffset>0</target1XOffset>
+                  <target1YOffset>0</target1YOffset>
+                  <target2Media>laser-a4</target2Media>
+                  <target2XOffset>0</target2XOffset>
+                  <target2YOffset>0</target2YOffset>
+                  <target3Media></target3Media>
+                  <target3XOffset>0</target3XOffset>
+                  <target3YOffset>0</target3YOffset>
+                  <target4Media></target4Media>
+                  <target4XOffset>0</target4XOffset>
+                  <target4YOffset>0</target4YOffset>
+                </pdfconfig>
+
+                <options>
+                  <id />
+                  <from />
+                  <to />
+                  <error_to />
+                  <language_code />
+                  <send_email />
+                  <sender_reference_prefix>msunifaun_</sender_reference_prefix>
+                  <parcel_contents>categories</parcel_contents>
+                  <order_reference>id</order_reference>
+                </options>
+
+            </msunifaun>
+        </carriers>
+    </default>
+</config>

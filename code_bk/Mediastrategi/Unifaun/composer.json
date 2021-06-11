@@ -1,0 +1,14 @@
+{
+    "name": "mediastrategi/unifaun",
+    "description": "Unifaun integration for Magento 2",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Mediastrategi\\Unifaun\\": ""
+        }
+    }
+}

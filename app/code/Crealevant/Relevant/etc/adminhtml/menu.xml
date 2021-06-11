@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 x-mage2(Crealevant). All rights reserved.
+ * See README.md for details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Crealevant_Relevant::settings" title="Relevant Theme"
+             translate="title"
+             module="Crealevant_Relevant"
+             parent="Crealevant_Relevant::settings"
+             sortOrder="100"
+             resource="Crealevant_Relevant::settings"/>
+        <add id="Crealevant_ProductSlider::settings_link" title="Configuration"
+             translate="title"
+             module="Crealevant_Relevant"
+             parent="Crealevant_Relevant::settings"
+             sortOrder="20"
+             resource="Crealevant_ProductSlider::settings_link"
+             action="adminhtml/system_config/edit/section/settings" />
+    </menu>
+</config>

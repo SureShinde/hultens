@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="shreeji" translate="label" sortOrder="250">
+            <label>Shreeji Infosys</label>
+        </tab>
+        <section id="unusedimage" translate="label" type="text" sortOrder="500" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Unused Images</label>
+            <tab>shreeji</tab>
+            <resource>Shreeji_Unusedimages::config_unusedimages</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Unused Images</label>
+                <field id="enabled" translate="label comment" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable</label>                    
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="time" translate="label" type="time" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Start Time</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="frequency" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Frequency</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <source_model>Magento\Cron\Model\Config\Source\Frequency</source_model>
+                    <backend_model>Shreeji\Unusedimages\Model\Config\Backend\Cron</backend_model>
+                </field>
+            </group>            
+        </section>        
+    </system>
+</config>

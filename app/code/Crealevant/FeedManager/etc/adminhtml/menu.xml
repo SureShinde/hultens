@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Crealevant_FeedManager::feed_manager" module="Crealevant_FeedManager" parent="Crealevant_Base::crealevant_base" resource="Crealevant_FeedManager::feed_manager" sortOrder="70" title="Feed Generator"/>
+		<add action="crealevant/feeds/index" id="Crealevant_FeedManager::crealevant_feeds" module="Crealevant_FeedManager" parent="Crealevant_FeedManager::feed_manager" resource="Crealevant_FeedManager::crealevant_feeds" sortOrder="10" title="Manage"/>
+	</menu>
+</config>

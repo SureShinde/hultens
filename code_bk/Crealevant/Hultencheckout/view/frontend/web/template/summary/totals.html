@@ -1,0 +1,23 @@
+<!-- ko if: isDisplayed() -->
+<div class="discount-form">
+    <!-- ko foreach: getRegion('coupon') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+</div>
+<div class="totals-right">
+    <table class="data table table-totals">
+        <caption class="table-caption" data-bind="i18n: 'Order Summary'"></caption>
+        <tbody>
+            <!-- ko foreach: getRegion('summary_discount') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+            <!-- ko foreach: getRegion('summary_grand_total') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+            <!-- ko foreach: getRegion('summary_shipping') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        </tbody>
+    </table>
+</div>
+<!-- /ko -->

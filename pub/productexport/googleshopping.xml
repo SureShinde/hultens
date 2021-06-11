@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
+  <channel>
+    <title>Googleshopping XML</title>
+    <link>https://hultens.levincitest.com/</link>
+    <item>
+      <g:id>Brafab Pembroke soffgrupp</g:id>
+      <g:title>Brafab Pembroke soffgrupp</g:title>
+      <g:description><![CDATA[<p>Pembroke loungegrupp i twistad konstrotting från Brafab.</p>
+
+<ul>
+<li>Tillverkad av handflätad, twistad konstrotting</li>
+<li>Stomme av aluminium</li>
+</ul>
+<p>I bild visar vi Pembroke gruppen tillsammans med Cizur soffborden som säljs till separat.</p>]]></g:description>
+      <g:product_type>Default Category &gt; Utemöbler &gt; Grupper &gt; Soffgrupper</g:product_type>
+      <g:brand>Brafab</g:brand>
+      <g:price>15723 SEK</g:price>
+      <g:image_link>https://cdn-media.hultens.se/catalog/product//p/e/pembroke-brafab.jpg</g:image_link>
+      <g:availability>I lager</g:availability>
+      <g:gtin></g:gtin>
+      <g:link>https://hultens.levincitest.com/brafab-pembroke-soffgrupp</g:link>
+    </item>
+    <item>
+      <g:id>Brafab Pembroke soffgrupp</g:id>
+      <g:title>Brafab Pembroke soffgrupp</g:title>
+      <g:description><![CDATA[<p>Pembroke loungegrupp i twistad konstrotting från Brafab.</p>
+
+<ul>
+<li>Tillverkad av handflätad, twistad konstrotting</li>
+<li>Stomme av aluminium</li>
+</ul>
+<p>I bild visar vi Pembroke gruppen tillsammans med Cizur soffborden som säljs till separat.</p>]]></g:description>
+      <g:product_type>Default Category &gt; Utemöbler &gt; Grupper &gt; Soffgrupper</g:product_type>
+      <g:brand>Brafab</g:brand>
+      <g:price>15723 SEK</g:price>
+      <g:image_link>https://cdn-media.hultens.se/catalog/product//p/e/pembroke-brafab.jpg</g:image_link>
+      <g:availability>I lager</g:availability>
+      <g:gtin></g:gtin>
+      <g:link>https://hultens.levincitest.com/brafab-pembroke-soffgrupp</g:link>
+    </item>
+  </channel>
+</rss>

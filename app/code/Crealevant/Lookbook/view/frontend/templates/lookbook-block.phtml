@@ -1,0 +1,8 @@
+<?php $manufacturerBlock = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('varumarken-sida')->toHtml();?>
+<div class="lookbook-wrapper container">
+    <div class="lookbook-list">
+        <?php if($manufacturerBlock !== ''): ?>
+            <?= $manufacturerBlock ?>
+        <?php endif; ?>
+    </div>
+</div>

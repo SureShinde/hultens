@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MDN Solutions
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://magento.mdnsolutions.com/license
+ *
+ * @category   Magento 2 Extensions
+ * @package    MDN_All
+ * @author     Renato Medina <medina@mdnsolutions.com>
+ * @copyright  Copyright (c) 2003 - 2016 MDN Solutions (http://www.mdnsolutions.com)
+ * @license    http://www.mdnsolutions.com/license
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    
+    <type name="Magento\Catalog\Helper\Product\View">
+        <plugin name="Crealevant_Relevant_Product_Layout_Plugin" type="Crealevant\Relevant\Plugin\LayoutPerAttributeSet" />
+    </type>
+    <type name="Magento\Checkout\Block\Checkout\AttributeMerger">
+        <plugin name="shippingAddress" type="Crealevant\Relevant\Plugin\Checkout\Block\Checkout\AttributeMerger\Plugin"/>
+    </type>
+    <type name="Crealevant\Relevant\Block\Categories">
+        <arguments>
+            <argument name="deleteorderAction" xsi:type="array">
+                <item name="context" xsi:type="string">\Magento\Framework\View\Element\Template\Context</item>
+                <item name="helper" xsi:type="string">\Magento\Catalog\Helper\Category</item>
+                <item name="flatstate" xsi:type="string">\Magento\Catalog\Model\Indexer\Category\Flat\State</item>
+                <item name="menu" xsi:type="string">\Magento\Theme\Block\Html\Topmenu</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Magento\Catalog\CategoryImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">catalog/tmp/category</argument>
+            <argument name="basePath" xsi:type="string">catalog/category</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Crealevant\Relevant\Controller\Adminhtml\Category\Thumbnail\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Magento\Catalog\CategoryImageUpload</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Catalog\Controller\Adminhtml\Category\Save">
+        <plugin name="crealevant_relevant_controller_adminhtml_category_save_plugin" type="Crealevant\Relevant\Controller\Adminhtml\Category\Save\Plugin" sortOrder="10" />
+    </type>
+
+    <!--<preference for="Mirasvit\SearchAutocomplete\Index\Magento\Catalog\Product" type="Crealevant\Relevant\Block\SearchProduct" />-->
+
+    <preference for="Magento\Swatches\Block\Product\Renderer\Configurable" type="Crealevant\Relevant\Block\Configurable"/>
+
+    <type name="Magento\Catalog\Controller\Category\View">
+        <plugin name="CzoneTech_AjaxifiedCatalog_Category_View" type="Crealevant\Relevant\Plugin\Category\View"></plugin>
+    </type>
+    <type name="Magento\CatalogSearch\Controller\Result\Index">
+        <plugin name="Crealevant_Relevant_CatalogSearch_Result" type="Crealevant\Relevant\Plugin\CatalogSearch\Result"></plugin>
+    </type>
+    <type name="Magento\CatalogSearch\Controller\Advanced\Result">
+        <plugin name="Crealevant_Relevant_CatalogSearch_Advanced" type="Crealevant\Relevant\Plugin\CatalogSearch\Advanced"></plugin>
+    </type>
+    <type name="Magento\Checkout\Block\Cart\Sidebar">
+        <plugin name="settingsplugin" type="Crealevant\Relevant\Plugin\Cart\ConfigPlugin" sortOrder="20" />
+    </type>
+    <preference for="Crealevant\Relevant\Model\PriceDecimal\ConfigInterface" type="Crealevant\Relevant\Model\PriceDecimal\Config" />
+    <!--<preference for="Magento\Framework\Locale\CurrencyInterface" type="Magento\Framework\Locale\Currency" />-->
+    <preference for="Magento\Framework\CurrencyInterface" type="Crealevant\Relevant\Model\PriceDecimal\Currency" />
+
+    <type name="Magento\Framework\Pricing\PriceCurrencyInterface">
+        <plugin name="crealevant_price_decimal_price_currency"
+                type="Crealevant\Relevant\Model\PriceDecimal\Plugin\PriceCurrency"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+
+    <type name="Magento\Framework\Locale\FormatInterface">
+        <plugin name="crealevant_price_decimal_local_format"
+                type="Crealevant\Relevant\Model\PriceDecimal\Plugin\Local\Format"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+
+    <type name="Magento\Checkout\CustomerData\Cart">
+        <plugin name="Crealevant_Relevant_Add_Taxtotal_To_Cart" type="Crealevant\Relevant\Plugin\CustomerDataCart" />
+    </type>
+    <virtualType name="BackgroundImageUploader" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">cms/background/tmp</argument>
+            <argument name="basePath" xsi:type="string">cms/background/image</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Crealevant\Relevant\Controller\Adminhtml\Backgroundimage\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">BackgroundImageUploader</argument>
+        </arguments>
+    </type>
+        <preference for="Magento\LayeredNavigation\Block\Navigation\FilterRenderer" type="Crealevant\Relevant\Block\FilterRenderer" />
+        <preference for="MageWorx\OptionFeatures\Plugin\AroundOptionValuesHtml" type="Crealevant\Relevant\Block\CustomOptionQuantity" />
+
+</config>

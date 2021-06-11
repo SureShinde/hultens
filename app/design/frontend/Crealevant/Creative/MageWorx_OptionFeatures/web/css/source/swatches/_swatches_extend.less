@@ -1,0 +1,183 @@
+//
+//  General Style
+//  _____________________________________________
+& when (@media-common = true) {
+  // General Swatches
+  .catalog-product-view{
+    .page-wrapper{
+      .columns{
+        .column{
+          &.main{
+            .product-info-main{
+              // General Mageworx Swatch Container Option
+              .mageworx-swatch-container{
+                position: relative;
+                padding: 0px 7px 0 0;
+                border:0;
+                // General Mageworx Swatch Container Option Popup Information
+                .option-popup-information{
+                  display: none;
+                  z-index: 3;
+                  box-sizing: border-box;
+                  background: #fff;
+                  align-items: center;
+                  box-shadow: 0 0 5px rgba(33, 33, 33, 0.5);
+                  outline:0px;
+                  border:4px solid #333;
+                  transition: all ease-in 0.6s;
+                  pointer-events: none;
+                  text-align: center;
+                  // General Mageworx Swatch Container Option Popup Information Image
+                  .image{
+                    width:100%!important;
+                    img{
+                      width: 100%;
+                    }
+                  }
+                  // General Mageworx Swatch Container Option Popup Information Title
+                  .title{
+                    padding:5px 10px 0px 10px;
+                    color: rgb(40, 40, 40);
+                    font-size: 1.5em;
+                  }
+                  // General Mageworx Swatch Container Option Popup Information Price
+                  .price{
+                    color: rgb(40, 40, 40);
+                    font-size: 13px;
+                    font-weight: 500;
+                    padding: 5px 10px 0px 10px;
+                  }
+                  .special-price{
+                    color:#BA0606;
+                    font-size: 13px;
+                    font-weight: 500;
+                  }
+                  .old-price{
+                    color:#9e9e9e;
+                    font-size: 13px;
+                    font-weight: 500;
+                    text-decoration:line-through;
+                  }
+                  // General Mageworx Swatch Container Option Popup Information Delivery Time
+                  .delivery-time{
+                    padding: 5px 10px 10px 10px;
+                    color: rgb(40, 40, 40);
+                    font-size: 13px;
+                  }
+                }
+                // General Mageworx Swatch Container Option
+                .mageworx-swatch-option{
+                  text-align: center;
+                  // General Mageworx Swatch Container Option Image
+                  &.image{
+                    z-index:1;
+                    border:0;
+                    &.selected{
+                      outline:0px;
+                      border:4px solid #333;
+                    }
+                    &:not(.disabled):hover{
+                      outline: 0px; // Override Standard Value From swatches.css
+                      border: 0px;
+                    }
+                  }
+                  // General Mageworx Swatch Container Option Color
+                  &.color{
+                    z-index:1;
+                    &.selected{
+                      outline:0px;
+                      border:4px solid #333;
+                    }
+                    &:not(.disabled):hover{
+                      outline: 0px; // Override Standard Value From swatches.css
+                      border: 0px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+//
+//  Tablet
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  // Tablet Swatches
+  .catalog-product-view{
+    .page-wrapper{
+      .columns{
+        .column{
+          &.main{
+            .product-info-main{
+              // Tablet Mageworx Swatch Container Option
+              .mageworx-swatch-container{
+
+                &:hover{
+                  .option-popup-information{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    display: flex;
+                    flex-direction: column;
+                  }
+                }
+                // Tablet Mageworx Swatch Container Option Popup Information
+                .option-popup-information{
+                  display: none;
+                  margin: 0px 7px 0px 0px;
+                }
+                // Tablet Mageworx Swatch Container Option
+                .mageworx-swatch-option{
+                  text-align: center;
+
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  // Mobile Swatches
+  .catalog-product-view{
+    .page-wrapper{
+      .columns{
+        .column{
+          &.main{
+            .product-info-main{
+              // Mobile Mageworx Swatch Container Option
+              .mageworx-swatch-container{
+                &:hover{
+                  outline:0px;
+                }
+                // Mobile Mageworx Swatch Container Option Popup Information
+                .option-popup-information{
+                  display: none;
+                  position:relative;
+                  top: -150px;
+                  margin-bottom: -150px;
+                }
+                // Mobile Mageworx Swatch Container Option
+                .mageworx-swatch-option{
+                  text-align: center;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

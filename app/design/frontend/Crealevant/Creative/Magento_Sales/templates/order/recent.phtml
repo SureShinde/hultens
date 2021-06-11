@@ -1,0 +1,81 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<div class="block block-dashboard-orders">
+    <?php
+    $_orders = $block->getOrders();
+    $count = count($_orders);
+    ?>
+    <div class="block-title order">
+        <strong><?= /* @escapeNotVerified */ __('Recent Orders') ?></strong>
+        <?php if ($count > 0): ?>
+            <a class="action view" href="<?= /* @escapeNotVerified */ $block->getUrl('sales/order/history') ?>">
+                <span><?= /* @escapeNotVerified */ __('View All') ?></span>
+            </a>
+        <?php endif; ?>
+    </div>
+    <div class="block-content">
+        <?= $block->getChildHtml() ?>
+        <?php if ($count > 0): ?>
+            <div class="orders-recent order-wrapper">
+                <h4 class="table-caption"><?= /* @escapeNotVerified */ __('Recent Orders') ?></h4>
+                <div class="data table table-order-items recent" id="my-orders-table">
+                    <?php foreach ($_orders as $_order): ?>
+                        <div class="item order-content">
+                            <div>
+                                <strong scope="col" class="col id"><?= /* @escapeNotVerified */ __('Order #') ?></strong>
+                                <span data-strong="<?= $block->escapeHtml(__('Order #')) ?>" class="col id"><?= /* @escapeNotVerified */ $_order->getRealOrderId() ?></span>
+                            </div> <!-- Order -->
+
+                            <div>
+                                <strong scope="col" class="col date"><?= /* @escapeNotVerified */ __('Date') ?></strong>
+                                <span data-strong="<?= $block->escapeHtml(__('Date')) ?>" class="col date"><?= /* @escapeNotVerified */ $block->formatDate($_order->getCreatedAt()) ?></span>
+                            </div> <!-- Date -->
+
+                            <div>
+                                <strong scope="col" class="col shipping"><?= /* @escapeNotVerified */ __('Ship To') ?></strong>
+                                <span data-strong="<?= $block->escapeHtml(__('Ship To')) ?>" class="col shipping"><?= $_order->getShippingAddress() ? $block->escapeHtml($_order->getShippingAddress()->getName()) : '&nbsp;' ?></span>
+                            </div> <!-- Ship To -->
+
+                            <div>
+                            <strong scope="col" class="col total"><?= /* @escapeNotVerified */ __('Order Total') ?></strong>
+                            <span data-strong="<?= $block->escapeHtml(__('Order Total')) ?>" class="col total"><?= /* @escapeNotVerified */ $_order->formatPrice($_order->getGrandTotal()) ?></span>
+                            </div> <!-- Order Total -->
+
+                            <div>
+                                <strong scope="col" class="col status"><?= /* @escapeNotVerified */ __('Status') ?></strong>
+                                <span data-strong="<?= $block->escapeHtml(__('Status')) ?>" class="col status"><?= /* @escapeNotVerified */ $_order->getStatusLabel() ?></span>
+                            </div> <!-- Status -->
+
+                            <div>
+                                <strong scope="col" class="col actions"><?= /* @escapeNotVerified */ __('Action') ?></strong>
+                                <span data-strong="<?= $block->escapeHtml(__('Actions')) ?>" class="col actions">
+                                    <a href="<?= /* @escapeNotVerified */ $block->getViewUrl($_order) ?>" class="action view">
+                                    <span><?= /* @escapeNotVerified */ __('View Order') ?></span>
+                                    </a>
+                                <?php if ($this->helper('Magento\Sales\Helper\Reorder')->canReorder($_order->getEntityId())) : ?>
+                                    <a href="#" data-post='<?php /* @escapeNotVerified */ echo
+                                    $this->helper(\Magento\Framework\Data\Helper\PostHelper::class)
+                                        ->getPostData($block->getReorderUrl($_order))
+                                    ?>' class="action order">
+                                        <span><?= /* @escapeNotVerified */ __('Reorder') ?></span>
+                                    </a>
+                                <?php endif ?>
+                                </span>
+                            </div> <!-- Action -->
+
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="message info empty"><span><?= /* @escapeNotVerified */ __('You have placed no orders.') ?></span></div>
+        <?php endif; ?>
+    </div>
+</div>

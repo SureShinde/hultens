@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>        
+        <add id="Shreeji_Unusedimages::find_unused_images" title="Manage Unused Images" translate="title" module="Shreeji_Unusedimages" sortOrder="40" parent="Magento_Catalog::inventory" action="unusedimages/manage/" resource="Shreeji_Unusedimages::unusedimages"/>        
+    </menu>
+</config>

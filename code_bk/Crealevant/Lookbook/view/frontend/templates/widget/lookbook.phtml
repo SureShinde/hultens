@@ -1,0 +1,16 @@
+<?php $lookbook = $this->getLookbook(); ?>
+<?php if($lookbook): ?>
+    <div class="lookbook">
+        <div class="lookbook-container">
+            <div class="lookbook-box">
+                <div class="lookbook-image">
+                    <img src="<?php echo $this->getImageUrl($lookbook) ?>" alt="<?php $lookbook->getName() ?>" class="lookbook-image"/>
+                </div>
+                <div class="lookbook-title-wrapper">
+                    <a class="lookbook-title" href="<?= $lookbook->getData('link') ?>"><?php echo $lookbook->getName() ?></a>
+                </div>
+                <?php echo $this->getPinHtml($lookbook) ?>
+            </div>
+        </div>
+    </div>
+<?php endif ?>

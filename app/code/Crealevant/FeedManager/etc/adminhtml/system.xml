@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="crealevant" sortOrder="766" translate="label">
+			<label>Crealevant</label>
+		</tab>
+		<section id="feed_manage" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+			<label>Feed Manage</label>
+			<tab>crealevant</tab>
+			<resource>Crealevant_FeedManager::config_crealevant_feedmanager</resource>
+			<group id="options" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+				<label>Cron Settings</label>
+				<field id="cron_time" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+					<label>Frequency</label>
+					<comment/>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

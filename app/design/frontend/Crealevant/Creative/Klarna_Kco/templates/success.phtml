@@ -1,0 +1,38 @@
+<?php
+/**
+ * This file is part of the Klarna KCO module
+ *
+ * (c) Klarna Bank AB (publ)
+ *
+ * For the full copyright and license information, please view the NOTICE
+ * and LICENSE files that were distributed with this source code.
+ */
+
+?>
+<?php /** @var $block \Klarna\Kco\Block\Success */ ?>
+<?php $orderRevenue = $block->getOrderRevenue() ?>
+<script>(function (w, d, t, r, u) {
+        var f, n, i;
+        w[u] = w[u] || [], f = function () {
+            var o = {ti: "56165403"};
+            o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad")
+        }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function () {
+            var s = this.readyState;
+            s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null)
+        }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i)
+    })(window, document, "script", "//bat.bing.com/bat.js", "uetq");
+    window.uetq = window.uetq || [];
+    window.uetq.push('event', '', {
+            'revenue_value': '<?= $orderRevenue['revenue'] ?>',
+            'currency': '<?= $orderRevenue['currency'] ?>'
+        }
+    );
+</script>
+<div id="klarna_checkout_success">
+    <div class="prisjakt-top-block">
+        <a href="https://instore.prisjakt.nu/etailer_reviews/form/purchase.php?ftgid=12685&code=e5408746760be0a0f14c9df1ca73fefb"
+           target="_blank">
+            <img src="<?php echo $block->getUrl("pub/media/wysiwyg/") ?>prisjakt-top.jpg"/></a>
+    </div>
+    <?= $block->getKlarnaSuccessHtml(); ?>
+</div>

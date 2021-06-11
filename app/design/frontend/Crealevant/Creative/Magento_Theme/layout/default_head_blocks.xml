@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- Google Fonts -->
+        <link rel="stylesheet" type="text/css" src="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600" src_type="url" /> <!-- Dont add http or https by only use "//" it will remove error for google font -->
+        <css src="Ves_All::lib/bootstrap/css/bootstrap-tiny.css" />
+        <css src="Ves_All::lib/owl.carousel/assets/owl.carousel.css" />
+        <css src="Ves_All::css/font-awesome.min.css" />
+        <css src="Ves_Megamenu::css/animate.min.css" />
+        <css src="Ves_Megamenu::css/bootstrap-tiny.css" />
+        <css src="Ves_Megamenu::css/carousel.css" />
+        <!-- Enable the code to fix directly style css for custom template if it dont extend from base magento 2 theme -->
+
+        <css src="Ves_Megamenu::css/styles-m.css"/>
+        <css src="Ves_Megamenu::css/styles-l.css" media="screen and (min-width: 768px)"/>
+    </head>
+</page>

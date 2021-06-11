@@ -1,0 +1,49 @@
+<?php $pageRequest = $this->getRequest()->getFullActionName();
+      $campaignBanner = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('top-head-kampanjer')->toHtml();
+?>
+
+<?php if($pageRequest !== 'cms_index_index'): ?>
+    <?php if($block->isCmsImage()): ?>
+    <div class="wrapper-cms <?php if($campaignBanner){ echo 'campaign-active';}?>">
+        <div class="cms-header-image" style="background-image:url( <?php echo $block->getCmsImage(); ?>);">
+            <div class="content">
+                <?php if($block->getPageTitle()): ?>
+                    <div class="cms-background-title">
+                        <h1><?= $block->getPageTitle() ?></h1>
+                    </div><!-- CMS Background Title -->
+                <?php endif; ?>
+                <?php if($block->cmsBkgDescription()): ?>
+                    <div class="cms-background-description">
+                        <div><?= $block->cmsBkgDescription() ?></div>
+                    </div><!-- CMS Background Description -->
+                <?php endif; ?>
+                <?php if($block->cmsBkgLink()): ?>
+                    <div class="cms-background-link">
+                        <span class="scroll-to-desc"><?= $block->cmsBkgLink() ?></span>
+                    </div><!-- CMS Background Link -->
+                <?php endif; ?>
+            </div><!-- Content -->
+        </div>
+    </div>
+    <?php elseif(!$block->isCmsImage() && $block->getPageTitle()): ?>
+    <div class="wrapper-cms">
+        <div class="cms-header-image empty-bkg">
+            <div class="content">
+                <div class="cms-background-title">
+                    <h1><?= $block->getPageTitle() ?></h1>
+                </div><!-- CNS Background Title -->
+                <?php if($block->cmsBkgDescription()): ?>
+                    <div class="cms-background-description">
+                        <div><?= $block->cmsBkgDescription() ?></div>
+                    </div><!-- CMS Background Description -->
+                <?php endif; ?>
+                <?php if($block->cmsBkgLink()): ?>
+                    <div class="cms-background-link">
+                        <span class="scroll-to-desc"><?= $block->cmsBkgLink() ?></span>
+                    </div><!-- CMS Background Link -->
+                <?php endif; ?>
+            </div><!-- Content -->
+        </div>
+    </div>
+    <?php endif; ?>
+<?php endif; // ENDIF Page Request?>

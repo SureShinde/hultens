@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Crealevant_CleanVarnishCache::system_clean_varnish_cache" title="Clean Varnish Cache" translate="title" module="Crealevant_CleanVarnishCache"
+             sortOrder="20" parent="Magento_Backend::system_tools" action="varnish_cache/varnishcache/index"
+             resource="Crealevant_CleanVarnishCache::cache"/>
+    </menu>
+</config>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove Elements -->
+        <referenceBlock name="product.info.price.addto" remove="true" />
+        <referenceBlock name="customize.button" remove="true"/>
+        <referenceBlock name="bundle.back.button" remove="true"/>
+        <referenceBlock name="shipping.delivery" remove="true"/> <!-- Requierd for bundle.shipping.delivery to work without print 2 blocks -->
+        <referenceBlock name="bundle.product.view.options.notice" remove="true" />
+        <!-- Move Elements -->
+        <move element="product.info.options.wrapper" destination="bundle.product.options.wrapper" before="-" />
+        <move element="product.info.options.wrapper.bottom" destination="bundle.product.options.wrapper" after="product.info.options.wrapper" />
+        <move element="product.price.tier" destination="product.info.options.wrapper.bottom" before="-" />
+        <move element="config.price" destination="bundle.summary" before="-"/>
+        <move element="bundle.options.container" destination="product.info.main" before="product.info.price" />
+        <!-- Add/Change position of blocks -->
+        <referenceContainer name="product.section.right">
+            <block class="Magento\Catalog\Block\Product\View" name="shipping.delivery.bundle" template="Magento_Catalog::product/view/shipping_delivery.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,29 @@
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        $(function () {
+            var swatchContainer = $('.mageworx-swatch-container');
+            var width = $(window).width();
+            // If width is mobile screen.
+            if(width < 768 ) {
+                $(swatchContainer).on('click', function () {
+                        
+                    var toggleContent = $(this).children('.option-popup-information');
+                    var optionWidth = $(this).children('.mageworx-swatch-option').width()+2;
+                    var optionPopupInformation = $('.option-popup-information');
+
+                    var isVisible = toggleContent.is(":visible");
+                    // Hide All   Items
+                    optionPopupInformation.fadeOut('300');
+
+
+                    // If Current Toggle Content isn't showing, show it
+                    if (!isVisible) {
+                        toggleContent.css('max-width', optionWidth).fadeIn('300');
+                    }
+                });
+            }
+        });
+    });
+</script>

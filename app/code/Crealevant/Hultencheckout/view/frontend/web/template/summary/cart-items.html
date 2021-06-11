@@ -1,0 +1,39 @@
+<div class="content minicart-items" data-role="content">
+    <div class="minicart-items-wrapper overflowed">
+        <ol class="minicart-items">
+            <table class="table" border="0">
+                <thead>
+                <tr>
+                    <th class="product-name">
+                        <!-- ko i18n: 'Product' --><!-- /ko -->
+                    </th>
+                    <th class="hidden-xs text-center">
+                        <!-- ko i18n: 'Qty' --><!-- /ko -->
+                    </th>
+                    <th class="text-right hidden-xs">
+                        <!-- ko i18n: 'Price' --><!-- /ko -->
+                    </th>
+                    <th class="text-right hidden-xs">
+                        <!-- ko i18n: 'Total price' --><!-- /ko -->
+                    </th>
+                    <th class="text-right hidden-xs"></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <!-- ko foreach: items() -->
+                        <!-- ko foreach: $parent.elems() -->
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                        <!-- /ko -->
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </ol>
+    </div>
+</div>
+<div class="actions-toolbar" if="maxCartItemsToDisplay < getCartLineItemsCount()">
+    <div class="secondary">
+        <a class="action viewcart" data-bind="attr: {href: cartUrl}">
+            <span data-bind="i18n: 'View and Edit Cart'"></span>
+        </a>
+    </div>
+</div>

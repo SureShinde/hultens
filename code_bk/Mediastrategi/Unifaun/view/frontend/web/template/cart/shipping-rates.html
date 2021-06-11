@@ -1,0 +1,85 @@
+<!-- ko if: showPicker -->
+<div class="custom-region-selector" data-bind="css: { 'zip-code-selector': showZipCodePicker, 'country-selector': showCountryPicker }, if: showPicker">
+  <input tabindex="2" type="button" class="action" data-bind="click: searchPostCode, value: $t('Get shipping options')" />
+  <div class="wrapper">
+    <!-- ko if: showCountryPicker -->
+    <select class="country-selector" data-bind="enable: true, options: showCountryPickerList, optionsText: 'label', optionsValue: 'value', value: customCountry, valueAllowUnset: true"></select>
+    <!-- /ko -->
+    <!-- ko if: showZipCodePicker -->
+    <input tabindex="1" type="text" class="zip-code-selector" name="zip_code_select" data-bind="attr: { placeholder: $t('Enter your zip code..')}, event: { keyup: searchKeyUp }, value: customPostCode" />
+    <!-- /ko -->
+  </div>
+</div>
+<!-- /ko -->
+
+<form id="co-shipping-method-form" class="msunifaun-table-cart-shipping-rates" data-bind="blockLoader: isLoading, visible: isVisible()">
+  <p class="field note" data-bind="visible: (shippingRates().length <= 0 || shippingRateGroups().length <= 0)">
+    <!-- ko text: $t('Sorry, no quotes are available for this order at this time')--><!-- /ko -->
+  </p>
+  <fieldset class="fieldset rate" data-bind="visible: (shippingRates().length > 0)">
+    <ul class="items methods" data-bind="foreach: { data:shippingRateGroups, as: 'group' }">
+      <li class="item-options" data-bind="foreach: { data:$parent.getRatesForGroup(group), as: 'method' }">
+        <div data-bind="attr: { class: method.extension_attributes && method.extension_attributes.msunifaun_carrier ? 'row msunifaun-carrier-' + method.extension_attributes.msunifaun_carrier + ' ' + method.carrier_code + ' ' + method.method_code : 'row msunifaun-no-carrier' + ' ' + method.carrier_code + ' ' + method.method_code }, css: { 'field choice item': available, 'message error': !available, selected: $parents[1].selectedShippingMethod() == method.carrier_code + '_' + method.method_code }">
+          <div class="shipping-method-wrapper">
+
+            <!-- ko ifnot: (available) -->
+            <div data-bind="text: error_message"></div>
+            <!-- /ko -->
+
+            <!-- ko if: (available) -->
+            <input type="radio"
+                   class="radio"
+                   data-bind="
+                              attr: {
+                              value: carrier_code + '_' + method_code,
+                              id: 's_method_' + carrier_code + '_' + method_code
+                              },
+                              checked: $parents[1].selectedShippingMethod,
+                              click: $parents[1].selectShippingMethod,
+                              enable: true
+                              "/>
+            <label class="label" data-bind="attr: {for: 's_method_' + carrier_code + '_' + method_code}">
+              <span class="carrier-title" data-bind="if: group"><!-- ko text: group --><!-- /ko --></span>
+              <span class="method-title" data-bind="if: $data.method_title"><!--ko text: $data.method_title --><!-- /ko--></span>
+              <each args="element.getRegion('price')" render="" />
+            </label>
+
+            <div class="extra-wrapper">
+
+              <label class="msunifaun_agents" data-bind="if: method.msunifaun_agents">
+                <select data-bind="enable: true, options: method.msunifaun_agents, optionsText: 'name', value: method.msunifaun_agent, optionsCaption: $t('Choose..'), valueAllowUnset: true"></select>
+              </label>
+
+              <div class="msunifaun_addons" data-bind="css: method.msunifaun_agents ? 'with-agents' : 'without-agents', if: method.msunifaun_addons">
+                <ul>
+                  <li data-bind="foreach: { data: method.msunifaun_addons, as: 'addon' }">
+                    <label>
+                      <input type="checkbox" value="1" data-bind="checked: addon.selected, enable: true" />
+                      <span class="description" data-bind="text: addon.description"></span>
+                      <!-- ko if: addon.priceDescription -->
+                      <span class="price" data-bind="text: '(' + addon.priceDescription + ')'"></span>
+                      <!-- /ko -->
+                      <!-- ko if: !addon.priceDescription && addon.price -->
+                      <span class="price" data-bind="text: '(+' + addon.price + ')'"></span>
+                      <!-- /ko -->
+                    </label>
+
+                    <!-- ko if: addon.fields && addon.fields.length && addon.selected -->
+                    <fieldset>
+                      <label data-bind="foreach: { data: addon.fields, as: 'field' }">
+                        <input class="input-text" data-bind="attr: { placeholder: field.description, required: field.mandatory ? 'required' : null, type: (field.type == 'EMAIL' ? 'email' : 'text') }, enable: true, value: field.value" />
+                      </label>
+                    </fieldset>
+                    <!-- /ko -->
+                  </li>
+                </ul>
+              </div><!-- /.msunifaun_addons -->
+            </div><!-- /.extra-wrapper -->
+
+            <!-- /ko -->
+          </div><!-- ./shipping-method-wrapper -->
+        </div>
+      </li>
+    </ul>
+  </fieldset>
+</form>

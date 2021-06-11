@@ -1,0 +1,123 @@
+#msunifaun_shippingmethod_form {
+    #addons-fieldset {
+        display: none;
+        margin-bottom: 3rem;
+        .admin__field {
+            margin-top: 0;
+            margin-bottom: 0;
+            input[type="checkbox"] {
+                margin-top: 9px;
+            }
+        }
+        fieldset {
+            border: 0;
+            border-top: 0.1rem solid #dddddd;
+            border-bottom: 0.1rem solid #dddddd;
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            position: relative;
+            legend {
+                font-weight: bold;
+            }
+            label {
+                font-size: 11px;
+            }
+            small {
+                font-size: 10px;
+            }
+            input[type="checkbox"] {
+                margin-right: 8px;
+            }
+            .wrapper {
+                overflow: hidden;
+                &.element-checkbox {
+                    margin-top: 20px;
+                }
+            }
+            .dynamic-value {
+                float: right;
+                margin: 19px 0 0 10px;
+                height: 33px;
+                font-size: 10px;
+            }
+            & > div {
+                clear: both;
+                overflow: hidden;
+            }
+        }
+    }
+    #extra-fieldset {
+        margin-top: 20px;
+        textarea {
+            background-color: #fff;
+            border: 1px solid #adadad;
+            padding: 20px;
+            color: #ef672f;
+            font-family: Consolas, Monaco, Menlo, Fixedsys, monospace;
+            min-height: 100px;
+            min-width: 500px;
+            font-size: 12px;
+        }
+        span {
+            display: block;
+        }
+    }
+}
+.shippingmethod_options {
+    .table-wrapper {
+        overflow: auto;
+        background-color: #fff;
+    }
+    table {
+        width: 100%;
+        table-layout: fixed;
+    }
+    table th {
+        border: 0;
+    }
+    table input {
+        width: 100%;
+        background-color: transparent;
+        padding: 0;
+        border: 1px #e3e3e3 solid;
+        text-align: center;
+    }
+    table button {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .buttons {
+        margin-top: 10px;
+    }
+}
+.order-view-unifaun {
+    .general {
+        margin: 0 4rem 0 0;
+    }
+    .add {
+        margin-top: 6rem;
+    }
+    .actions {
+        margin-top: 1.7rem;
+    }
+    fieldset {
+        border: 1px #ccc solid;
+        margin-bottom: 3rem;
+        legend {
+            color: #aaa;
+        }
+    }
+}
+.admin__menu #menu-mediastrategi-unifaun.level-0 > a::before {
+    content: "\E63F";
+}
+#msunifaun_log_output {
+    pre {
+        height: 200px;
+        overflow: auto;
+        border: 1px #ccc solid;
+        padding: 10px;
+    }
+}

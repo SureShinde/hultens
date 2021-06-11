@@ -1,0 +1,121 @@
+<tr>
+    <td>
+        <div data-bind="attr: {'class': 'product-row-info'}">
+            <span class="product-image-wrapper">
+                <img data-bind="attr: {'src': getItemThumbnail($parent.item_id)}">
+            </span>
+            <div class="detail-wrapper">
+                <span data-bind="text: $parent.name" class="product-name"></span>
+                <!-- ko if: (getShippingInfo($parent.item_id)) -->
+                <span class="shipping-info" data-bind="html: getShippingInfo($parent.item_id)"></span>
+                <!-- /ko -->
+            </div>
+        </div>
+        <!-- ko if: (typeof (items = getItems($parent.item_id)) === 'object') -->
+            <!-- ko foreach: {data: items, as: 'item' } -->
+                <!-- ko if: (typeof item.id !== 'undefined' )-->
+                    <div data-bind="attr: {'class': 'product-item-info'}">
+                        <span class="product-image-wrapper">
+                            <img data-bind="attr: {'src': item.image}">
+                        </span>
+                        <div class="detail-wrapper">
+                            <span data-bind="text: item.name" class="product-name"></span>
+                            <!-- ko if: ((typeof item.shipping_info !== 'undefined' )) -->
+                            <span class="shipping-info" data-bind="html: item.shipping_info"></span>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                <!-- /ko -->
+            <!-- /ko -->
+        <!-- /ko -->
+    </td>
+    <td class="qtyp col-md-3">
+        <div class="details-qty">
+            <div class="input-group">
+                <div class="wrapperbtn">
+                    <button id="minus-button" class="qty-button" data-bind="click: function(data, event) { incrementDown($parent, event)},enable: function(data, event) { canIncrement()}">
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 44.238 44.238" style="enable-background:new 0 0 44.238 44.238;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M22.119,44.237C9.922,44.237,0,34.315,0,22.12C0,9.924,9.922,0.001,22.119,0.001S44.238,9.923,44.238,22.12
+                                        S34.316,44.237,22.119,44.237z M22.119,1.501C10.75,1.501,1.5,10.751,1.5,22.12s9.25,20.619,20.619,20.619
+                                        s20.619-9.25,20.619-20.619S33.488,1.501,22.119,1.501z"/>
+                                    <g>
+                                        <path d="M31.434,22.869H12.805c-0.414,0-0.75-0.336-0.75-0.75s0.336-0.75,0.75-0.75h18.628c0.414,0,0.75,0.336,0.75,0.75
+                                            S31.848,22.869,31.434,22.869z"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                     </button>
+                </div>
+                <input class="value form-control input-lg input-cart" data-bind="value: $parent.qty" disabled />
+                <div class="wrapperbtn">
+                    <button id="plus-button" class="qty-button" data-bind="click: function(data, event) { incrementUp($parent, event)},enable: function(data, event) { canIncrement()}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 52 52">
+                            <path d="M26 0C11.664 0 0 11.663 0 26s11.664 26 26 26 26-11.663 26-26S40.336 0 26 0zm0 50C12.767 50 2 39.233 2 26S12.767 2 26 2s24 10.767 24 24-10.767 24-24 24z"/>
+                            <path d="M38.5 25H27V14c0-.553-.448-1-1-1s-1 .447-1 1v11H13.5c-.552 0-1 .447-1 1s.448 1 1 1H25v12c0 .553.448 1 1 1s1-.447 1-1V27h11.5c.552 0 1-.447 1-1s-.448-1-1-1z"/>
+                        </svg>
+                     </button>
+                </div>
+            </div>
+        </div>
+        <!-- ko if: (typeof (items = getItems($parent.item_id)) === 'object') -->
+            <!-- ko foreach: {data: items, as: 'item' } -->
+                <!-- ko if: (typeof item.id !== 'undefined' )-->
+                    <div class="details-qty bundle-selection">
+                        <div class="input-group">
+                            <div class="wrapperbtn">
+                                <button class="qty-button" data-bind="click: function(data, event) { $parent.bundleSelectionIncrementDown(item, event)},enable: function(data, event) { $parent.canIncrement()}">
+                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 44.238 44.238" style="enable-background:new 0 0 44.238 44.238;" xml:space="preserve">
+                                        <g>
+                                            <g>
+                                                <path d="M22.119,44.237C9.922,44.237,0,34.315,0,22.12C0,9.924,9.922,0.001,22.119,0.001S44.238,9.923,44.238,22.12
+                                                    S34.316,44.237,22.119,44.237z M22.119,1.501C10.75,1.501,1.5,10.751,1.5,22.12s9.25,20.619,20.619,20.619
+                                                    s20.619-9.25,20.619-20.619S33.488,1.501,22.119,1.501z"/>
+                                                <g>
+                                                    <path d="M31.434,22.869H12.805c-0.414,0-0.75-0.336-0.75-0.75s0.336-0.75,0.75-0.75h18.628c0.414,0,0.75,0.336,0.75,0.75
+                                                        S31.848,22.869,31.434,22.869z"/>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
+                            <input class="value form-control input-lg input-cart" data-bind="value: item.qty" disabled />
+                            <div class="wrapperbtn">
+                                <button class="qty-button" data-bind="click: function(data, event) { $parent.bundleSelectionIncrementUp(item, event)},enable: function(data, event) { $parent.canIncrement()}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 52 52">
+                                        <path d="M26 0C11.664 0 0 11.663 0 26s11.664 26 26 26 26-11.663 26-26S40.336 0 26 0zm0 50C12.767 50 2 39.233 2 26S12.767 2 26 2s24 10.767 24 24-10.767 24-24 24z"/>
+                                        <path d="M38.5 25H27V14c0-.553-.448-1-1-1s-1 .447-1 1v11H13.5c-.552 0-1 .447-1 1s.448 1 1 1H25v12c0 .553.448 1 1 1s1-.447 1-1V27h11.5c.552 0 1-.447 1-1s-.448-1-1-1z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                <!-- /ko -->
+            <!-- /ko -->
+        <!-- /ko -->
+    </td>
+    <td data-bind="attr: {'class': 'price'}"><span data-bind="text: getFormattedPrice($parent.base_price_incl_tax)"></span></td>
+
+    <!-- ko if: checkIfDiscounted($parent) -->
+    <td data-bind="attr: {'class': 'price'}">
+        <span style="font-size: 12px; text-decoration: line-through; color: #9e9e9e;" data-bind="text: getFormattedPrice(getOriginalPrice($parent))"></span>
+        <span style="color: #DE2C23;" data-bind="text: getFormattedPrice($parent.row_total_incl_tax)"></span>
+    </td>
+    <!-- /ko -->
+    <!-- ko ifnot: checkIfDiscounted($parent) -->
+    <td data-bind="attr: {'class': 'price'}"><span data-bind="text: getFormattedPrice($parent.row_total_incl_tax)"></span></td>
+    <!-- /ko -->
+    
+    <td>
+        <button data-bind="attr: {
+            id: 'delete-cart-item',
+            'data-cart-item': 0,
+            title: 'Delete'
+            }, click: function(){removeItem($parent.item_id);}" class="delete-cart-item delete-cart-position" title="Ta bort">
+            <span class="ion-trash-a"></span>
+        </button>
+    </td>
+</tr>

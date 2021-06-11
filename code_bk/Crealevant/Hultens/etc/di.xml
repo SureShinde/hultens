@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="TIG\PersistentShoppingCart\Helper\Data">
+        <plugin name="Crealevant_Hultens::tig_PersistentShoppingCart_Helper_Data"
+                type="Crealevant\Hultens\Plugin\PersistentShoppingCart\Helper\Data" sortOrder="1" />
+    </type>
+    <preference for="Trustpilot\Reviews\Helper\Data" type="Crealevant\Hultens\Override\Helper\Data"/>
+    <preference for="Trustpilot\Reviews\Block\Trustbox" type="Crealevant\Hultens\Override\Block\Trustbox"/>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="crealevant_hultens_import_ean_code" xsi:type="object">Crealevant\Hultens\Console\ImportEanCode</item>
+                <item name="crealevant_hultens_clean_duplicate_value" xsi:type="object">
+                    Crealevant\Hultens\Console\Command\CleanDuplicateValue
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

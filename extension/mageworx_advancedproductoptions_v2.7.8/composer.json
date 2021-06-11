@@ -1,0 +1,13 @@
+{
+    "name": "mageworx/module-advancedproductoptions",
+    "version": "2.7.8",
+    "type": "metapackage",
+    "require": {
+        "mageworx/module-optionbase": "2.4.6",
+        "mageworx/module-optioninventory": "2.4.7",
+        "mageworx/module-optiontemplates": "2.4.7",
+        "mageworx/module-optionfeatures": "2.3.6",
+        "mageworx/module-optiondependency": "2.0.9",
+        "mageworx/module-optionswatches": "2.0.4"
+    }
+}

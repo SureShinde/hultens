@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+  <!-- Grid view -->
+  <virtualType name="Mediastrategi\Unifaun\Model\ResourceModel\Shippingmethod\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <arguments>
+      <argument name="mainTable" xsi:type="string">ms_unifaun_shippingmethod</argument>
+      <argument name="resourceModel" xsi:type="string">Mediastrategi\Unifaun\Model\ResourceModel\Shippingmethod</argument>
+      <argument name="pageFactory" xsi:type="string">Magento\Framework\View\Result\PageFactory</argument>
+    </arguments>
+  </virtualType>
+  <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <arguments>
+      <argument name="collections" xsi:type="array">
+        <item name="mediastrategi_unifaun_shippingmethod_grid_data_source" xsi:type="string">Mediastrategi\Unifaun\Model\ResourceModel\Shippingmethod\Collection</item>
+      </argument>
+    </arguments>
+  </type>
+
+  <!-- Sensitive and system-specific settings -->
+  <type name="Magento\Config\Model\Config\TypePool">
+    <arguments>
+      <argument name="sensitive" xsi:type="array">
+        <item name="carriers/msunifaun/credentials/username" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/credentials/password" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/credentials/user_id" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/credentials/quick_id" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/options/id" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/options/from" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/options/to" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/options/error_to" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/options/send_email" xsi:type="string">1</item>
+      </argument>
+      <argument name="environment" xsi:type="array">
+        <item name="carriers/msunifaun/debug" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/credentials/username" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/credentials/password" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/credentials/user_id" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/credentials/quick_id" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/options/id" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/options/from" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/options/to" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/options/error_to" xsi:type="string">1</item>
+        <item name="carriers/msunifaun/options/send_email" xsi:type="string">1</item>
+      </argument>
+    </arguments>
+  </type>
+
+  <!-- Transfer data about carrier, agents and add-ons to frontend -->
+  <type name="\Magento\Quote\Model\Cart\ShippingMethodConverter">
+    <plugin name="msunifaun_shipping_method_converter" type="Mediastrategi\Unifaun\Plugin\ShippingMethodConverterPlugin" />
+  </type>
+  <type name="\Magento\Quote\Model\Quote\Address\Rate">
+    <plugin name="msunifaun_shipping_rate" type="Mediastrategi\Unifaun\Plugin\ShippingRatePlugin" />
+  </type>
+
+  <!-- Save Order Shipping Information (after checkout) -->
+  <type name="Magento\Checkout\Model\ShippingInformationManagement">
+    <plugin name="msunifaun_shipping_information_management" type="Mediastrategi\Unifaun\Plugin\Order\ShippingInformationManagement" />
+  </type>
+
+  <preference for="Mediastrategi\Unifaun\Api\Data\UnifaunAssignmentInterface" type="Mediastrategi\Unifaun\Model\Order\UnifaunAssignment"/>
+
+  <!-- Order Save (admin) -->
+  <type name="Magento\Sales\Api\OrderRepositoryInterface">
+    <plugin name="msunifaun_order_save" type="Mediastrategi\Unifaun\Plugin\Order\Save" />
+    <plugin name="msunifaun_order_get"  type="Mediastrategi\Unifaun\Plugin\Order\Get" />
+  </type>
+
+</config>

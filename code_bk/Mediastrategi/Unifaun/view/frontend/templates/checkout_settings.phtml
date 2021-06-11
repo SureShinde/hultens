@@ -1,0 +1,15 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+$helper = $this->helper(\Mediastrategi\Unifaun\Helper\Data::class);
+/** @var \Mediastrategi\Unifaun\Helper\Data $helper */
+$localeLists = \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Framework\Locale\ListsInterface::class);
+/** @var \Magento\Framework\Locale\ListsInterface $localeLists */
+
+?>
+<script type="text/javascript">
+{
+    window.msunifaun_showZipCodePicker = <?= ($helper->getConfig('carriers/msunifaun/zipcode_picker') ? '1' : '0'); ?>;
+    window.msunifaun_showCountryPicker = <?= ($helper->getConfig('carriers/msunifaun/country_picker') ? '1' : '0'); ?>;
+    window.msunifaun_showCountryPickerList = <?= json_encode($localeLists->getOptionCountries()); ?>;
+}
+</script>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="category_new_products">
+        <job name="add_new_product_to_category" instance="Crealevant\Relevant\Cron\AddProduct" method="execute">
+            <schedule>0 2 * * *</schedule>
+        </job>
+        <job name="remove_product_out_of_category" instance="Crealevant\Relevant\Cron\RemoveProduct" method="execute">
+            <schedule>0 1 * * *</schedule>
+        </job>
+        <job name="add_special_product_to_category" instance="Crealevant\Relevant\Cron\AddSpecialProduct" method="execute">
+            <schedule>0 2 * * *</schedule>
+        </job>
+        <job name="remove_special_product_out_of_category" instance="Crealevant\Relevant\Cron\RemoveSpecialProduct" method="execute">
+            <schedule>0 1 * * *</schedule>
+        </job>
+    </group>
+</config>

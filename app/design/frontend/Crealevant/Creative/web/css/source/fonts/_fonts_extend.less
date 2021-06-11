@@ -1,0 +1,75 @@
+//
+//  Custom Font
+//  ______________________________________________________________________________________________________
+
+//  * Information about adding custom font:
+//  If you dont have the following file formats in your font folder (woff, woff2, ttf2,ttf, eot2, eot)
+//  Use @font-face instead of magentos font-face mixin, since font-face-mixin search for every fileformat
+//  that mention above and it will output 404. See example below how the "Magento "font-face code should be.
+
+//  Luma Font Path
+@font-path: "../../fonts/";
+@icons__font-path: '@{baseDir}fonts/Luma-Icons';
+@icons__font-name: 'luma-icons';
+
+& when (@media-common = true) {
+  // Creative Created By Crealevant
+  @font-face {
+    font-family: 'creative';
+    src: url('@{baseDir}fonts/creative/creative.ttf') format('truetype'),
+    url('@{baseDir}/fonts/creative/creative.woff2') format('woff2'),
+    url('@{baseDir}/fonts/creative/creative.woff') format('woff'),
+    url('@{baseDir}/fonts/creative/creative.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  // Font Awesome Free 5.11.2 - Regular
+  @font-face {
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 400;
+    src: url('@{baseDir}/font/fontawesome/fa-regular-400.eot'),
+    url('@{baseDir}/fonts/fontawesome/fa-regular-400.woff2') format('woff2'),
+    url('@{baseDir}/fonts/fontawesome/fa-regular-400.woff') format('woff'),
+    url('@{baseDir}/fonts/fontawesome/fa-regular-400.ttf') format('truetype'),
+    url('@{baseDir}/fonts/fontawesome/fa-regular-400.svg') format('svg');
+  }
+  // Font Awesome Free 5.11.2 - Solid
+  @font-face {
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;
+    src: url('@{baseDir}/fonts/fontawesome/fa-solid-900.eot'),
+    url('@{baseDir}/fonts/fontawesome/fa-solid-900.woff2') format('woff2'),
+    url('@{baseDir}/fonts/fontawesome/fa-solid-900.woff') format('woff'),
+    url('@{baseDir}/fonts/fontawesome/fa-solid-900.ttf') format('truetype'),
+    url('@{baseDir}/fonts/fontawesome/fa-solid-900.svg') format('svg');
+  }
+  // Font Awesome Free 5.11.2 - Brands
+  @font-face {
+    font-family: 'Font Awesome 5 Brands';
+    font-style: normal;
+    font-weight: normal;
+    src: url('@{baseDir}/fonts/fontawesome/fa-brands-400.eot'),
+    url('@{baseDir}/fonts/fontawesome/fa-brands-400.woff2') format('woff2'),
+    url('@{baseDir}/fonts/fontawesome/fa-brands-400.woff') format('woff'),
+    url('@{baseDir}/fonts/fontawesome/fa-brands-400.ttf') format('truetype'),
+    url('@{baseDir}/fonts/fontawesome/fa-brands-400.svg') format('svg');
+  }
+  // Hultens Font
+  @font-face {
+    font-family: 'hultens';
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal ;
+    text-transform: none;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    src: url('@{baseDir}/fonts/hultens/hultens.eot'),
+    url('@{baseDir}/fonts/hultens/hultens.woff') format('woff'),
+    url('@{baseDir}/fonts/hultens/hultens.ttf') format('truetype'),
+    url('@{baseDir}/fonts/hultens/hultens.svg') format('svg');
+  }
+}

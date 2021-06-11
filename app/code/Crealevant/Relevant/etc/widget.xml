@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2017 x-mage2(Crealevant). All rights reserved.
+ * See README.md for details.
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="relevant_sections"
+            class="Crealevant\Relevant\Block\Widget\Sections\Section"
+            is_email_compatible="false"
+            placeholder_image="Magento_Widget::placeholder.gif">
+        <label translate="true">Relevant Sections</label>
+        <description translate="true">Use this to create a new section on site</description>
+        <parameters>
+            <parameter name="prefix" xsi:type="text" required="true" visible="true">
+                <label translate="true">Div/Section - or whatever</label>
+            </parameter>
+            <parameter name="use_container" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Container</label>
+            </parameter>
+            <parameter name="use_background" xsi:type="text" visible="true">
+                <label translate="true">Background Color (HEX Color)</label>
+            </parameter>
+            <parameter name="photo" xsi:type="block" visible="true" sort_order="10">
+            <label translate="true">Background Image</label>
+            <description translate="true">Background of section</description>
+
+            <block class="Crealevant\Relevant\Block\Widget\Adminhtml\ImageChooser">
+                <data>
+                    <item name="button" xsi:type="array">
+                        <item name="open" xsi:type="string">Choose Image...</item>
+                    </item>
+                </data>
+            </block>
+        </parameter>
+            <parameter name="height" xsi:type="text" visible="true">
+                <label translate="true">Height (auto, px or %)</label>
+            </parameter>
+        <parameter name="content" xsi:type="block" visible="true">
+            <label translate="true">Your content (HTML works fine)</label>
+            <block class="Crealevant\Relevant\Block\Widget\Adminhtml\TextField"/>
+        </parameter>
+        </parameters>
+    </widget>
+</widgets>

@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+  <system>
+    <tab id="proclient" translate="label" sortOrder="9999">
+      <label>Proclient</label>
+    </tab>
+    <section id="pyramidapi" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+      <class>separator-top</class>
+      <label>PyramidAPI</label>
+      <tab>proclient</tab>
+      <resource>Proclient_PyramidAPI::pyramidapi_config</resource>
+      <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Generella inställningar</label>
+        <field id="wsdl_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>URL</label>
+          <comment>URL till WSQUERY för Pyramids WTS.</comment>
+        </field>
+        <field id="error_mail" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>E-post för felrapporter</label>
+          <comment>Fyll i en e-postadress för att få mail om ett fel uppstår.</comment>
+        </field>
+        <field id="debug_log" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Aktivera debug-logg</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+      </group>
+      <group id="auth" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Autentisering</label>
+        <field id="pyramid_username" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Användarnamn</label>
+          <comment>Användarnamn till Pyramids e-handels-API.</comment>
+        </field>
+        <field id="pyramid_password" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Lösenord</label>
+          <comment>Lösenord till Pyramids e-handels-API.</comment>
+        </field>
+      </group>
+      <group id="customers" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Kunder</label>
+        <field id="customer_type" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Kundtyp</label>
+          <comment>Denna kundtyp sätts på alla kunder som skickas till Pyramid</comment>
+        </field>
+        <field id="customer_category" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Kundkategori</label>
+          <comment>Denna kundkategori sätts på alla kunder som skickas till Pyramid</comment>
+        </field>
+        <field id="project_type" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Projekttyp</label>
+          <comment>Denna projekttyp sätts på alla kunder som skickas till Pyramid</comment>
+        </field>
+      </group>
+      <group id="orders" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Ordrar</label>
+        <field id="send_from_date" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Skicka fr.o.m. datum</label>
+          <comment>Skicka enbart ordrar som lagts detta datum och senare. Måste vara formaterat YYYY-mm-dd, t.ex. 1999-12-31</comment>
+        </field>
+        <field id="included_order_statuses" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Beställd-orderstatusar</label>
+          <comment>Kommaseparerad lista med orderstatusar för ordrar som ska skickas in till Pyramid. Om tom så skickas alla ordrar, oavsett status</comment>
+        </field>
+        <field id="seller" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Säljarkod</label>
+          <comment>Anges som säljare när ordern skickas till Pyramid. Måste anges!</comment>
+        </field>
+        <field id="stockpile" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Lagerkod</label>
+          <comment>Anges som lager på alla orderrader som skickas till Pyramid. Måste anges!</comment>
+        </field>
+        <field id="payment_terms" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Betalningsvillkor</label>
+          <comment>Anges som kod för betalningsvillkor när ordern skickas till Pyramid. Måste anges!</comment>
+        </field>
+        <field id="invoiced_status" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Status fakturerad</label>
+          <comment>Status att sätta på en order i Pyramid när den har fakturerats. Om tom så skickas inget.</comment>
+        </field>
+        <field id="use_unifaun" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Använd Unifaun-koppling</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+          <comment>Anger utlämningsställe. Sätter namn i levadress 5, adress i levadress 6 och postnr + ort i godsmärkning.</comment>
+        </field>
+        <field id="meta_as_textrows" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Skicka meta-data som textrad</label>
+          <comment>Ange kommaseparerad meta-data som ska skickas som textrader på ordern.</comment>
+        </field>
+        <field id="meta_as_field" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Skicka meta-data i eget fält</label>
+          <comment>Ange kommaseparerad meta-data som ska skickas som egna fält i order-meddelandet.</comment>
+        </field>
+      </group>
+      <group id="articles" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Artiklar</label>
+        <field id="import_path" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Sökväg till katalog</label>
+          <comment>Lokal sökväg till katalog med XML-filer med artikelinfo, lagersaldo etc. Avsluta med slash! OBS! På denna sökväg behöver undermapparna error och success existera!</comment>
+        </field>
+        <field id="articles_use_ws" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Hämta via WS</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+          <comment>Välj ja om hämta flaggade artiklar via WS-anrop, annars används XML-fil som skickas från Pyramid via FTP.</comment>
+        </field>
+        <field id="articles_create_new" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Skapa nya artiklar</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+          <comment>Välj Ja om artiklar som inte redan finns i Magento ska nyregistreras, annars uppdateras enbart befintliga artiklar.</comment>
+        </field>
+        <field id="articles_set_ean" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Spara EAN-kod till detta meta-fält</label>
+          <comment>Ange nyckel för meta-fält som EAN-koden ska sparas till.</comment>
+        </field>
+        <field id="store_view_price" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+          <label>Sätt pris i store view</label>
+          <comment>Ange Kommaseparerad lista med ID:n på store views som prisuppdatering ska ske för. Används inte om priser skickas för flera valutor.</comment>
+        </field>
+      </group>
+    </section>
+  </system>
+</config>

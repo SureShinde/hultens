@@ -1,0 +1,49 @@
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Magento\Catalog\Block\Category\View
+ */
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$catalogHelperData = $this->helper('Magento\Catalog\Helper\Data');
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$categoryObject = $catalogHelperData->getCategory();
+$categoryId = $categoryObject->getId();
+$categoryName = $categoryObject->getName(); // Current Category Name
+$campaignBanner = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('top-head-kampanjer')->toHtml();
+?>
+<?php if($_imgUrl = $block->getCurrentCategory()->getImageUrl()): ?>
+    <?php $_imgHtml = $_imgUrl;
+    $_imgHtml = $_helper->categoryAttribute($block->getCurrentCategory(), $_imgHtml, 'image'); ?>
+    <div class="<?php if($campaignBanner){echo 'campaign-active';}?> category-top-wrapper">
+        <div class="category-top-background"style="background: url('<?= $_imgHtml ?>');width:100%;background-size:cover;background-repeat:no-repeat;background-position:center;">
+            <div class="content">
+                <div class="category-top-title">
+                    <h1><?= $categoryName?></h1>
+                </div><!-- Category Top Title -->
+                <div class="category-top-description">
+                    <div><?= $categoryObject->getData('category_top_description') ?></div>
+                </div><!-- Category Top Description -->
+                <div class="category-top-link">
+                    <span class="scroll-to-desc"><?= $categoryObject->getData('category_top_link') ?></span>
+                </div><!-- Category Top Description -->
+            </div><!-- Content -->
+        </div><!-- Category Top Background -->
+    </div><!-- Category Top Wrapper -->
+<?php elseif(!$block->getCurrentCategory()->getImageUrl()): ?>
+    <div class="category-top-wrapper empty-bkg <?php if($campaignBanner){echo 'campaign-active';}?>">
+        <div class="category-top-background no-img">
+            <div class="content">
+                <div class="category-top-title">
+                    <h1><?= $categoryName?></h1>
+                </div><!-- Category Top Title -->
+                <div class="category-top-description">
+                    <div><?= $categoryObject->getData('category_top_description') ?></div>
+                </div><!-- Category Top Description -->
+                <div class="category-top-link">
+                    <span class="scroll-to-desc"><?= $categoryObject->getData('category_top_link') ?></span>
+                </div><!-- Category Top Description -->
+            </div><!-- Content -->
+        </div><!-- Category Top Background -->
+    </div><!-- Category Top Wrapper -->
+<?php endif; // ENDIF getImageUrl() ?>

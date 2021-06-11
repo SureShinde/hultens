@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+  <system>
+    <tab id="mediastrategi" translate="label" sortOrder="200">
+      <label>Mediastrategi</label>
+    </tab>
+
+    <section id="carriers" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+
+      <group id="msunifaun" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Unifaun Online</label>
+        <field id="about" translate="label" type="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>About</label>
+          <frontend_model>Mediastrategi\Unifaun\Block\System\Config\Form\Field\About</frontend_model>
+        </field>
+        <field id="status" translate="label" type="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Status</label>
+          <frontend_model>Mediastrategi\Unifaun\Block\System\Config\Form\Field\Status</frontend_model>
+        </field>
+        <field id="version" translate="label" type="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Version</label>
+          <frontend_model>Mediastrategi\Unifaun\Block\System\Config\Form\Field\Version</frontend_model>
+        </field>
+        <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Enabled for Checkout</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="country_picker" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Country Picker</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="zipcode_picker" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>ZIP Code Picker</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="automatic_shipment_notifications" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Send shipment notification during automation</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="pacsoft" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Pacsoft Online</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="debug" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Debug</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="specificerrmsg" translate="label" type="textarea" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+          <label>Displayed Error Message</label>
+        </field>
+        <field id="sort_order" translate="label" type="text" sortOrder="290" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Sort Order</label>
+        </field>
+
+        <group id="credentials" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Credentials</label>
+          <field id="username" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>API Key Id</label>
+          </field>
+          <field id="password" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>API Key Secret</label>
+          </field>
+          <field id="user_id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>User Id</label>
+          </field>
+          <field id="quick_id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Quick Id</label>
+          </field>
+        </group>
+
+        <group id="customs" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Customs</label>
+          <field id="statno" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>HS Code Attribute</label>
+            <source_model>Mediastrategi\Unifaun\Block\System\Config\Form\Field\ProductAttribute</source_model>
+          </field>
+          <field id="origin_country" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Country of Origin Attribute</label>
+            <source_model>Mediastrategi\Unifaun\Block\System\Config\Form\Field\ProductAttribute</source_model>
+          </field>
+        </group>
+
+        <group id="pdfconfig" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>PDF</label>
+          <field id="target1Media" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target1Media</label>
+          </field>
+          <field id="target1XOffset" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target1XOffset</label>
+          </field>
+          <field id="target1YOffset" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target1YOffsetl</label>
+          </field>
+          <field id="target2Media" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target2Media</label>
+          </field>
+          <field id="target2XOffset" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target2XOffset</label>
+          </field>
+          <field id="target2YOffset" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target2YOffsetl</label>
+          </field>
+          <field id="target3Media" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target3Media</label>
+          </field>
+          <field id="target3XOffset" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target3XOffset</label>
+          </field>
+          <field id="target3YOffset" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target3YOffsetl</label>
+          </field>
+          <field id="target4Media" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target4Media</label>
+          </field>
+          <field id="target4XOffset" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target4XOffset</label>
+          </field>
+          <field id="target4YOffset" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>target4YOffsetl</label>
+          </field>
+        </group>
+
+        <group id="options" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Options</label>
+          <field id="id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>ID</label>
+          </field>
+          <field id="from" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>From Email</label>
+          </field>
+          <field id="to" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>To Email</label>
+          </field>
+          <field id="error_to" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Error To Email</label>
+          </field>
+          <field id="language_code" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Language Code</label>
+          </field>
+          <field id="send_email" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Send Email</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+          </field>
+          <field id="sender_reference_prefix" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Sender Reference Prefix</label>
+          </field>
+          <field id="parcel_contents" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Parcel Contents</label>
+            <source_model>Mediastrategi\Unifaun\Block\System\Config\Form\Field\ParcelContents</source_model>
+          </field>
+          <field id="order_reference" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Order Reference</label>
+            <source_model>Mediastrategi\Unifaun\Block\System\Config\Form\Field\OrderReference</source_model>
+          </field>
+        </group>
+
+      </group>
+    </section>
+  </system>
+</config>

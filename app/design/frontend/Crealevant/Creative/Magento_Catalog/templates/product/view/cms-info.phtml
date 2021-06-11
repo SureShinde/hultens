@@ -1,0 +1,123 @@
+<?php $_product = $block->getProduct(); ?>
+<div class="cms-info">
+
+    <?php
+    $_hultenHelper = $this->helper('Crealevant\Hultens\Helper\Data');
+    $isSpecial = false;
+    $isAppyRules = false;
+
+    $_originalPrice = '';
+    $newPrice = '';
+    $_specialPriceSelection = '';
+    $_regularPriceSelection = '';
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
+    $typeInstance = $objectManager->get('Magento\Bundle\Model\Product\Type');
+    $selections = $typeInstance->getSelectionsCollection($typeInstance->getOptionsIds($_product), $_product);
+    ?>
+
+    <?php if($_product->getTypeId() == 'bundle'): ?>
+        <?php $originalPrice = 0;
+        $_oldPrice = 0;
+        $_oldPriceRule = 0;
+        $_specialSelectionPrice = "";
+        $productPriceRule = false;
+        $_specialPrice = 0;
+        $_specialPriceRule = 0;?>
+        <?php foreach ($selections as $selection): ?>
+            <?php if ($selection->getIsDefault() == '1'): ?>
+                <?php $newRegularPrice = $selection->getPriceInfo()->getPrice('regular_price')->getValue();
+                $newSpecialPrice = $selection->getPriceInfo()->getPrice('final_price')->getValue();
+                $_specialSelectionPrice = $selection->getSpecialPrice();
+                $qty = $selection->getSelectionQty();
+                $selectionProduct = $_hultenHelper->getProduct($selection->getProductId());
+                $productPriceRule = $_hultenHelper->getPrice($selectionProduct, $newRegularPrice);
+                //Setup current Date and Get From/To Date ( Bundle/SpecialPrice )
+                $todaysDate =  date("Y-m-d");
+                $FromDate = $selection->getSpecialFromDate();
+                $ToDate = $selection->getSpecialToDate();
+                $originalPrice += $newRegularPrice * $qty;?>
+                <?php if ($newSpecialPrice): ?>
+                    <?php $_oldPrice += $newRegularPrice * $qty; ?>
+                    <?php $_specialPrice += $newSpecialPrice * $qty; ?>
+                <?php endif; ?>
+
+                <?php if($productPriceRule): ?>
+                    <?php $_oldPriceRule += $newRegularPrice * $qty; ?>
+                    <?php $_specialPriceRule += $productPriceRule * $qty; ?>
+                    <?php $isAppyRules = true; ?>
+                <?php endif; ?>
+
+                <?php if($_specialSelectionPrice): ?>
+                    <?php if(($todaysDate > $FromDate) && ($todaysDate < $ToDate)): ?>
+                        <?php $isSpecial = true; ?>
+                    <?php elseif($todaysDate > $FromDate && empty($ToDate)): ?>
+                        <?php $isSpecial = true; ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <!-- Placement v1 -->
+        <klarna-placement
+                data-id="2ee9d743-616b-428b-8cc2-757ef0894c26"
+                data-purchase_amount="
+    <?php if($isAppyRules): ?>
+        <?= $_specialPriceRule."00"  ?>
+    <?php elseif($isSpecial): ?>
+         <?= $_specialPrice."00"  ?>
+    <?php else: ?>
+         <?= $originalPrice."00"?>
+    <?php endif; ?>" data-preloaded="true" data-locale="sv-SE"></klarna-placement>
+    <?php endif;?>
+    <?php
+    $price = '';
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $typeInstance = $objectManager->get('Magento\Bundle\Model\Product\Type');
+    $selections = $typeInstance->getSelectionsCollection($typeInstance->getOptionsIds($_product), $_product); ?>
+
+    <?php if($_product->getTypeId() !== 'bundle'): ?>
+        <?php
+        $todaysDate =  date("Y-m-d");
+        $FromDate = $_product->getSpecialFromDate();
+        $ToDate = $_product->getSpecialToDate();
+
+        $regularPrice = $_product->getPriceInfo()->getPrice('regular_price')->getValue();
+        $finalPrice = $_product->getPriceInfo()->getPrice('final_price')->getValue();
+        $productPriceRule = $_hultenHelper->getPrice($_product, $regularPrice);
+        $specialPrice = $_product->getSpecialPrice();
+        ?>
+
+        <?php if($specialPrice): ?>
+            <?php if(($todaysDate > $FromDate) && ($todaysDate < $ToDate)): ?>
+                <?php $isSpecial = true; ?>
+            <?php elseif($todaysDate > $FromDate && empty($ToDate)): ?>
+                <?php $isSpecial = true; ?>
+            <?php endif; ?>
+        <?php endif; ?>
+        <?php if($productPriceRule): ?>
+            <?php $isAppyRules = true; ?>
+        <?php endif; ?>
+        <!-- Placement v1 -->
+        <klarna-placement
+                data-id="2ee9d743-616b-428b-8cc2-757ef0894c26"
+                data-locale="sv-SE"
+                data-purchase_amount="
+                <?php if($isAppyRules):?>
+                    <?= $productPriceRule."00"?>
+                <?php elseif($isSpecial): ?>
+                    <?= $finalPrice."00"?>
+                <?php else: ?>
+                    <?= $regularPrice."00"?>
+                <?php endif; ?>"></klarna-placement>
+        <?php $configBlock = $this->getLayout()->createBlock('Magento\Config\Block\System\Config\Form');
+        $localeCode = strtolower($configBlock->getConfigValue('general/locale/code')); ?>
+    <?php endif; ?>
+
+    <script async src="https://eu-library.klarnaservices.com/merchant.js?uci=1e5bf878-7d4d-48e8-9395-8e1ea544c6ce&country=SE"></script>
+    <script>
+        window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];  // Making sure that data layer exists in case the On-Site JavaScript library is loaded later for any reason
+        window.KlarnaOnsiteService.push({
+            eventName: 'refresh-placements'}) // Push the event to the data layer
+    </script>
+    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('product_cms_info')->toHtml();?>
+</div>

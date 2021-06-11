@@ -1,0 +1,41 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+$lid = $block->getOrderId();
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$order = $objectManager->create('Magento\Sales\Model\Order')->load($block->getOrderId());
+
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$currency = $objectManager->get('Magento\Directory\Model\Currency');
+$price = $block->getGrandTotal(); //Your Price
+$formattedPrice = $currency->format($price, ['display'=>\Zend_Currency::NO_SYMBOL], false);
+
+?>
+<?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+
+<div style="width:100%;text-align:center;">
+    <a href="https://instore.prisjakt.nu/etailer_reviews/form/purchase.php?ftgid=12685&code=e5408746760be0a0f14c9df1ca73fefb"
+       style="display: inline-block">
+        <img src=""/>
+    </a>
+</div>
+
+<img src="https://track.adtraction.com/t/t?t=3&tk=1&am=<?php echo $formattedPrice; ?>&c=SEK&ti=<?php echo $lid; ?>&tp=1198689972&trt=4&cpn=[coupon]&xd=<?php echo md5($order->getCustomerEmail()); ?>&ap=1198689425" style="display:none" width="1" height="1" />
+
+<script>
+    var ADT = ADT || {};
+    ADT.Tag = ADT.Tag || {};
+    ADT.Tag.t = 3;
+    ADT.Tag.c = "SEK";
+    ADT.Tag.tp = 1198689972;
+    ADT.Tag.am = <?= $formattedPrice ?>;
+    ADT.Tag.ti = <?= $lid ?>;
+    ADT.Tag.xd = <?= md5($order->getCustomerEmail()); ?>;
+    ADT.Tag.cpn = "coupon";
+</script>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="msunifaun_cache_checkout" translate="label,description" instance="Mediastrategi\Unifaun\Model\Cache\Checkout">
+        <label>Unifaun Checkout Cache</label>
+        <description>Selected shipping agent storage.</description>
+    </type>
+</config>

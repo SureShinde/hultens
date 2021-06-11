@@ -1,0 +1,12 @@
+<?php
+/*
+ *  This Template File
+ * */
+
+$_product = $block->getProduct();
+?>
+<?php if($_product->getAttributeText('hu_ute_typ') == true): ?>
+    <div class="prod-type-container">
+        <span class="prod-type"> <?= $_product->getAttributeText('hu_ute_typ') ?></span>
+    </div>
+<?php endif; ?>
